@@ -1,0 +1,6 @@
+data/raw/**/*.zip filter=lfs diff=lfs merge=lfs -text
+data/raw/**/*.csv filter=lfs diff=lfs merge=lfs -text
+data/raw/**/*.json filter=lfs diff=lfs merge=lfs -text
+data/raw/**/*.txt filter=lfs diff=lfs merge=lfs -text
+data/raw/**/*.htm filter=lfs diff=lfs merge=lfs -text
+data/given/**/*.csv filter=lfs diff=lfs merge=lfs -text

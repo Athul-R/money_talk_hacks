@@ -1,9 +1,15 @@
 # python
 __pycache__/
 *.pyc
+*.py[cod]
 .venv/
 .pytest_cache/
+.mypy_cache/
 .ruff_cache/
+*.egg-info/
+dist/
+build/
+src/*.egg-info/
 backend/.fpa_state/
 
 # node
@@ -18,3 +24,10 @@ console/dist/
 
 # os / editor
 .DS_Store
+.idea/
+.vscode/
+
+# outputs / local caches (raw data is tracked via Git LFS)
+data/output/
+.gide/
+*.log
