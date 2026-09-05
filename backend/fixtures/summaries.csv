@@ -1,0 +1,241 @@
+period,metric,segment_dim,segment,value,currency
+2024-Q1,Revenue,total,,111000,USD
+2024-Q1,Revenue,product,Cloud,9000,USD
+2024-Q1,Revenue,product,Search Ads,48000,USD
+2024-Q1,Revenue,product,Subscriptions,21000,USD
+2024-Q1,Revenue,product,Devices & Network,33000,USD
+2024-Q1,Revenue,geography,Americas,59820.0,USD
+2024-Q1,Revenue,geography,EMEA,30630.0,USD
+2024-Q1,Revenue,geography,APAC,20550.0,USD
+2024-Q1,Revenue,user_type,Advertisers,52950.0,USD
+2024-Q1,Revenue,user_type,Enterprise,8880.0,USD
+2024-Q1,Revenue,user_type,Consumers,49170.0,USD
+2024-Q1,COGS,total,,55860.0,USD
+2024-Q1,COGS,product,Cloud,4500.0,USD
+2024-Q1,COGS,product,Search Ads,16800.0,USD
+2024-Q1,COGS,product,Subscriptions,8820.0,USD
+2024-Q1,COGS,product,Devices & Network,25740.0,USD
+2024-Q1,R&D,total,,10400,USD
+2024-Q1,S&M,total,,9300,USD
+2024-Q1,G&A,total,,4700,USD
+2024-Q1,CapEx,total,,6300,USD
+2024-Q1,Operating cash flow,total,,41000,USD
+2024-Q1,Gross profit,total,,55140.0,USD
+2024-Q1,Operating income,total,,30740.0,USD
+2024-Q1,Free cash flow,total,,34700,USD
+2024-Q2,Revenue,total,,118296,USD
+2024-Q2,Revenue,product,Cloud,10896,USD
+2024-Q2,Revenue,product,Search Ads,50200,USD
+2024-Q2,Revenue,product,Subscriptions,22400,USD
+2024-Q2,Revenue,product,Devices & Network,34800,USD
+2024-Q2,Revenue,geography,Americas,63680.08,USD
+2024-Q2,Revenue,geography,EMEA,32644.88,USD
+2024-Q2,Revenue,geography,APAC,21971.04,USD
+2024-Q2,Revenue,user_type,Advertisers,55420.0,USD
+2024-Q2,Revenue,user_type,Enterprise,10235.52,USD
+2024-Q2,Revenue,user_type,Consumers,52640.48,USD
+2024-Q2,COGS,total,,59570.0,USD
+2024-Q2,COGS,product,Cloud,5448.0,USD
+2024-Q2,COGS,product,Search Ads,17570.0,USD
+2024-Q2,COGS,product,Subscriptions,9408.0,USD
+2024-Q2,COGS,product,Devices & Network,27144.0,USD
+2024-Q2,R&D,total,,10900,USD
+2024-Q2,S&M,total,,9800,USD
+2024-Q2,G&A,total,,4900,USD
+2024-Q2,CapEx,total,,6700,USD
+2024-Q2,Operating cash flow,total,,43500,USD
+2024-Q2,Gross profit,total,,58726.0,USD
+2024-Q2,Operating income,total,,33126.0,USD
+2024-Q2,Free cash flow,total,,36800,USD
+2024-Q3,Revenue,total,,121500,USD
+2024-Q3,Revenue,product,Cloud,12000,USD
+2024-Q3,Revenue,product,Search Ads,52500,USD
+2024-Q3,Revenue,product,Subscriptions,22800,USD
+2024-Q3,Revenue,product,Devices & Network,34200,USD
+2024-Q3,Revenue,geography,Americas,65415.0,USD
+2024-Q3,Revenue,geography,EMEA,33495.0,USD
+2024-Q3,Revenue,geography,APAC,22590.0,USD
+2024-Q3,Revenue,user_type,Advertisers,57630.0,USD
+2024-Q3,Revenue,user_type,Enterprise,10860.0,USD
+2024-Q3,Revenue,user_type,Consumers,53010.0,USD
+2024-Q3,COGS,total,,60687.0,USD
+2024-Q3,COGS,product,Cloud,6060.0,USD
+2024-Q3,COGS,product,Search Ads,18375.0,USD
+2024-Q3,COGS,product,Subscriptions,9576.0,USD
+2024-Q3,COGS,product,Devices & Network,26676.0,USD
+2024-Q3,R&D,total,,11200,USD
+2024-Q3,S&M,total,,9900,USD
+2024-Q3,G&A,total,,4950,USD
+2024-Q3,CapEx,total,,7000,USD
+2024-Q3,Operating cash flow,total,,44800,USD
+2024-Q3,Gross profit,total,,60813.0,USD
+2024-Q3,Operating income,total,,34763.0,USD
+2024-Q3,Free cash flow,total,,37800,USD
+2024-Q4,Revenue,total,,133100,USD
+2024-Q4,Revenue,product,Cloud,12100,USD
+2024-Q4,Revenue,product,Search Ads,58000,USD
+2024-Q4,Revenue,product,Subscriptions,23500,USD
+2024-Q4,Revenue,product,Devices & Network,39500,USD
+2024-Q4,Revenue,geography,Americas,71558.0,USD
+2024-Q4,Revenue,geography,EMEA,36773.0,USD
+2024-Q4,Revenue,geography,APAC,24769.0,USD
+2024-Q4,Revenue,user_type,Advertisers,63925.0,USD
+2024-Q4,Revenue,user_type,Enterprise,11452.0,USD
+2024-Q4,Revenue,user_type,Consumers,57723.0,USD
+2024-Q4,COGS,total,,67090.5,USD
+2024-Q4,COGS,product,Cloud,6110.5,USD
+2024-Q4,COGS,product,Search Ads,20300.0,USD
+2024-Q4,COGS,product,Subscriptions,9870.0,USD
+2024-Q4,COGS,product,Devices & Network,30810.0,USD
+2024-Q4,R&D,total,,11600,USD
+2024-Q4,S&M,total,,11200,USD
+2024-Q4,G&A,total,,5200,USD
+2024-Q4,CapEx,total,,7600,USD
+2024-Q4,Operating cash flow,total,,47200,USD
+2024-Q4,Gross profit,total,,66009.5,USD
+2024-Q4,Operating income,total,,38009.5,USD
+2024-Q4,Free cash flow,total,,39600,USD
+2025-Q1,Revenue,total,,121040,USD
+2025-Q1,Revenue,product,Cloud,10080,USD
+2025-Q1,Revenue,product,Search Ads,53760,USD
+2025-Q1,Revenue,product,Subscriptions,22800,USD
+2025-Q1,Revenue,product,Devices & Network,34400,USD
+2025-Q1,Revenue,geography,Americas,65286.4,USD
+2025-Q1,Revenue,geography,EMEA,33357.6,USD
+2025-Q1,Revenue,geography,APAC,22396.0,USD
+2025-Q1,Revenue,user_type,Advertisers,58920.0,USD
+2025-Q1,Revenue,user_type,Enterprise,9689.6,USD
+2025-Q1,Revenue,user_type,Consumers,52430.4,USD
+2025-Q1,COGS,total,,60314.4,USD
+2025-Q1,COGS,product,Cloud,5090.4,USD
+2025-Q1,COGS,product,Search Ads,18816.0,USD
+2025-Q1,COGS,product,Subscriptions,9576.0,USD
+2025-Q1,COGS,product,Devices & Network,26832.0,USD
+2025-Q1,R&D,total,,11500,USD
+2025-Q1,S&M,total,,10000,USD
+2025-Q1,G&A,total,,5050,USD
+2025-Q1,CapEx,total,,7800,USD
+2025-Q1,Operating cash flow,total,,43900,USD
+2025-Q1,Gross profit,total,,60725.6,USD
+2025-Q1,Operating income,total,,34175.6,USD
+2025-Q1,Free cash flow,total,,36100,USD
+2025-Q2,Revenue,total,,129700,USD
+2025-Q2,Revenue,product,Cloud,13620,USD
+2025-Q2,Revenue,product,Search Ads,56726,USD
+2025-Q2,Revenue,product,Subscriptions,24000,USD
+2025-Q2,Revenue,product,Devices & Network,35354,USD
+2025-Q2,Revenue,geography,Americas,69813.9,USD
+2025-Q2,Revenue,geography,EMEA,35735.82,USD
+2025-Q2,Revenue,geography,APAC,24150.28,USD
+2025-Q2,Revenue,user_type,Advertisers,62029.1,USD
+2025-Q2,Revenue,user_type,Enterprise,11979.8,USD
+2025-Q2,Revenue,user_type,Consumers,55691.1,USD
+2025-Q2,COGS,total,,64388.32,USD
+2025-Q2,COGS,product,Cloud,6878.1,USD
+2025-Q2,COGS,product,Search Ads,19854.1,USD
+2025-Q2,COGS,product,Subscriptions,10080.0,USD
+2025-Q2,COGS,product,Devices & Network,27576.12,USD
+2025-Q2,R&D,total,,12000,USD
+2025-Q2,S&M,total,,10400,USD
+2025-Q2,G&A,total,,5200,USD
+2025-Q2,CapEx,total,,8200,USD
+2025-Q2,Operating cash flow,total,,44000,USD
+2025-Q2,Gross profit,total,,65311.68,USD
+2025-Q2,Operating income,total,,37711.68,USD
+2025-Q2,Free cash flow,total,,35800,USD
+2025-Q3,Revenue,total,,131110,USD
+2025-Q3,Revenue,product,Cloud,14160,USD
+2025-Q3,Revenue,product,Search Ads,57750,USD
+2025-Q3,Revenue,product,Subscriptions,24400,USD
+2025-Q3,Revenue,product,Devices & Network,34800,USD
+2025-Q3,Revenue,geography,Americas,70599.3,USD
+2025-Q3,Revenue,geography,EMEA,36097.3,USD
+2025-Q3,Revenue,geography,APAC,24413.4,USD
+2025-Q3,Revenue,user_type,Advertisers,62970.0,USD
+2025-Q3,Revenue,user_type,Enterprise,12259.2,USD
+2025-Q3,Revenue,user_type,Consumers,55880.8,USD
+2025-Q3,COGS,total,,64826.1,USD
+2025-Q3,COGS,product,Cloud,7221.6,USD
+2025-Q3,COGS,product,Search Ads,20212.5,USD
+2025-Q3,COGS,product,Subscriptions,10248.0,USD
+2025-Q3,COGS,product,Devices & Network,27144.0,USD
+2025-Q3,R&D,total,,12300,USD
+2025-Q3,S&M,total,,10500,USD
+2025-Q3,G&A,total,,5250,USD
+2025-Q3,CapEx,total,,9100,USD
+2025-Q3,Operating cash flow,total,,45600,USD
+2025-Q3,Gross profit,total,,66283.9,USD
+2025-Q3,Operating income,total,,38233.9,USD
+2025-Q3,Free cash flow,total,,36500,USD
+2025-Q4,Revenue,total,,149182,USD
+2025-Q4,Revenue,product,Cloud,17182,USD
+2025-Q4,Revenue,product,Search Ads,66700,USD
+2025-Q4,Revenue,product,Subscriptions,25200,USD
+2025-Q4,Revenue,product,Devices & Network,40100,USD
+2025-Q4,Revenue,geography,Americas,80102.36,USD
+2025-Q4,Revenue,geography,EMEA,41149.96,USD
+2025-Q4,Revenue,geography,APAC,27929.68,USD
+2025-Q4,Revenue,user_type,Advertisers,72715.0,USD
+2025-Q4,Revenue,user_type,Enterprise,14662.84,USD
+2025-Q4,Revenue,user_type,Consumers,61804.16,USD
+2025-Q4,COGS,total,,74313.46,USD
+2025-Q4,COGS,product,Cloud,9106.46,USD
+2025-Q4,COGS,product,Search Ads,23345.0,USD
+2025-Q4,COGS,product,Subscriptions,10584.0,USD
+2025-Q4,COGS,product,Devices & Network,31278.0,USD
+2025-Q4,R&D,total,,12900,USD
+2025-Q4,S&M,total,,11900,USD
+2025-Q4,G&A,total,,5500,USD
+2025-Q4,CapEx,total,,10800,USD
+2025-Q4,Operating cash flow,total,,50300,USD
+2025-Q4,Gross profit,total,,74868.54,USD
+2025-Q4,Operating income,total,,44568.54,USD
+2025-Q4,Free cash flow,total,,39500,USD
+2026-Q1,Revenue,total,,131480,USD
+2026-Q1,Revenue,product,Cloud,13306,USD
+2026-Q1,Revenue,product,Search Ads,59674,USD
+2026-Q1,Revenue,product,Subscriptions,24500,USD
+2026-Q1,Revenue,product,Devices & Network,34000,USD
+2026-Q1,Revenue,geography,Americas,70907.58,USD
+2026-Q1,Revenue,geography,EMEA,36162.66,USD
+2026-Q1,Revenue,geography,APAC,24409.76,USD
+2026-Q1,Revenue,user_type,Advertisers,64774.0,USD
+2026-Q1,Revenue,user_type,Enterprise,11649.72,USD
+2026-Q1,Revenue,user_type,Consumers,55056.28,USD
+2026-Q1,COGS,total,,64881.14,USD
+2026-Q1,COGS,product,Cloud,7185.24,USD
+2026-Q1,COGS,product,Search Ads,20885.9,USD
+2026-Q1,COGS,product,Subscriptions,10290.0,USD
+2026-Q1,COGS,product,Devices & Network,26520.0,USD
+2026-Q1,R&D,total,,13300,USD
+2026-Q1,S&M,total,,10700,USD
+2026-Q1,G&A,total,,5350,USD
+2026-Q1,CapEx,total,,12600,USD
+2026-Q1,Operating cash flow,total,,46800,USD
+2026-Q1,Gross profit,total,,66598.86,USD
+2026-Q1,Operating income,total,,37248.86,USD
+2026-Q1,Free cash flow,total,,34200,USD
+2026-Q2,Revenue,total,,153316,USD
+2026-Q2,Revenue,product,Cloud,24760,USD
+2026-Q2,Revenue,product,Search Ads,66256,USD
+2026-Q2,Revenue,product,Subscriptions,26000,USD
+2026-Q2,Revenue,product,Devices & Network,36300,USD
+2026-Q2,Revenue,geography,Americas,82075.6,USD
+2026-Q2,Revenue,geography,EMEA,42211.92,USD
+2026-Q2,Revenue,geography,APAC,29028.48,USD
+2026-Q2,Revenue,user_type,Advertisers,71701.0,USD
+2026-Q2,Revenue,user_type,Enterprise,18981.2,USD
+2026-Q2,Revenue,user_type,Consumers,62633.8,USD
+2026-Q2,COGS,total,,76289.2,USD
+2026-Q2,COGS,product,Cloud,13865.6,USD
+2026-Q2,COGS,product,Search Ads,23189.6,USD
+2026-Q2,COGS,product,Subscriptions,10920.0,USD
+2026-Q2,COGS,product,Devices & Network,28314.0,USD
+2026-Q2,R&D,total,,14200,USD
+2026-Q2,S&M,total,,11150,USD
+2026-Q2,G&A,total,,5560,USD
+2026-Q2,CapEx,total,,15400,USD
+2026-Q2,Operating cash flow,total,,50200,USD
+2026-Q2,Gross profit,total,,77026.8,USD
+2026-Q2,Operating income,total,,46116.8,USD
+2026-Q2,Free cash flow,total,,34800,USD

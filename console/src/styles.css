@@ -1,0 +1,218 @@
+@import "tailwindcss";
+
+/*
+ * Delta Ledger — claymorphism forked from the Rock Scheduler ops console,
+ * re-tinted for finance: warm ledger paper, ink foreground, emerald = growth,
+ * crimson = decline, gold = in-flight analysis, violet = memory.
+ * All colors oklch; ring tokens drive node rings, edges, chips and badges.
+ */
+
+:root {
+  --background: oklch(0.972 0.005 90);
+  --foreground: oklch(0.23 0.02 270);
+  --muted-foreground: oklch(0.55 0.02 270);
+  --border: oklch(0.9 0.008 90);
+
+  /* ring tokens (node states) */
+  --ring-idle: oklch(0.82 0.012 90);
+  --ring-metric: oklch(0.5 0.11 270);      /* root metric — ink indigo   */
+  --ring-engine: oklch(0.55 0.12 185);     /* variance router — deep teal */
+  --ring-up: oklch(0.63 0.14 160);         /* growth — emerald            */
+  --ring-down: oklch(0.6 0.19 25);         /* decline / capped — crimson  */
+  --ring-active: oklch(0.74 0.13 85);      /* in-flight — gold            */
+  --ring-drill: oklch(0.72 0.15 65);       /* drill — amber               */
+  --ring-memory: oklch(0.58 0.17 300);     /* memory — violet             */
+  --edge-idle: oklch(0.86 0.01 90);
+
+  /* evidence tag badges */
+  --tag-fact: oklch(0.5 0.02 270);
+  --tag-calc: oklch(0.55 0.12 185);
+  --tag-mgmt: oklch(0.58 0.17 300);
+  --tag-inference: oklch(0.68 0.14 70);
+
+  --clay-out:
+    8px 10px 22px oklch(0.6 0.03 80 / 0.18), -8px -8px 20px oklch(1 0 0 / 0.95),
+    inset 0 1px 1px oklch(1 0 0 / 0.9);
+  --clay-out-sm:
+    5px 6px 14px oklch(0.6 0.03 80 / 0.16), -4px -4px 10px oklch(1 0 0 / 0.95);
+  --clay-in:
+    inset 5px 6px 12px oklch(0.6 0.03 80 / 0.13), inset -5px -5px 12px oklch(1 0 0 / 0.9);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-metric: var(--ring-metric);
+  --color-engine: var(--ring-engine);
+  --color-up: var(--ring-up);
+  --color-down: var(--ring-down);
+  --color-gold: var(--ring-active);
+  --color-drill: var(--ring-drill);
+  --color-memoryv: var(--ring-memory);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  body {
+    background:
+      radial-gradient(1200px 700px at 12% -10%, oklch(0.99 0.012 120), transparent 60%),
+      radial-gradient(1000px 600px at 100% 0%, oklch(0.985 0.014 80), transparent 55%),
+      var(--background);
+    color: var(--foreground);
+    font-feature-settings: "cv02", "tnum";
+  }
+}
+
+@utility clay-panel {
+  background: oklch(0.982 0.004 90);
+  box-shadow: var(--clay-out);
+}
+@utility clay-canvas {
+  background: oklch(0.975 0.004 90);
+  box-shadow: var(--clay-in);
+}
+@utility clay-card {
+  background: oklch(0.982 0.004 90);
+  box-shadow: var(--clay-out);
+}
+@utility clay-puck {
+  background: linear-gradient(145deg, oklch(1 0 0), oklch(0.952 0.006 90));
+}
+@utility clay-pill {
+  background: oklch(0.982 0.004 90);
+  box-shadow: var(--clay-out-sm);
+}
+@utility clay-pill-active {
+  background: oklch(0.982 0.004 90);
+  box-shadow: var(--clay-in);
+}
+@utility clay-row {
+  background: oklch(0.984 0.004 90);
+  box-shadow: 4px 5px 12px oklch(0.6 0.03 80 / 0.1), -4px -4px 10px oklch(1 0 0 / 0.9);
+}
+@utility clay-chip {
+  background: oklch(0.982 0.004 90);
+  box-shadow: 2px 3px 7px oklch(0.6 0.03 80 / 0.15), -2px -2px 6px oklch(1 0 0 / 0.95);
+}
+@utility clay-input {
+  background: oklch(0.978 0.004 90);
+  color: var(--foreground);
+  box-shadow: var(--clay-in);
+  border: none;
+  outline: none;
+}
+.clay-input:focus {
+  box-shadow: var(--clay-in), 0 0 0 2px color-mix(in oklab, var(--ring-engine) 40%, transparent);
+}
+@utility clay-empty {
+  background: oklch(0.982 0.004 90 / 0.82);
+  border: 1.5px dashed color-mix(in oklab, var(--ring-engine) 38%, transparent);
+  backdrop-filter: blur(2px);
+}
+@utility clay-hovercard {
+  background: oklch(0.995 0.002 90 / 0.97);
+  box-shadow: 6px 8px 20px oklch(0.6 0.03 80 / 0.2), -4px -4px 12px oklch(1 0 0 / 0.9);
+  backdrop-filter: blur(3px);
+}
+@utility dot-grid {
+  background-image: radial-gradient(oklch(0.6 0.03 80 / 0.14) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
+@utility wordmark {
+  font-family: ui-serif, Georgia, "Times New Roman", serif;
+  letter-spacing: -0.01em;
+}
+
+/* ── animations (ported 1:1 from the reference console) ─────────────────── */
+
+@keyframes clay-ripple {
+  0% { transform: scale(1); opacity: 0.7; }
+  100% { transform: scale(2.1); opacity: 0; }
+}
+@utility clay-ripple {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 2px solid color-mix(in oklab, var(--ring-active) 55%, transparent);
+  animation: clay-ripple 1.6s ease-out infinite;
+}
+@utility clay-ripple-sm {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 1.5px solid currentColor;
+  animation: clay-ripple 1.5s ease-out infinite;
+  opacity: 0.6;
+}
+
+@keyframes node-pop {
+  0% { transform: scale(0.55); opacity: 0; }
+  60% { transform: scale(1.06); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes pip-pop {
+  0% { transform: scale(0.2); opacity: 0; }
+  55% { transform: scale(1.18); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes pip-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+@keyframes row-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@utility animate-node-pop {
+  animation: node-pop 0.55s cubic-bezier(0.34, 1.4, 0.64, 1) both;
+}
+@utility animate-pip-pop {
+  animation: pip-pop 0.5s cubic-bezier(0.34, 1.5, 0.64, 1) both;
+}
+@utility animate-pip-breathe {
+  animation: pip-breathe 1.6s ease-in-out infinite;
+}
+@utility animate-row-in {
+  animation: row-in 0.35s ease-out both;
+}
+
+/* ── React Flow adjustments ─────────────────────────────────────────────── */
+
+.react-flow__node { cursor: pointer; }
+.react-flow__node:hover { z-index: 999 !important; }
+.react-flow__edge-path { stroke-linecap: round; }
+.react-flow__edge.animated path.react-flow__edge-path {
+  stroke-dasharray: 8 8;
+  animation: dashdraw 0.8s linear infinite;
+}
+@keyframes dashdraw {
+  to { stroke-dashoffset: -32; }
+}
+.react-flow__attribution { display: none; }
+.react-flow__controls {
+  box-shadow: var(--clay-out-sm);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+.react-flow__controls-button {
+  background: oklch(0.982 0.004 90);
+  border-bottom: 1px solid var(--border);
+  color: var(--muted-foreground);
+  width: 30px;
+  height: 28px;
+}
+.react-flow__controls-button:hover { background: oklch(0.96 0.006 90); }
+.react-flow__edge-textbg { fill: oklch(0.99 0.003 90 / 0.92); }
+
+/* markdown-ish rendering in the drawer */
+.memo h2 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted-foreground); margin: 14px 0 6px; }
+.memo p, .memo li { font-size: 13px; line-height: 1.65; }
+.memo ul { list-style: disc; padding-left: 18px; display: grid; gap: 4px; }
+.memo strong { font-weight: 650; }

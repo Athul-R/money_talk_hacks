@@ -1,0 +1,901 @@
+date,txn_id,customer_id,customer_name,customer_type,product,sub_product,geography,channel,units,unit_price,discount,net_revenue,cogs
+2024-02-15,T00001,C001,Helios Dynamics,Enterprise,Cloud,AI Infrastructure,Americas,direct,570.7317,2.05,46.8,1123.2,561.6
+2024-02-15,T00002,C002,VantaCore AI,Enterprise,Cloud,AI Infrastructure,EMEA,direct,466.0976,2.05,38.22,917.28,458.64
+2024-02-15,T00003,C003,Corex Systems,Enterprise,Cloud,AI Infrastructure,APAC,partner,356.7073,2.05,29.25,702.0,351.0
+2024-02-15,T00004,C004,Northwind Systems,Enterprise,Cloud,AI Infrastructure,Americas,direct,110.6265,2.05,9.0714,217.7129,108.8565
+2024-02-15,T00005,C005,Bluepeak Media,Enterprise,Cloud,AI Infrastructure,Americas,direct,104.5663,2.05,8.5744,205.7866,102.8933
+2024-02-15,T00006,C006,Atlas Group,Enterprise,Cloud,AI Infrastructure,EMEA,partner,113.2754,2.05,9.2886,222.926,111.463
+2024-02-15,T00007,C007,Ridgeline Robotics,Enterprise,Cloud,AI Infrastructure,APAC,direct,111.2429,2.05,9.1219,218.9261,109.4631
+2024-02-15,T00008,C008,Solent Logistics,Enterprise,Cloud,AI Infrastructure,Americas,direct,111.4824,2.05,9.1416,219.3974,109.6987
+2024-02-15,T00009,C009,Kestrel Mobility,Enterprise,Cloud,Data Platform,Americas,partner,104.9166,2.05,8.6032,206.4759,103.2379
+2024-02-15,T00010,C010,Marrow Bank,Enterprise,Cloud,Data Platform,EMEA,direct,108.1916,2.05,8.8717,212.921,106.4605
+2024-02-15,T00011,C011,Quill Labs,Enterprise,Cloud,Data Platform,APAC,direct,107.3922,2.05,8.8062,211.3479,105.6739
+2024-02-15,T00012,C012,Harbor Energy,Enterprise,Cloud,Data Platform,Americas,partner,112.8182,2.05,9.2511,222.0262,111.0131
+2024-02-15,T00013,C013,Vector Health,Mid-market,Cloud,AI Infrastructure,Americas,direct,120.8461,1.45,3.5045,171.7224,85.8612
+2024-02-15,T00014,C014,Lumen Foods,Mid-market,Cloud,AI Infrastructure,EMEA,direct,130.417,1.45,3.7821,185.3226,92.6613
+2024-02-15,T00015,C015,Praxis Retail,Mid-market,Cloud,AI Infrastructure,APAC,partner,102.3276,1.45,2.9675,145.4075,72.7037
+2024-02-15,T00016,C016,Onyx Systems,Mid-market,Cloud,AI Infrastructure,Americas,direct,75.971,1.45,2.2032,107.9548,53.9774
+2024-02-15,T00017,C017,Cinder Media,Mid-market,Cloud,Data Platform,Americas,direct,113.8904,1.45,3.3028,161.8383,80.9191
+2024-02-15,T00018,C018,Fable Group,Mid-market,Cloud,Data Platform,EMEA,partner,59.3239,1.45,1.7204,84.2992,42.1496
+2024-02-15,T00019,C019,Granite Robotics,Mid-market,Cloud,Data Platform,APAC,direct,130.6685,1.45,3.7894,185.6799,92.8399
+2024-02-15,T00020,C020,Iris Logistics,Mid-market,Cloud,Data Platform,Americas,direct,120.0191,1.45,3.4806,170.5472,85.2736
+2024-02-15,T00021,C021,Juniper Mobility,Mid-market,Cloud,Data Platform,Americas,partner,127.2206,1.45,3.6894,180.7804,90.3902
+2024-02-15,T00022,C022,Krill Bank,Mid-market,Cloud,Data Platform,EMEA,direct,91.5253,1.45,2.6542,130.0575,65.0287
+2024-02-15,T00023,C023,Lattice Labs,Mid-market,Cloud,Data Platform,APAC,direct,140.3539,1.45,4.0703,199.4429,99.7214
+2024-02-15,T00024,C024,Mosaic Energy,Mid-market,Cloud,Data Platform,Americas,partner,134.4345,1.45,3.8986,191.0314,95.5157
+2024-02-15,T00025,C025,Nimbus Health,Mid-market,Cloud,Data Platform,Americas,direct,128.2123,1.45,3.7182,182.1897,91.0948
+2024-02-15,T00026,C026,Opal Foods,Mid-market,Cloud,Data Platform,EMEA,direct,72.278,1.45,2.0961,102.707,51.3535
+2024-02-15,T00027,C027,Pylon Retail,Mid-market,Cloud,Data Platform,APAC,partner,104.9824,1.45,3.0445,149.1801,74.59
+2024-02-15,T00028,C028,Quartz Systems,Mid-market,Cloud,Data Platform,Americas,direct,57.5927,1.45,1.6702,81.8392,40.9196
+2024-02-15,T00029,C029,Rune Media,SMB,Cloud,Productivity Suite,Americas,direct,97.886,0.55,0.0,53.8373,26.9186
+2024-02-15,T00030,C030,Sable Group,SMB,Cloud,Productivity Suite,EMEA,partner,177.5621,0.55,0.0,97.6591,48.8296
+2024-02-15,T00031,C031,Tundra Robotics,SMB,Cloud,Productivity Suite,APAC,direct,182.2983,0.55,0.0,100.2641,50.132
+2024-02-15,T00032,C032,Umber Logistics,SMB,Cloud,Productivity Suite,Americas,direct,201.7571,0.55,0.0,110.9664,55.4832
+2024-02-15,T00033,C033,Vertex Mobility,SMB,Cloud,Productivity Suite,Americas,partner,126.666,0.55,0.0,69.6663,34.8331
+2024-02-15,T00034,C034,Willow Bank,SMB,Cloud,Productivity Suite,EMEA,direct,134.6915,0.55,0.0,74.0803,37.0402
+2024-02-15,T00035,C035,Xenon Labs,SMB,Cloud,Productivity Suite,APAC,direct,151.6707,0.55,0.0,83.4189,41.7094
+2024-02-15,T00036,C036,Yield Energy,SMB,Cloud,Productivity Suite,Americas,partner,103.2887,0.55,0.0,56.8088,28.4044
+2024-02-15,T00037,C037,Zephyr Health,SMB,Cloud,Productivity Suite,Americas,direct,94.3329,0.55,0.0,51.8831,25.9416
+2024-02-15,T00038,C038,Northwind Foods,SMB,Cloud,Productivity Suite,EMEA,direct,152.6489,0.55,0.0,83.9569,41.9784
+2024-02-15,T00039,C039,Bluepeak Retail,SMB,Cloud,Productivity Suite,APAC,partner,109.3731,0.55,0.0,60.1552,30.0776
+2024-02-15,T00040,C040,Atlas Systems,SMB,Cloud,Productivity Suite,Americas,direct,176.4335,0.55,0.0,97.0384,48.5192
+2024-02-15,T00041,C041,Ridgeline Media,SMB,Cloud,Productivity Suite,Americas,direct,146.3405,0.55,0.0,80.4873,40.2436
+2024-02-15,T00042,C042,Solent Group,SMB,Cloud,Productivity Suite,EMEA,partner,188.5936,0.55,0.0,103.7265,51.8632
+2024-02-15,T00043,C043,Kestrel Robotics,SMB,Cloud,Productivity Suite,APAC,direct,178.9607,0.55,0.0,98.4284,49.2142
+2024-02-15,T00044,C044,Marrow Logistics,SMB,Cloud,Productivity Suite,Americas,direct,124.2491,0.55,0.0,68.337,34.1685
+2024-02-15,T00045,C045,Quill Mobility,SMB,Cloud,Productivity Suite,Americas,partner,188.5619,0.55,0.0,103.7091,51.8545
+2024-02-15,T00046,C046,Harbor Bank,SMB,Cloud,Productivity Suite,EMEA,direct,186.5427,0.55,0.0,102.5985,51.2992
+2024-02-15,T00047,C047,Vector Labs,SMB,Cloud,Productivity Suite,APAC,direct,137.7243,0.55,0.0,75.7484,37.8742
+2024-02-15,T00048,C048,Lumen Energy,SMB,Cloud,Productivity Suite,Americas,partner,119.9643,0.55,0.0,65.9803,32.9902
+2024-02-15,T00049,C049,Praxis Health,SMB,Cloud,Productivity Suite,Americas,direct,177.5158,0.55,0.0,97.6337,48.8169
+2024-02-15,T00050,C050,Onyx Foods,SMB,Cloud,Productivity Suite,EMEA,direct,95.7476,0.55,0.0,52.6612,26.3306
+2024-02-15,T00051,C051,Cinder Retail,SMB,Cloud,Productivity Suite,APAC,partner,104.9516,0.55,0.0,57.7234,28.8617
+2024-02-15,T00052,C052,Fable Systems,SMB,Cloud,Productivity Suite,Americas,direct,78.6029,0.55,0.0,43.2316,21.6158
+2024-02-15,T00053,C053,Granite Media,Advertiser,Search Ads,Brand ads,APAC,direct,5746.4297,0.3692,0.0,2121.7587,742.6155
+2024-02-15,T00054,C054,Iris Group,Advertiser,Search Ads,Brand ads,Americas,partner,5147.9856,0.3692,0.0,1900.7947,665.2781
+2024-02-15,T00055,C055,Juniper Robotics,Advertiser,Search Ads,Brand ads,EMEA,direct,5113.1374,0.3692,0.0,1887.9277,660.7747
+2024-02-15,T00056,C056,Krill Logistics,Advertiser,Search Ads,Brand ads,APAC,direct,5282.904,0.3692,0.0,1950.6107,682.7137
+2024-02-15,T00057,C057,Lattice Mobility,Advertiser,Search Ads,Brand ads,Americas,partner,4108.3493,0.3692,0.0,1516.929,530.9251
+2024-02-15,T00058,C058,Mosaic Bank,Advertiser,Search Ads,Brand ads,EMEA,direct,4709.0174,0.3692,0.0,1738.7141,608.5499
+2024-02-15,T00059,C059,Nimbus Labs,Advertiser,Search Ads,Brand ads,APAC,direct,3060.4978,0.3692,0.0,1130.0299,395.5105
+2024-02-15,T00060,C060,Opal Energy,Advertiser,Search Ads,Brand ads,Americas,partner,2932.4831,0.3692,0.0,1082.763,378.9671
+2024-02-15,T00061,C061,Pylon Health,Advertiser,Search Ads,Brand ads,EMEA,direct,5023.822,0.3692,0.0,1854.9497,649.2324
+2024-02-15,T00062,C062,Quartz Foods,Advertiser,Search Ads,Brand ads,APAC,direct,4111.6569,0.3692,0.0,1518.1503,531.3526
+2024-02-15,T00063,C063,Rune Retail,Advertiser,Search Ads,Performance ads,Americas,partner,4486.4158,0.3692,0.0,1656.5228,579.783
+2024-02-15,T00064,C064,Sable Systems,Advertiser,Search Ads,Performance ads,EMEA,direct,5439.0261,0.3692,0.0,2008.2558,702.8895
+2024-02-15,T00065,C065,Tundra Media,Advertiser,Search Ads,Performance ads,APAC,direct,5085.0724,0.3692,0.0,1877.5652,657.1478
+2024-02-15,T00066,C066,Umber Group,Advertiser,Search Ads,Performance ads,Americas,partner,4762.5996,0.3692,0.0,1758.4983,615.4744
+2024-02-15,T00067,C067,Vertex Robotics,Advertiser,Search Ads,Performance ads,EMEA,direct,4643.4623,0.3692,0.0,1714.5092,600.0782
+2024-02-15,T00068,C068,Willow Logistics,Advertiser,Search Ads,Performance ads,APAC,direct,3491.8424,0.3692,0.0,1289.2956,451.2535
+2024-02-15,T00069,C069,Xenon Mobility,Advertiser,Search Ads,Performance ads,Americas,partner,2416.8666,0.3692,0.0,892.3815,312.3335
+2024-02-15,T00070,C070,Yield Bank,Advertiser,Search Ads,Performance ads,EMEA,direct,4084.7528,0.3692,0.0,1508.2164,527.8757
+2024-02-15,T00071,C071,Zephyr Labs,Advertiser,Search Ads,Performance ads,APAC,direct,3330.9661,0.3692,0.0,1229.8952,430.4633
+2024-02-15,T00072,C072,Northwind Energy,Advertiser,Search Ads,Performance ads,Americas,partner,4176.8111,0.3692,0.0,1542.2072,539.7725
+2024-02-15,T00073,C073,Bluepeak Health,Advertiser,Search Ads,Performance ads,EMEA,direct,5884.7758,0.3692,0.0,2172.8403,760.4941
+2024-02-15,T00074,C074,Atlas Foods,Advertiser,Search Ads,Performance ads,APAC,direct,3249.5685,0.3692,0.0,1199.8407,419.9442
+2024-02-15,T00075,C075,Ridgeline Retail,Advertiser,Search Ads,Performance ads,Americas,partner,2517.7325,0.3692,0.0,929.6243,325.3685
+2024-02-15,T00076,C076,Solent Systems,Advertiser,Search Ads,Performance ads,EMEA,direct,3436.5349,0.3692,0.0,1268.8744,444.1061
+2024-02-15,T00077,C077,Kestrel Media,Advertiser,Search Ads,Performance ads,APAC,direct,3620.4206,0.3692,0.0,1336.7707,467.8697
+2024-02-15,T00078,C078,Marrow Group,Advertiser,Search Ads,Performance ads,Americas,partner,5226.7168,0.3692,0.0,1929.8647,675.4526
+2024-02-15,T00079,C079,Quill Robotics,Advertiser,Search Ads,Performance ads,EMEA,direct,4728.818,0.3692,0.0,1746.0251,611.1088
+2024-02-15,T00080,C080,Harbor Logistics,Advertiser,Search Ads,Performance ads,APAC,direct,5448.9305,0.3692,0.0,2011.9128,704.1695
+2024-02-15,T00081,C081,Vector Mobility,Advertiser,Search Ads,Performance ads,Americas,partner,4842.9963,0.3692,0.0,1788.1833,625.8641
+2024-02-15,T00082,C082,Lumen Bank,Advertiser,Search Ads,Performance ads,EMEA,direct,3889.4076,0.3692,0.0,1436.0889,502.6311
+2024-02-15,T00083,S01,Premium tier,Consumer,Subscriptions,Premium tier,APAC,direct,39600.0,0.2386,0.0,9450.0,3969.0
+2024-02-15,T00084,S02,Family tier,Consumer,Subscriptions,Family tier,Americas,partner,26400.0,0.2386,0.0,6300.0,2646.0
+2024-02-15,T00085,S03,Student tier,Consumer,Subscriptions,Student tier,EMEA,direct,8800.0,0.2386,0.0,2100.0,882.0
+2024-02-15,T00086,S04,Enterprise seats,Consumer,Subscriptions,Enterprise seats,APAC,direct,13200.0,0.2386,0.0,3150.0,1323.0
+2024-02-15,T00087,D01,Retail channel,Channel,Devices & Network,Hardware,Americas,partner,29857.1429,0.42,0.0,12540.0,9781.2
+2024-02-15,T00088,D02,Carrier channel,Channel,Devices & Network,Hardware,EMEA,direct,23571.4286,0.42,0.0,9900.0,7722.0
+2024-02-15,T00089,D03,Online store,Channel,Devices & Network,Hardware,APAC,direct,17285.7143,0.42,0.0,7260.0,5662.8
+2024-02-15,T00090,D04,Wholesale,Channel,Devices & Network,Hardware,Americas,partner,7857.1429,0.42,0.0,3300.0,2574.0
+2024-05-15,T00091,C001,Helios Dynamics,Enterprise,Cloud,AI Infrastructure,APAC,direct,689.5867,2.0541,56.6592,1359.8208,679.9104
+2024-05-15,T00092,C002,VantaCore AI,Enterprise,Cloud,AI Infrastructure,Americas,direct,563.1625,2.0541,46.2717,1110.5203,555.2602
+2024-05-15,T00093,C003,Corex Systems,Enterprise,Cloud,AI Infrastructure,Americas,partner,430.9917,2.0541,35.412,849.888,424.944
+2024-05-15,T00094,C004,Northwind Systems,Enterprise,Cloud,AI Infrastructure,EMEA,direct,133.2799,2.0541,10.9508,262.8195,131.4098
+2024-05-15,T00095,C005,Bluepeak Media,Enterprise,Cloud,AI Infrastructure,APAC,direct,127.9251,2.0541,10.5108,252.2601,126.13
+2024-05-15,T00096,C006,Atlas Group,Enterprise,Cloud,AI Infrastructure,Americas,partner,135.5045,2.0541,11.1336,267.2062,133.6031
+2024-05-15,T00097,C007,Ridgeline Robotics,Enterprise,Cloud,AI Infrastructure,Americas,direct,133.8033,2.0541,10.9938,263.8515,131.9257
+2024-05-15,T00098,C008,Solent Logistics,Enterprise,Cloud,AI Infrastructure,EMEA,direct,134.0056,2.0541,11.0104,264.2505,132.1252
+2024-05-15,T00099,C009,Kestrel Mobility,Enterprise,Cloud,Data Platform,APAC,partner,128.2458,2.0541,10.5372,252.8925,126.4462
+2024-05-15,T00100,C010,Marrow Bank,Enterprise,Cloud,Data Platform,Americas,direct,131.1761,2.0541,10.778,258.6708,129.3354
+2024-05-15,T00101,C011,Quill Labs,Enterprise,Cloud,Data Platform,Americas,direct,130.4719,2.0541,10.7201,257.2822,128.6411
+2024-05-15,T00102,C012,Harbor Energy,Enterprise,Cloud,Data Platform,EMEA,partner,135.1249,2.0541,11.1024,266.4576,133.2288
+2024-05-15,T00103,C013,Vector Health,Mid-market,Cloud,AI Infrastructure,APAC,direct,140.6778,1.4529,4.0878,200.303,100.1515
+2024-05-15,T00104,C014,Lumen Foods,Mid-market,Cloud,AI Infrastructure,Americas,direct,155.0294,1.4529,4.5048,220.7374,110.3687
+2024-05-15,T00105,C015,Praxis Retail,Mid-market,Cloud,AI Infrastructure,Americas,partner,125.0623,1.4529,3.6341,178.069,89.0345
+2024-05-15,T00106,C016,Onyx Systems,Mid-market,Cloud,AI Infrastructure,EMEA,direct,97.1854,1.4529,2.824,138.3767,69.1883
+2024-05-15,T00107,C017,Cinder Media,Mid-market,Cloud,Data Platform,APAC,direct,134.6496,1.4529,3.9126,191.7198,95.8599
+2024-05-15,T00108,C018,Fable Group,Mid-market,Cloud,Data Platform,Americas,partner,73.8737,1.4529,2.1466,105.1845,52.5923
+2024-05-15,T00109,C019,Granite Robotics,Mid-market,Cloud,Data Platform,Americas,direct,155.5547,1.4529,4.5201,221.4853,110.7426
+2024-05-15,T00110,C020,Iris Logistics,Mid-market,Cloud,Data Platform,EMEA,direct,139.8838,1.4529,4.0647,199.1724,99.5862
+2024-05-15,T00111,C021,Juniper Mobility,Mid-market,Cloud,Data Platform,APAC,partner,148.8898,1.4529,4.3264,211.9956,105.9978
+2024-05-15,T00112,C022,Krill Bank,Mid-market,Cloud,Data Platform,Americas,direct,114.872,1.4529,3.338,163.5596,81.7798
+2024-05-15,T00113,C023,Lattice Labs,Mid-market,Cloud,Data Platform,Americas,direct,175.2788,1.4529,5.0932,249.5692,124.7846
+2024-05-15,T00114,C024,Mosaic Energy,Mid-market,Cloud,Data Platform,EMEA,partner,163.5664,1.4529,4.7529,232.8927,116.4464
+2024-05-15,T00115,C025,Nimbus Health,Mid-market,Cloud,Data Platform,APAC,direct,150.6595,1.4529,4.3779,214.5153,107.2576
+2024-05-15,T00116,C026,Opal Foods,Mid-market,Cloud,Data Platform,Americas,direct,92.3971,1.4529,2.6849,131.5589,65.7794
+2024-05-15,T00117,C027,Pylon Retail,Mid-market,Cloud,Data Platform,Americas,partner,127.3506,1.4529,3.7006,181.3271,90.6636
+2024-05-15,T00118,C028,Quartz Systems,Mid-market,Cloud,Data Platform,EMEA,direct,71.2534,1.4529,2.0705,101.4536,50.7268
+2024-05-15,T00119,C029,Rune Media,SMB,Cloud,Productivity Suite,APAC,direct,123.579,0.5511,0.0,68.1044,34.0522
+2024-05-15,T00120,C030,Sable Group,SMB,Cloud,Productivity Suite,Americas,partner,204.6883,0.5511,0.0,112.8037,56.4019
+2024-05-15,T00121,C031,Tundra Robotics,SMB,Cloud,Productivity Suite,Americas,direct,211.1516,0.5511,0.0,116.3656,58.1828
+2024-05-15,T00122,C032,Umber Logistics,SMB,Cloud,Productivity Suite,EMEA,direct,249.6679,0.5511,0.0,137.592,68.796
+2024-05-15,T00123,C033,Vertex Mobility,SMB,Cloud,Productivity Suite,APAC,partner,158.7698,0.5511,0.0,87.498,43.749
+2024-05-15,T00124,C034,Willow Bank,SMB,Cloud,Productivity Suite,Americas,direct,166.9568,0.5511,0.0,92.0099,46.0049
+2024-05-15,T00125,C035,Xenon Labs,SMB,Cloud,Productivity Suite,Americas,direct,182.324,0.5511,0.0,100.4788,50.2394
+2024-05-15,T00126,C036,Yield Energy,SMB,Cloud,Productivity Suite,EMEA,partner,130.9206,0.5511,0.0,72.1503,36.0752
+2024-05-15,T00127,C037,Zephyr Health,SMB,Cloud,Productivity Suite,APAC,direct,118.5718,0.5511,0.0,65.3449,32.6725
+2024-05-15,T00128,C038,Northwind Foods,SMB,Cloud,Productivity Suite,Americas,direct,183.1413,0.5511,0.0,100.9292,50.4646
+2024-05-15,T00129,C039,Bluepeak Retail,SMB,Cloud,Productivity Suite,Americas,partner,138.7769,0.5511,0.0,76.48,38.24
+2024-05-15,T00130,C040,Atlas Systems,SMB,Cloud,Productivity Suite,EMEA,direct,203.4177,0.5511,0.0,112.1035,56.0517
+2024-05-15,T00131,C041,Ridgeline Media,SMB,Cloud,Productivity Suite,APAC,direct,177.755,0.5511,0.0,97.9608,48.9804
+2024-05-15,T00132,C042,Solent Group,SMB,Cloud,Productivity Suite,Americas,partner,223.0284,0.5511,0.0,122.911,61.4555
+2024-05-15,T00133,C043,Kestrel Robotics,SMB,Cloud,Productivity Suite,Americas,direct,206.3882,0.5511,0.0,113.7406,56.8703
+2024-05-15,T00134,C044,Marrow Logistics,SMB,Cloud,Productivity Suite,EMEA,direct,156.1745,0.5511,0.0,86.0678,43.0339
+2024-05-15,T00135,C045,Quill Mobility,SMB,Cloud,Productivity Suite,APAC,partner,222.9622,0.5511,0.0,122.8745,61.4372
+2024-05-15,T00136,C046,Harbor Bank,SMB,Cloud,Productivity Suite,Americas,direct,218.8278,0.5511,0.0,120.596,60.298
+2024-05-15,T00137,C047,Vector Labs,SMB,Cloud,Productivity Suite,Americas,direct,169.8858,0.5511,0.0,93.6241,46.812
+2024-05-15,T00138,C048,Lumen Energy,SMB,Cloud,Productivity Suite,EMEA,partner,151.4187,0.5511,0.0,83.4468,41.7234
+2024-05-15,T00139,C049,Praxis Health,SMB,Cloud,Productivity Suite,APAC,direct,204.6346,0.5511,0.0,112.7742,56.3871
+2024-05-15,T00140,C050,Onyx Foods,SMB,Cloud,Productivity Suite,Americas,direct,120.5818,0.5511,0.0,66.4526,33.2263
+2024-05-15,T00141,C051,Cinder Retail,SMB,Cloud,Productivity Suite,Americas,partner,133.1114,0.5511,0.0,73.3577,36.6789
+2024-05-15,T00142,C052,Fable Systems,SMB,Cloud,Productivity Suite,EMEA,direct,95.2527,0.5511,0.0,52.4937,26.2469
+2024-05-15,T00143,C053,Granite Media,Advertiser,Search Ads,Brand ads,APAC,direct,5856.2619,0.3732,0.0,2185.7572,765.015
+2024-05-15,T00144,C054,Iris Group,Advertiser,Search Ads,Brand ads,Americas,partner,5140.8029,0.3732,0.0,1918.7235,671.5532
+2024-05-15,T00145,C055,Juniper Robotics,Advertiser,Search Ads,Brand ads,EMEA,direct,5180.8321,0.3732,0.0,1933.6637,676.7823
+2024-05-15,T00146,C056,Krill Logistics,Advertiser,Search Ads,Brand ads,APAC,direct,5557.5594,0.3732,0.0,2074.2712,725.9949
+2024-05-15,T00147,C057,Lattice Mobility,Advertiser,Search Ads,Brand ads,Americas,partner,4426.3227,0.3732,0.0,1652.055,578.2193
+2024-05-15,T00148,C058,Mosaic Bank,Advertiser,Search Ads,Brand ads,EMEA,direct,5016.116,0.3732,0.0,1872.186,655.2651
+2024-05-15,T00149,C059,Nimbus Labs,Advertiser,Search Ads,Brand ads,APAC,direct,3149.9038,0.3732,0.0,1175.6518,411.4781
+2024-05-15,T00150,C060,Opal Energy,Advertiser,Search Ads,Brand ads,Americas,partner,2936.0755,0.3732,0.0,1095.8438,383.5453
+2024-05-15,T00151,C061,Pylon Health,Advertiser,Search Ads,Brand ads,EMEA,direct,5051.4418,0.3732,0.0,1885.3708,659.8798
+2024-05-15,T00152,C062,Quartz Foods,Advertiser,Search Ads,Brand ads,APAC,direct,4278.4236,0.3732,0.0,1596.854,558.8989
+2024-05-15,T00153,C063,Rune Retail,Advertiser,Search Ads,Performance ads,Americas,partner,4816.954,0.3732,0.0,1797.852,629.2482
+2024-05-15,T00154,C064,Sable Systems,Advertiser,Search Ads,Performance ads,EMEA,direct,5832.1844,0.3732,0.0,2176.7707,761.8697
+2024-05-15,T00155,C065,Tundra Media,Advertiser,Search Ads,Performance ads,APAC,direct,5288.5204,0.3732,0.0,1973.8567,690.8498
+2024-05-15,T00156,C066,Umber Group,Advertiser,Search Ads,Performance ads,Americas,partner,4794.0005,0.3732,0.0,1789.285,626.2497
+2024-05-15,T00157,C067,Vertex Robotics,Advertiser,Search Ads,Performance ads,EMEA,direct,4645.5907,0.3732,0.0,1733.8933,606.8627
+2024-05-15,T00158,C068,Willow Logistics,Advertiser,Search Ads,Performance ads,APAC,direct,3593.0468,0.3732,0.0,1341.048,469.3668
+2024-05-15,T00159,C069,Xenon Mobility,Advertiser,Search Ads,Performance ads,Americas,partner,2578.5709,0.3732,0.0,962.4108,336.8438
+2024-05-15,T00160,C070,Yield Bank,Advertiser,Search Ads,Performance ads,EMEA,direct,4398.0896,0.3732,0.0,1641.5175,574.5311
+2024-05-15,T00161,C071,Zephyr Labs,Advertiser,Search Ads,Performance ads,APAC,direct,3499.9557,0.3732,0.0,1306.3032,457.2061
+2024-05-15,T00162,C072,Northwind Energy,Advertiser,Search Ads,Performance ads,Americas,partner,4236.4472,0.3732,0.0,1581.187,553.4154
+2024-05-15,T00163,C073,Bluepeak Health,Advertiser,Search Ads,Performance ads,EMEA,direct,5875.5287,0.3732,0.0,2192.9482,767.5319
+2024-05-15,T00164,C074,Atlas Foods,Advertiser,Search Ads,Performance ads,APAC,direct,3308.9345,0.3732,0.0,1235.0075,432.2526
+2024-05-15,T00165,C075,Ridgeline Retail,Advertiser,Search Ads,Performance ads,Americas,partner,2662.8765,0.3732,0.0,993.8766,347.8568
+2024-05-15,T00166,C076,Solent Systems,Advertiser,Search Ads,Performance ads,EMEA,direct,3704.7058,0.3732,0.0,1382.7229,483.953
+2024-05-15,T00167,C077,Kestrel Media,Advertiser,Search Ads,Performance ads,APAC,direct,3839.7963,0.3732,0.0,1433.1433,501.6002
+2024-05-15,T00168,C078,Marrow Group,Advertiser,Search Ads,Performance ads,Americas,partner,5350.6619,0.3732,0.0,1997.05,698.9675
+2024-05-15,T00169,C079,Quill Robotics,Advertiser,Search Ads,Performance ads,EMEA,direct,4726.3106,0.3732,0.0,1764.0208,617.4073
+2024-05-15,T00170,C080,Harbor Logistics,Advertiser,Search Ads,Performance ads,APAC,direct,5499.6267,0.3732,0.0,2052.6488,718.4271
+2024-05-15,T00171,C081,Vector Mobility,Advertiser,Search Ads,Performance ads,Americas,partner,5069.2417,0.3732,0.0,1892.0144,662.205
+2024-05-15,T00172,C082,Lumen Bank,Advertiser,Search Ads,Performance ads,EMEA,direct,4185.2175,0.3732,0.0,1562.0663,546.7232
+2024-05-15,T00173,S01,Premium tier,Consumer,Subscriptions,Premium tier,APAC,direct,40725.0,0.2475,0.0,10080.0,4233.6
+2024-05-15,T00174,S02,Family tier,Consumer,Subscriptions,Family tier,Americas,partner,27150.0,0.2475,0.0,6720.0,2822.4
+2024-05-15,T00175,S03,Student tier,Consumer,Subscriptions,Student tier,EMEA,direct,9050.0,0.2475,0.0,2240.0,940.8
+2024-05-15,T00176,S04,Enterprise seats,Consumer,Subscriptions,Enterprise seats,APAC,direct,13575.0,0.2475,0.0,3360.0,1411.2
+2024-05-15,T00177,D01,Retail channel,Channel,Devices & Network,Hardware,Americas,partner,31485.7143,0.42,0.0,13224.0,10314.72
+2024-05-15,T00178,D02,Carrier channel,Channel,Devices & Network,Hardware,EMEA,direct,24857.1429,0.42,0.0,10440.0,8143.2
+2024-05-15,T00179,D03,Online store,Channel,Devices & Network,Hardware,APAC,direct,18228.5714,0.42,0.0,7656.0,5971.68
+2024-05-15,T00180,D04,Wholesale,Channel,Devices & Network,Hardware,Americas,partner,8285.7143,0.42,0.0,3480.0,2714.4
+2024-08-15,T00181,C001,Helios Dynamics,Enterprise,Cloud,AI Infrastructure,Americas,direct,788.6138,2.0582,64.925,1558.2,786.891
+2024-08-15,T00182,C002,VantaCore AI,Enterprise,Cloud,AI Infrastructure,EMEA,direct,643.7664,2.0582,53.0,1272.0,642.36
+2024-08-15,T00183,C003,Corex Systems,Enterprise,Cloud,AI Infrastructure,APAC,partner,489.2625,2.0582,40.28,966.72,488.1936
+2024-08-15,T00184,C004,Northwind Systems,Enterprise,Cloud,AI Infrastructure,Americas,direct,145.0166,2.0582,11.9389,286.5343,144.6998
+2024-08-15,T00185,C005,Bluepeak Media,Enterprise,Cloud,AI Infrastructure,Americas,direct,140.6631,2.0582,11.5805,277.9322,140.3558
+2024-08-15,T00186,C006,Atlas Group,Enterprise,Cloud,AI Infrastructure,EMEA,partner,146.9248,2.0582,12.096,290.3045,146.6038
+2024-08-15,T00187,C007,Ridgeline Robotics,Enterprise,Cloud,AI Infrastructure,APAC,direct,145.4577,2.0582,11.9752,287.4058,145.1399
+2024-08-15,T00188,C008,Solent Logistics,Enterprise,Cloud,AI Infrastructure,Americas,direct,145.6294,2.0582,11.9894,287.745,145.3112
+2024-08-15,T00189,C009,Kestrel Mobility,Enterprise,Cloud,Data Platform,Americas,partner,140.919,2.0582,11.6016,278.438,140.6112
+2024-08-15,T00190,C010,Marrow Bank,Enterprise,Cloud,Data Platform,EMEA,direct,143.2791,2.0582,11.7959,283.1012,142.9661
+2024-08-15,T00191,C011,Quill Labs,Enterprise,Cloud,Data Platform,APAC,direct,142.7072,2.0582,11.7488,281.9712,142.3955
+2024-08-15,T00192,C012,Harbor Energy,Enterprise,Cloud,Data Platform,Americas,partner,146.5924,2.0582,12.0687,289.6478,146.2721
+2024-08-15,T00193,C013,Vector Health,Mid-market,Cloud,AI Infrastructure,Americas,direct,144.278,1.4558,4.2008,205.8392,103.9488
+2024-08-15,T00194,C014,Lumen Foods,Mid-market,Cloud,AI Infrastructure,EMEA,direct,168.3933,1.4558,4.9029,240.244,121.3232
+2024-08-15,T00195,C015,Praxis Retail,Mid-market,Cloud,AI Infrastructure,APAC,partner,127.8872,1.4558,3.7236,182.4546,92.1396
+2024-08-15,T00196,C016,Onyx Systems,Mid-market,Cloud,AI Infrastructure,Americas,direct,105.8128,1.4558,3.0808,150.9615,76.2355
+2024-08-15,T00197,C017,Cinder Media,Mid-market,Cloud,Data Platform,Americas,direct,136.3675,1.4558,3.9705,194.5534,98.2495
+2024-08-15,T00198,C018,Fable Group,Mid-market,Cloud,Data Platform,EMEA,partner,82.3117,1.4558,2.3966,117.4328,59.3036
+2024-08-15,T00199,C019,Granite Robotics,Mid-market,Cloud,Data Platform,APAC,direct,169.2159,1.4558,4.9269,241.4177,121.9159
+2024-08-15,T00200,C020,Iris Logistics,Mid-market,Cloud,Data Platform,Americas,direct,143.0712,1.4558,4.1657,204.1174,103.0793
+2024-08-15,T00201,C021,Juniper Mobility,Mid-market,Cloud,Data Platform,Americas,partner,158.2419,1.4558,4.6074,225.7613,114.0094
+2024-08-15,T00202,C022,Krill Bank,Mid-market,Cloud,Data Platform,EMEA,direct,120.2253,1.4558,3.5005,171.5235,86.6194
+2024-08-15,T00203,C023,Lattice Labs,Mid-market,Cloud,Data Platform,APAC,direct,195.3362,1.4558,5.6874,278.683,140.7349
+2024-08-15,T00204,C024,Mosaic Energy,Mid-market,Cloud,Data Platform,Americas,partner,180.8698,1.4558,5.2662,258.0441,130.3123
+2024-08-15,T00205,C025,Nimbus Health,Mid-market,Cloud,Data Platform,Americas,direct,161.262,1.4558,4.6953,230.0699,116.1853
+2024-08-15,T00206,C026,Opal Foods,Mid-market,Cloud,Data Platform,EMEA,direct,101.4484,1.4558,2.9538,144.7348,73.0911
+2024-08-15,T00207,C027,Pylon Retail,Mid-market,Cloud,Data Platform,APAC,partner,129.6856,1.4558,3.7759,185.0204,93.4353
+2024-08-15,T00208,C028,Quartz Systems,Mid-market,Cloud,Data Platform,Americas,direct,79.3046,1.4558,2.309,113.1426,57.137
+2024-08-15,T00209,C029,Rune Media,SMB,Cloud,Productivity Suite,Americas,direct,139.87,0.5522,0.0,77.2362,39.0043
+2024-08-15,T00210,C030,Sable Group,SMB,Cloud,Productivity Suite,EMEA,partner,216.9166,0.5522,0.0,119.7814,60.4896
+2024-08-15,T00211,C031,Tundra Robotics,SMB,Cloud,Productivity Suite,APAC,direct,228.3779,0.5522,0.0,126.1103,63.6857
+2024-08-15,T00212,C032,Umber Logistics,SMB,Cloud,Productivity Suite,Americas,direct,284.4659,0.5522,0.0,157.0821,79.3264
+2024-08-15,T00213,C033,Vertex Mobility,SMB,Cloud,Productivity Suite,Americas,partner,171.4324,0.5522,0.0,94.665,47.8058
+2024-08-15,T00214,C034,Willow Bank,SMB,Cloud,Productivity Suite,EMEA,direct,177.8018,0.5522,0.0,98.1821,49.582
+2024-08-15,T00215,C035,Xenon Labs,SMB,Cloud,Productivity Suite,APAC,direct,189.748,0.5522,0.0,104.7788,52.9133
+2024-08-15,T00216,C036,Yield Energy,SMB,Cloud,Productivity Suite,Americas,partner,147.1457,0.5522,0.0,81.2539,41.0332
+2024-08-15,T00217,C037,Zephyr Health,SMB,Cloud,Productivity Suite,Americas,direct,134.6736,0.5522,0.0,74.3668,37.5552
+2024-08-15,T00218,C038,Northwind Foods,SMB,Cloud,Productivity Suite,EMEA,direct,190.4284,0.5522,0.0,105.1545,53.103
+2024-08-15,T00219,C039,Bluepeak Retail,SMB,Cloud,Productivity Suite,APAC,partner,154.4993,0.5522,0.0,85.3145,43.0838
+2024-08-15,T00220,C040,Atlas Systems,SMB,Cloud,Productivity Suite,Americas,direct,214.7424,0.5522,0.0,118.5808,59.8833
+2024-08-15,T00221,C041,Ridgeline Media,SMB,Cloud,Productivity Suite,Americas,direct,186.0853,0.5522,0.0,102.7563,51.8919
+2024-08-15,T00222,C042,Solent Group,SMB,Cloud,Productivity Suite,EMEA,partner,248.432,0.5522,0.0,137.1841,69.278
+2024-08-15,T00223,C043,Kestrel Robotics,SMB,Cloud,Productivity Suite,APAC,direct,219.8914,0.5522,0.0,121.424,61.3191
+2024-08-15,T00224,C044,Marrow Logistics,SMB,Cloud,Productivity Suite,Americas,direct,169.3591,0.5522,0.0,93.5201,47.2277
+2024-08-15,T00225,C045,Quill Mobility,SMB,Cloud,Productivity Suite,Americas,partner,248.3274,0.5522,0.0,137.1264,69.2488
+2024-08-15,T00226,C046,Harbor Bank,SMB,Cloud,Productivity Suite,EMEA,direct,241.6289,0.5522,0.0,133.4275,67.3809
+2024-08-15,T00227,C047,Vector Labs,SMB,Cloud,Productivity Suite,APAC,direct,180.0402,0.5522,0.0,99.4182,50.2062
+2024-08-15,T00228,C048,Lumen Energy,SMB,Cloud,Productivity Suite,Americas,partner,165.4729,0.5522,0.0,91.3742,46.1439
+2024-08-15,T00229,C049,Praxis Health,SMB,Cloud,Productivity Suite,Americas,direct,216.8238,0.5522,0.0,119.7301,60.4637
+2024-08-15,T00230,C050,Onyx Foods,SMB,Cloud,Productivity Suite,EMEA,direct,136.7827,0.5522,0.0,75.5314,38.1434
+2024-08-15,T00231,C051,Cinder Retail,SMB,Cloud,Productivity Suite,APAC,partner,149.2402,0.5522,0.0,82.4104,41.6173
+2024-08-15,T00232,C052,Fable Systems,SMB,Cloud,Productivity Suite,Americas,direct,107.9155,0.5522,0.0,59.5909,30.0934
+2024-08-15,T00233,C053,Granite Media,Advertiser,Search Ads,Brand ads,APAC,direct,5827.7309,0.3777,0.0,2201.1214,770.3925
+2024-08-15,T00234,C054,Iris Group,Advertiser,Search Ads,Brand ads,Americas,partner,5190.7292,0.3777,0.0,1960.5272,686.1845
+2024-08-15,T00235,C055,Juniper Robotics,Advertiser,Search Ads,Brand ads,EMEA,direct,5431.206,0.3777,0.0,2051.3548,717.9742
+2024-08-15,T00236,C056,Krill Logistics,Advertiser,Search Ads,Brand ads,APAC,direct,5966.851,0.3777,0.0,2253.6667,788.7834
+2024-08-15,T00237,C057,Lattice Mobility,Advertiser,Search Ads,Brand ads,Americas,partner,4698.5701,0.3777,0.0,1774.6398,621.1239
+2024-08-15,T00238,C058,Mosaic Bank,Advertiser,Search Ads,Brand ads,EMEA,direct,5144.6775,0.3777,0.0,1943.1336,680.0968
+2024-08-15,T00239,C059,Nimbus Labs,Advertiser,Search Ads,Brand ads,APAC,direct,3142.7827,0.3777,0.0,1187.0222,415.4578
+2024-08-15,T00240,C060,Opal Energy,Advertiser,Search Ads,Brand ads,Americas,partner,2941.9392,0.3777,0.0,1111.1641,388.9074
+2024-08-15,T00241,C061,Pylon Health,Advertiser,Search Ads,Brand ads,EMEA,direct,5238.0257,0.3777,0.0,1978.391,692.4369
+2024-08-15,T00242,C062,Quartz Foods,Advertiser,Search Ads,Brand ads,APAC,direct,4577.6451,0.3777,0.0,1728.9667,605.1383
+2024-08-15,T00243,C063,Rune Retail,Advertiser,Search Ads,Performance ads,Americas,partner,5147.1636,0.3777,0.0,1944.0726,680.4254
+2024-08-15,T00244,C064,Sable Systems,Advertiser,Search Ads,Performance ads,EMEA,direct,6044.4065,0.3777,0.0,2282.9593,799.0357
+2024-08-15,T00245,C065,Tundra Media,Advertiser,Search Ads,Performance ads,APAC,direct,5304.8555,0.3777,0.0,2003.6325,701.2714
+2024-08-15,T00246,C066,Umber Group,Advertiser,Search Ads,Performance ads,Americas,partner,4779.4999,0.3777,0.0,1805.2068,631.8224
+2024-08-15,T00247,C067,Vertex Robotics,Advertiser,Search Ads,Performance ads,EMEA,direct,4763.592,0.3777,0.0,1799.1984,629.7194
+2024-08-15,T00248,C068,Willow Logistics,Advertiser,Search Ads,Performance ads,APAC,direct,3820.0992,0.3777,0.0,1442.8432,504.9951
+2024-08-15,T00249,C069,Xenon Mobility,Advertiser,Search Ads,Performance ads,Americas,partner,2766.7042,0.3777,0.0,1044.9782,365.7424
+2024-08-15,T00250,C070,Yield Bank,Advertiser,Search Ads,Performance ads,EMEA,direct,4605.1287,0.3777,0.0,1739.3472,608.7715
+2024-08-15,T00251,C071,Zephyr Labs,Advertiser,Search Ads,Performance ads,APAC,direct,3537.5686,0.3777,0.0,1336.132,467.6462
+2024-08-15,T00252,C072,Northwind Energy,Advertiser,Search Ads,Performance ads,Americas,partner,4215.0642,0.3777,0.0,1592.0206,557.2072
+2024-08-15,T00253,C073,Bluepeak Health,Advertiser,Search Ads,Performance ads,EMEA,direct,5962.0386,0.3777,0.0,2251.8491,788.1472
+2024-08-15,T00254,C074,Atlas Foods,Advertiser,Search Ads,Performance ads,APAC,direct,3487.5061,0.3777,0.0,1317.2235,461.0282
+2024-08-15,T00255,C075,Ridgeline Retail,Advertiser,Search Ads,Performance ads,Americas,partner,2860.6805,0.3777,0.0,1080.4729,378.1655
+2024-08-15,T00256,C076,Solent Systems,Advertiser,Search Ads,Performance ads,EMEA,direct,3915.5092,0.3777,0.0,1478.8794,517.6078
+2024-08-15,T00257,C077,Kestrel Media,Advertiser,Search Ads,Performance ads,APAC,direct,3917.167,0.3777,0.0,1479.5055,517.8269
+2024-08-15,T00258,C078,Marrow Group,Advertiser,Search Ads,Performance ads,Americas,partner,5329.2063,0.3777,0.0,2012.8297,704.4904
+2024-08-15,T00259,C079,Quill Robotics,Advertiser,Search Ads,Performance ads,EMEA,direct,4753.6759,0.3777,0.0,1795.4531,628.4086
+2024-08-15,T00260,C080,Harbor Logistics,Advertiser,Search Ads,Performance ads,APAC,direct,5736.5058,0.3777,0.0,2166.6658,758.333
+2024-08-15,T00261,C081,Vector Mobility,Advertiser,Search Ads,Performance ads,Americas,partner,5435.7934,0.3777,0.0,2053.0874,718.5806
+2024-08-15,T00262,C082,Lumen Bank,Advertiser,Search Ads,Performance ads,EMEA,direct,4457.6772,0.3777,0.0,1683.655,589.2793
+2024-08-15,T00263,S01,Premium tier,Consumer,Subscriptions,Premium tier,APAC,direct,41175.0,0.2492,0.0,10260.0,4309.2
+2024-08-15,T00264,S02,Family tier,Consumer,Subscriptions,Family tier,Americas,partner,27450.0,0.2492,0.0,6840.0,2872.8
+2024-08-15,T00265,S03,Student tier,Consumer,Subscriptions,Student tier,EMEA,direct,9150.0,0.2492,0.0,2280.0,957.6
+2024-08-15,T00266,S04,Enterprise seats,Consumer,Subscriptions,Enterprise seats,APAC,direct,13725.0,0.2492,0.0,3420.0,1436.4
+2024-08-15,T00267,D01,Retail channel,Channel,Devices & Network,Hardware,Americas,partner,30942.8571,0.42,0.0,12996.0,10136.88
+2024-08-15,T00268,D02,Carrier channel,Channel,Devices & Network,Hardware,EMEA,direct,24428.5714,0.42,0.0,10260.0,8002.8
+2024-08-15,T00269,D03,Online store,Channel,Devices & Network,Hardware,APAC,direct,17914.2857,0.42,0.0,7524.0,5868.72
+2024-08-15,T00270,D04,Wholesale,Channel,Devices & Network,Hardware,Americas,partner,8142.8571,0.42,0.0,3420.0,2667.6
+2024-11-15,T00271,C001,Helios Dynamics,Enterprise,Cloud,AI Infrastructure,APAC,direct,803.3223,2.0623,66.2677,1590.424,803.1641
+2024-11-15,T00272,C002,VantaCore AI,Enterprise,Cloud,AI Infrastructure,Americas,direct,654.319,2.0623,53.9761,1295.426,654.1901
+2024-11-15,T00273,C003,Corex Systems,Enterprise,Cloud,AI Infrastructure,Americas,partner,498.8373,2.0623,41.1501,987.602,498.739
+2024-11-15,T00274,C004,Northwind Systems,Enterprise,Cloud,AI Infrastructure,EMEA,direct,143.4717,2.0623,11.8353,284.0465,143.4435
+2024-11-15,T00275,C005,Bluepeak Media,Enterprise,Cloud,AI Infrastructure,APAC,direct,138.5919,2.0623,11.4327,274.3854,138.5646
+2024-11-15,T00276,C006,Atlas Group,Enterprise,Cloud,AI Infrastructure,Americas,partner,145.8985,2.0623,12.0355,288.851,145.8698
+2024-11-15,T00277,C007,Ridgeline Robotics,Enterprise,Cloud,AI Infrastructure,Americas,direct,144.0163,2.0623,11.8802,285.1246,143.9879
+2024-11-15,T00278,C008,Solent Logistics,Enterprise,Cloud,AI Infrastructure,EMEA,direct,144.2309,2.0623,11.8979,285.5495,144.2025
+2024-11-15,T00279,C009,Kestrel Mobility,Enterprise,Cloud,Data Platform,APAC,partner,138.856,2.0623,11.4545,274.9083,138.8287
+2024-11-15,T00280,C010,Marrow Bank,Enterprise,Cloud,Data Platform,Americas,direct,141.4201,2.0623,11.666,279.9847,141.3923
+2024-11-15,T00281,C011,Quill Labs,Enterprise,Cloud,Data Platform,Americas,direct,140.7763,2.0623,11.6129,278.7101,140.7486
+2024-11-15,T00282,C012,Harbor Energy,Enterprise,Cloud,Data Platform,EMEA,partner,145.4625,2.0623,11.9995,287.9879,145.4339
+2024-11-15,T00283,C013,Vector Health,Mid-market,Cloud,AI Infrastructure,APAC,direct,144.763,1.4587,4.2233,206.9424,104.5059
+2024-11-15,T00284,C014,Lumen Foods,Mid-market,Cloud,AI Infrastructure,Americas,direct,175.3957,1.4587,5.117,250.7327,126.62
+2024-11-15,T00285,C015,Praxis Retail,Mid-market,Cloud,AI Infrastructure,Americas,partner,121.3535,1.4587,3.5404,173.478,87.6064
+2024-11-15,T00286,C016,Onyx Systems,Mid-market,Cloud,AI Infrastructure,EMEA,direct,103.029,1.4587,3.0058,147.2826,74.3777
+2024-11-15,T00287,C017,Cinder Media,Mid-market,Cloud,Data Platform,APAC,direct,132.7044,1.4587,3.8715,189.7044,95.8007
+2024-11-15,T00288,C018,Fable Group,Mid-market,Cloud,Data Platform,Americas,partner,84.2258,1.4587,2.4572,120.403,60.8035
+2024-11-15,T00289,C019,Granite Robotics,Mid-market,Cloud,Data Platform,Americas,direct,176.266,1.4587,5.1424,251.9768,127.2483
+2024-11-15,T00290,C020,Iris Logistics,Mid-market,Cloud,Data Platform,EMEA,direct,142.9487,1.4587,4.1704,204.3489,103.1962
+2024-11-15,T00291,C021,Juniper Mobility,Mid-market,Cloud,Data Platform,APAC,partner,163.787,1.4587,4.7783,234.1378,118.2396
+2024-11-15,T00292,C022,Krill Bank,Mid-market,Cloud,Data Platform,Americas,direct,113.9949,1.4587,3.3257,162.9586,82.2941
+2024-11-15,T00293,C023,Lattice Labs,Mid-market,Cloud,Data Platform,Americas,direct,199.3992,1.4587,5.8173,285.0463,143.9484
+2024-11-15,T00294,C024,Mosaic Energy,Mid-market,Cloud,Data Platform,EMEA,partner,187.6031,1.4587,5.4731,268.1835,135.4327
+2024-11-15,T00295,C025,Nimbus Health,Mid-market,Cloud,Data Platform,APAC,direct,167.418,1.4587,4.8843,239.3284,120.8608
+2024-11-15,T00296,C026,Opal Foods,Mid-market,Cloud,Data Platform,Americas,direct,99.7709,1.4587,2.9107,142.625,72.0256
+2024-11-15,T00297,C027,Pylon Retail,Mid-market,Cloud,Data Platform,Americas,partner,123.4618,1.4587,3.6019,176.4918,89.1284
+2024-11-15,T00298,C028,Quartz Systems,Mid-market,Cloud,Data Platform,EMEA,direct,81.5373,1.4587,2.3788,116.5597,58.8626
+2024-11-15,T00299,C029,Rune Media,SMB,Cloud,Productivity Suite,APAC,direct,140.7296,0.5533,0.0,77.8657,39.3222
+2024-11-15,T00300,C030,Sable Group,SMB,Cloud,Productivity Suite,Americas,partner,222.6353,0.5533,0.0,123.1841,62.208
+2024-11-15,T00301,C031,Tundra Robotics,SMB,Cloud,Productivity Suite,Americas,direct,238.1406,0.5533,0.0,131.7632,66.5404
+2024-11-15,T00302,C032,Umber Logistics,SMB,Cloud,Productivity Suite,EMEA,direct,293.5154,0.5533,0.0,162.402,82.013
+2024-11-15,T00303,C033,Vertex Mobility,SMB,Cloud,Productivity Suite,APAC,partner,164.749,0.5533,0.0,91.1556,46.0336
+2024-11-15,T00304,C034,Willow Bank,SMB,Cloud,Productivity Suite,Americas,direct,170.0577,0.5533,0.0,94.0929,47.5169
+2024-11-15,T00305,C035,Xenon Labs,SMB,Cloud,Productivity Suite,Americas,direct,182.525,0.5533,0.0,100.9911,51.0005
+2024-11-15,T00306,C036,Yield Energy,SMB,Cloud,Productivity Suite,EMEA,partner,146.3904,0.5533,0.0,80.9978,40.9039
+2024-11-15,T00307,C037,Zephyr Health,SMB,Cloud,Productivity Suite,APAC,direct,136.5541,0.5533,0.0,75.5554,38.1555
+2024-11-15,T00308,C038,Northwind Foods,SMB,Cloud,Productivity Suite,Americas,direct,183.381,0.5533,0.0,101.4647,51.2397
+2024-11-15,T00309,C039,Bluepeak Retail,SMB,Cloud,Productivity Suite,Americas,partner,151.9449,0.5533,0.0,84.0711,42.4559
+2024-11-15,T00310,C040,Atlas Systems,SMB,Cloud,Productivity Suite,EMEA,direct,219.4918,0.5533,0.0,121.4448,61.3296
+2024-11-15,T00311,C041,Ridgeline Media,SMB,Cloud,Productivity Suite,APAC,direct,178.2157,0.5533,0.0,98.6068,49.7964
+2024-11-15,T00312,C042,Solent Group,SMB,Cloud,Productivity Suite,Americas,partner,261.3602,0.5533,0.0,144.6106,73.0284
+2024-11-15,T00313,C043,Kestrel Robotics,SMB,Cloud,Productivity Suite,Americas,direct,226.8319,0.5533,0.0,125.5061,63.3806
+2024-11-15,T00314,C044,Marrow Logistics,SMB,Cloud,Productivity Suite,EMEA,direct,163.1207,0.5533,0.0,90.2547,45.5786
+2024-11-15,T00315,C045,Quill Mobility,SMB,Cloud,Productivity Suite,APAC,partner,261.2504,0.5533,0.0,144.5498,72.9977
+2024-11-15,T00316,C046,Harbor Bank,SMB,Cloud,Productivity Suite,Americas,direct,253.9836,0.5533,0.0,140.5291,70.9672
+2024-11-15,T00317,C047,Vector Labs,SMB,Cloud,Productivity Suite,Americas,direct,172.0856,0.5533,0.0,95.215,48.0836
+2024-11-15,T00318,C048,Lumen Energy,SMB,Cloud,Productivity Suite,EMEA,partner,160.145,0.5533,0.0,88.6083,44.7472
+2024-11-15,T00319,C049,Praxis Health,SMB,Cloud,Productivity Suite,APAC,direct,222.5024,0.5533,0.0,123.1106,62.1708
+2024-11-15,T00320,C050,Onyx Foods,SMB,Cloud,Productivity Suite,Americas,direct,138.2634,0.5533,0.0,76.5012,38.6331
+2024-11-15,T00321,C051,Cinder Retail,SMB,Cloud,Productivity Suite,Americas,partner,147.9863,0.5533,0.0,81.8808,41.3498
+2024-11-15,T00322,C052,Fable Systems,SMB,Cloud,Productivity Suite,EMEA,direct,112.8475,0.5533,0.0,62.4385,31.5314
+2024-11-15,T00323,C053,Granite Media,Advertiser,Search Ads,Brand ads,APAC,direct,6046.0645,0.3919,0.0,2369.4037,829.2913
+2024-11-15,T00324,C054,Iris Group,Advertiser,Search Ads,Brand ads,Americas,partner,5591.1481,0.3919,0.0,2191.1256,766.894
+2024-11-15,T00325,C055,Juniper Robotics,Advertiser,Search Ads,Brand ads,EMEA,direct,5991.4677,0.3919,0.0,2348.0076,821.8027
+2024-11-15,T00326,C056,Krill Logistics,Advertiser,Search Ads,Brand ads,APAC,direct,6507.9423,0.3919,0.0,2550.4098,892.6434
+2024-11-15,T00327,C057,Lattice Mobility,Advertiser,Search Ads,Brand ads,Americas,partner,4951.4473,0.3919,0.0,1940.4321,679.1512
+2024-11-15,T00328,C058,Mosaic Bank,Advertiser,Search Ads,Brand ads,EMEA,direct,5274.1331,0.3919,0.0,2066.89,723.4115
+2024-11-15,T00329,C059,Nimbus Labs,Advertiser,Search Ads,Brand ads,APAC,direct,3235.6139,0.3919,0.0,1268.0108,443.8038
+2024-11-15,T00330,C060,Opal Energy,Advertiser,Search Ads,Brand ads,Americas,partner,3134.4535,0.3919,0.0,1228.3669,429.9284
+2024-11-15,T00331,C061,Pylon Health,Advertiser,Search Ads,Brand ads,EMEA,direct,5758.4,0.3919,0.0,2256.6703,789.8346
+2024-11-15,T00332,C062,Quartz Foods,Advertiser,Search Ads,Brand ads,APAC,direct,5025.8956,0.3919,0.0,1969.6077,689.3627
+2024-11-15,T00333,C063,Rune Retail,Advertiser,Search Ads,Performance ads,Americas,partner,5481.0814,0.3919,0.0,2147.9913,751.797
+2024-11-15,T00334,C064,Sable Systems,Advertiser,Search Ads,Performance ads,EMEA,direct,6229.7253,0.3919,0.0,2441.3788,854.4826
+2024-11-15,T00335,C065,Tundra Media,Advertiser,Search Ads,Performance ads,APAC,direct,5434.1773,0.3919,0.0,2129.61,745.3635
+2024-11-15,T00336,C066,Umber Group,Advertiser,Search Ads,Performance ads,Americas,partner,5035.6083,0.3919,0.0,1973.414,690.6949
+2024-11-15,T00337,C067,Vertex Robotics,Advertiser,Search Ads,Performance ads,EMEA,direct,5203.8191,0.3919,0.0,2039.3345,713.7671
+2024-11-15,T00338,C068,Willow Logistics,Advertiser,Search Ads,Performance ads,APAC,direct,4211.4744,0.3919,0.0,1650.4427,577.6549
+2024-11-15,T00339,C069,Xenon Mobility,Advertiser,Search Ads,Performance ads,Americas,partner,2976.5714,0.3919,0.0,1166.4942,408.273
+2024-11-15,T00340,C070,Yield Bank,Advertiser,Search Ads,Performance ads,EMEA,direct,4782.5549,0.3919,0.0,1874.2445,655.9856
+2024-11-15,T00341,C071,Zephyr Labs,Advertiser,Search Ads,Performance ads,APAC,direct,3616.4555,0.3919,0.0,1417.2596,496.0409
+2024-11-15,T00342,C072,Northwind Energy,Advertiser,Search Ads,Performance ads,Americas,partner,4394.6864,0.3919,0.0,1722.242,602.7847
+2024-11-15,T00343,C073,Bluepeak Health,Advertiser,Search Ads,Performance ads,EMEA,direct,6456.5046,0.3919,0.0,2530.2518,885.5881
+2024-11-15,T00344,C074,Atlas Foods,Advertiser,Search Ads,Performance ads,APAC,direct,3849.543,0.3919,0.0,1508.6047,528.0116
+2024-11-15,T00345,C075,Ridgeline Retail,Advertiser,Search Ads,Performance ads,Americas,partner,3106.56,0.3919,0.0,1217.4357,426.1025
+2024-11-15,T00346,C076,Solent Systems,Advertiser,Search Ads,Performance ads,EMEA,direct,4104.1953,0.3919,0.0,1608.4009,562.9403
+2024-11-15,T00347,C077,Kestrel Media,Advertiser,Search Ads,Performance ads,APAC,direct,4008.6947,0.3919,0.0,1570.9749,549.8412
+2024-11-15,T00348,C078,Marrow Group,Advertiser,Search Ads,Performance ads,Americas,partner,5507.3885,0.3919,0.0,2158.3009,755.4053
+2024-11-15,T00349,C079,Quill Robotics,Advertiser,Search Ads,Performance ads,EMEA,direct,5094.7122,0.3919,0.0,1996.5764,698.8017
+2024-11-15,T00350,C080,Harbor Logistics,Advertiser,Search Ads,Performance ads,APAC,direct,6320.3808,0.3919,0.0,2476.906,866.9171
+2024-11-15,T00351,C081,Vector Mobility,Advertiser,Search Ads,Performance ads,Americas,partner,5948.8002,0.3919,0.0,2331.2866,815.9503
+2024-11-15,T00352,C082,Lumen Bank,Advertiser,Search Ads,Performance ads,EMEA,direct,4720.5007,0.3919,0.0,1849.926,647.4741
+2024-11-15,T00353,S01,Premium tier,Consumer,Subscriptions,Premium tier,APAC,direct,41850.0,0.2527,0.0,10575.0,4441.5
+2024-11-15,T00354,S02,Family tier,Consumer,Subscriptions,Family tier,Americas,partner,27900.0,0.2527,0.0,7050.0,2961.0
+2024-11-15,T00355,S03,Student tier,Consumer,Subscriptions,Student tier,EMEA,direct,9300.0,0.2527,0.0,2350.0,987.0
+2024-11-15,T00356,S04,Enterprise seats,Consumer,Subscriptions,Enterprise seats,APAC,direct,13950.0,0.2527,0.0,3525.0,1480.5
+2024-11-15,T00357,D01,Retail channel,Channel,Devices & Network,Hardware,Americas,partner,35738.0952,0.42,0.0,15010.0,11707.8
+2024-11-15,T00358,D02,Carrier channel,Channel,Devices & Network,Hardware,EMEA,direct,28214.2857,0.42,0.0,11850.0,9243.0
+2024-11-15,T00359,D03,Online store,Channel,Devices & Network,Hardware,APAC,direct,20690.4762,0.42,0.0,8690.0,6778.2
+2024-11-15,T00360,D04,Wholesale,Channel,Devices & Network,Hardware,Americas,partner,9404.7619,0.42,0.0,3950.0,3081.0
+2025-02-15,T00361,C001,Helios Dynamics,Enterprise,Cloud,AI Infrastructure,Americas,direct,691.4634,2.0664,57.1536,1371.6864,692.7016
+2025-02-15,T00362,C002,VantaCore AI,Enterprise,Cloud,AI Infrastructure,EMEA,direct,562.5,2.0664,46.494,1115.856,563.5073
+2025-02-15,T00363,C003,Corex Systems,Enterprise,Cloud,AI Infrastructure,APAC,partner,428.0488,2.0664,35.3808,849.1392,428.8153
+2025-02-15,T00364,C004,Northwind Systems,Enterprise,Cloud,AI Infrastructure,Americas,direct,119.1285,2.0664,9.8467,236.3205,119.3418
+2025-02-15,T00365,C005,Bluepeak Media,Enterprise,Cloud,AI Infrastructure,Americas,direct,113.2347,2.0664,9.3595,224.6286,113.4374
+2025-02-15,T00366,C006,Atlas Group,Enterprise,Cloud,AI Infrastructure,EMEA,partner,122.0923,2.0664,10.0917,242.1998,122.3109
+2025-02-15,T00367,C007,Ridgeline Robotics,Enterprise,Cloud,AI Infrastructure,APAC,direct,119.7941,2.0664,9.9017,237.6407,120.0086
+2025-02-15,T00368,C008,Solent Logistics,Enterprise,Cloud,AI Infrastructure,Americas,direct,120.0564,2.0664,9.9234,238.1612,120.2714
+2025-02-15,T00369,C009,Kestrel Mobility,Enterprise,Cloud,Data Platform,Americas,partner,113.5474,2.0664,9.3854,225.2489,113.7507
+2025-02-15,T00370,C010,Marrow Bank,Enterprise,Cloud,Data Platform,EMEA,direct,116.628,2.0664,9.64,231.3602,116.8369
+2025-02-15,T00371,C011,Quill Labs,Enterprise,Cloud,Data Platform,APAC,direct,115.8483,2.0664,9.5756,229.8133,116.0557
+2025-02-15,T00372,C012,Harbor Energy,Enterprise,Cloud,Data Platform,Americas,partner,121.5607,2.0664,10.0477,241.1453,121.7784
+2025-02-15,T00373,C013,Vector Health,Mid-market,Cloud,AI Infrastructure,Americas,direct,121.3381,1.4616,3.547,173.8007,87.7694
+2025-02-15,T00374,C014,Lumen Foods,Mid-market,Cloud,AI Infrastructure,EMEA,direct,144.6054,1.4616,4.2271,207.1282,104.5997
+2025-02-15,T00375,C015,Praxis Retail,Mid-market,Cloud,AI Infrastructure,APAC,partner,96.2601,1.4616,2.8139,137.8799,69.6294
+2025-02-15,T00376,C016,Onyx Systems,Mid-market,Cloud,AI Infrastructure,Americas,direct,78.7011,1.4616,2.3006,112.7289,56.9281
+2025-02-15,T00377,C017,Cinder Media,Mid-market,Cloud,Data Platform,Americas,direct,109.2411,1.4616,3.1933,156.4735,79.0191
+2025-02-15,T00378,C018,Fable Group,Mid-market,Cloud,Data Platform,EMEA,partner,66.5607,1.4616,1.9457,95.3395,48.1464
+2025-02-15,T00379,C019,Granite Robotics,Mid-market,Cloud,Data Platform,APAC,direct,145.1381,1.4616,4.2427,207.8912,104.985
+2025-02-15,T00380,C020,Iris Logistics,Mid-market,Cloud,Data Platform,Americas,direct,119.641,1.4616,3.4973,171.3699,86.5418
+2025-02-15,T00381,C021,Juniper Mobility,Mid-market,Cloud,Data Platform,Americas,partner,136.871,1.4616,4.001,196.0496,99.0051
+2025-02-15,T00382,C022,Krill Bank,Mid-market,Cloud,Data Platform,EMEA,direct,88.0676,1.4616,2.5744,126.1452,63.7033
+2025-02-15,T00383,C023,Lattice Labs,Mid-market,Cloud,Data Platform,APAC,direct,157.1303,1.4616,4.5932,225.0683,113.6595
+2025-02-15,T00384,C024,Mosaic Energy,Mid-market,Cloud,Data Platform,Americas,partner,151.5155,1.4616,4.4291,217.026,109.5981
+2025-02-15,T00385,C025,Nimbus Health,Mid-market,Cloud,Data Platform,Americas,direct,139.4195,1.4616,4.0755,199.7,100.8485
+2025-02-15,T00386,C026,Opal Foods,Mid-market,Cloud,Data Platform,EMEA,direct,76.4484,1.4616,2.2347,109.5022,55.2986
+2025-02-15,T00387,C027,Pylon Retail,Mid-market,Cloud,Data Platform,APAC,partner,98.7303,1.4616,2.8861,141.4182,71.4162
+2025-02-15,T00388,C028,Quartz Systems,Mid-market,Cloud,Data Platform,Americas,direct,64.8427,1.4616,1.8955,92.8786,46.9037
+2025-02-15,T00389,C029,Rune Media,SMB,Cloud,Productivity Suite,Americas,direct,110.9271,0.5544,0.0,61.498,31.0565
+2025-02-15,T00390,C030,Sable Group,SMB,Cloud,Productivity Suite,EMEA,partner,191.1126,0.5544,0.0,105.9528,53.5062
+2025-02-15,T00391,C031,Tundra Robotics,SMB,Cloud,Productivity Suite,APAC,direct,203.7028,0.5544,0.0,112.9328,57.0311
+2025-02-15,T00392,C032,Umber Logistics,SMB,Cloud,Productivity Suite,Americas,direct,236.5472,0.5544,0.0,131.1417,66.2266
+2025-02-15,T00393,C033,Vertex Mobility,SMB,Cloud,Productivity Suite,Americas,partner,129.2956,0.5544,0.0,71.6815,36.1991
+2025-02-15,T00394,C034,Willow Bank,SMB,Cloud,Productivity Suite,EMEA,direct,134.7553,0.5544,0.0,74.7083,37.7277
+2025-02-15,T00395,C035,Xenon Labs,SMB,Cloud,Productivity Suite,APAC,direct,149.2798,0.5544,0.0,82.7607,41.7942
+2025-02-15,T00396,C036,Yield Energy,SMB,Cloud,Productivity Suite,Americas,partner,114.6855,0.5544,0.0,63.5817,32.1087
+2025-02-15,T00397,C037,Zephyr Health,SMB,Cloud,Productivity Suite,Americas,direct,108.2274,0.5544,0.0,60.0013,30.3006
+2025-02-15,T00398,C038,Northwind Foods,SMB,Cloud,Productivity Suite,EMEA,direct,150.3039,0.5544,0.0,83.3285,42.0809
+2025-02-15,T00399,C039,Bluepeak Retail,SMB,Cloud,Productivity Suite,APAC,partner,118.589,0.5544,0.0,65.7458,33.2016
+2025-02-15,T00400,C040,Atlas Systems,SMB,Cloud,Productivity Suite,Americas,direct,188.3404,0.5544,0.0,104.4159,52.73
+2025-02-15,T00401,C041,Ridgeline Media,SMB,Cloud,Productivity Suite,Americas,direct,144.1248,0.5544,0.0,79.9028,40.3509
+2025-02-15,T00402,C042,Solent Group,SMB,Cloud,Productivity Suite,EMEA,partner,219.5811,0.5544,0.0,121.7358,61.4766
+2025-02-15,T00403,C043,Kestrel Robotics,SMB,Cloud,Productivity Suite,APAC,direct,194.6935,0.5544,0.0,107.9381,54.5087
+2025-02-15,T00404,C044,Marrow Logistics,SMB,Cloud,Productivity Suite,Americas,direct,127.7502,0.5544,0.0,70.8247,35.7665
+2025-02-15,T00405,C045,Quill Mobility,SMB,Cloud,Productivity Suite,Americas,partner,219.5137,0.5544,0.0,121.6984,61.4577
+2025-02-15,T00406,C046,Harbor Bank,SMB,Cloud,Productivity Suite,EMEA,direct,214.8934,0.5544,0.0,119.1369,60.1641
+2025-02-15,T00407,C047,Vector Labs,SMB,Cloud,Productivity Suite,APAC,direct,136.9963,0.5544,0.0,75.9507,38.3551
+2025-02-15,T00408,C048,Lumen Energy,SMB,Cloud,Productivity Suite,Americas,partner,125.0808,0.5544,0.0,69.3448,35.0191
+2025-02-15,T00409,C049,Praxis Health,SMB,Cloud,Productivity Suite,Americas,direct,190.9969,0.5544,0.0,105.8887,53.4738
+2025-02-15,T00410,C050,Onyx Foods,SMB,Cloud,Productivity Suite,EMEA,direct,109.3281,0.5544,0.0,60.6115,30.6088
+2025-02-15,T00411,C051,Cinder Retail,SMB,Cloud,Productivity Suite,APAC,partner,115.7792,0.5544,0.0,64.188,32.4149
+2025-02-15,T00412,C052,Fable Systems,SMB,Cloud,Productivity Suite,Americas,direct,92.7683,0.5544,0.0,51.4308,25.9725
+2025-02-15,T00413,C053,Granite Media,Advertiser,Search Ads,Brand ads,APAC,direct,5823.913,0.3813,0.0,2220.5217,777.1826
+2025-02-15,T00414,C054,Iris Group,Advertiser,Search Ads,Brand ads,Americas,partner,5515.7862,0.3813,0.0,2103.0402,736.0641
+2025-02-15,T00415,C055,Juniper Robotics,Advertiser,Search Ads,Brand ads,EMEA,direct,5843.8789,0.3813,0.0,2228.1342,779.847
+2025-02-15,T00416,C056,Krill Logistics,Advertiser,Search Ads,Brand ads,APAC,direct,6133.094,0.3813,0.0,2338.4052,818.4418
+2025-02-15,T00417,C057,Lattice Mobility,Advertiser,Search Ads,Brand ads,Americas,partner,4539.3594,0.3813,0.0,1730.7515,605.763
+2025-02-15,T00418,C058,Mosaic Bank,Advertiser,Search Ads,Brand ads,EMEA,direct,4855.8236,0.3813,0.0,1851.4119,647.9942
+2025-02-15,T00419,C059,Nimbus Labs,Advertiser,Search Ads,Brand ads,APAC,direct,3082.8636,0.3813,0.0,1175.4237,411.3983
+2025-02-15,T00420,C060,Opal Energy,Advertiser,Search Ads,Brand ads,Americas,partner,3081.5238,0.3813,0.0,1174.9129,411.2195
+2025-02-15,T00421,C061,Pylon Health,Advertiser,Search Ads,Brand ads,EMEA,direct,5653.8288,0.3813,0.0,2155.6726,754.4854
+2025-02-15,T00422,C062,Quartz Foods,Advertiser,Search Ads,Brand ads,APAC,direct,4786.094,0.3813,0.0,1824.8256,638.689
+2025-02-15,T00423,C063,Rune Retail,Advertiser,Search Ads,Performance ads,Americas,partner,5051.856,0.3813,0.0,1926.1545,674.1541
+2025-02-15,T00424,C064,Sable Systems,Advertiser,Search Ads,Performance ads,EMEA,direct,5706.8784,0.3813,0.0,2175.8992,761.5647
+2025-02-15,T00425,C065,Tundra Media,Advertiser,Search Ads,Performance ads,APAC,direct,5120.033,0.3813,0.0,1952.1488,683.2521
+2025-02-15,T00426,C066,Umber Group,Advertiser,Search Ads,Performance ads,Americas,partner,4919.365,0.3813,0.0,1875.6387,656.4736
+2025-02-15,T00427,C067,Vertex Robotics,Advertiser,Search Ads,Performance ads,EMEA,direct,5130.3996,0.3813,0.0,1956.1013,684.6355
+2025-02-15,T00428,C068,Willow Logistics,Advertiser,Search Ads,Performance ads,APAC,direct,4051.886,0.3813,0.0,1544.8893,540.7113
+2025-02-15,T00429,C069,Xenon Mobility,Advertiser,Search Ads,Performance ads,Americas,partner,2764.4197,0.3813,0.0,1054.0085,368.903
+2025-02-15,T00430,C070,Yield Bank,Advertiser,Search Ads,Performance ads,EMEA,direct,4372.2774,0.3813,0.0,1667.047,583.4665
+2025-02-15,T00431,C071,Zephyr Labs,Advertiser,Search Ads,Performance ads,APAC,direct,3371.9126,0.3813,0.0,1285.6314,449.971
+2025-02-15,T00432,C072,Northwind Energy,Advertiser,Search Ads,Performance ads,Americas,partner,4255.9846,0.3813,0.0,1622.7073,567.9476
+2025-02-15,T00433,C073,Bluepeak Health,Advertiser,Search Ads,Performance ads,EMEA,direct,6373.2527,0.3813,0.0,2429.9721,850.4902
+2025-02-15,T00434,C074,Atlas Foods,Advertiser,Search Ads,Performance ads,APAC,direct,3738.4282,0.3813,0.0,1425.3752,498.8813
+2025-02-15,T00435,C075,Ridgeline Retail,Advertiser,Search Ads,Performance ads,Americas,partner,2911.9841,0.3813,0.0,1110.2714,388.595
+2025-02-15,T00436,C076,Solent Systems,Advertiser,Search Ads,Performance ads,EMEA,direct,3756.0242,0.3813,0.0,1432.0841,501.2294
+2025-02-15,T00437,C077,Kestrel Media,Advertiser,Search Ads,Performance ads,APAC,direct,3704.7221,0.3813,0.0,1412.5238,494.3833
+2025-02-15,T00438,C078,Marrow Group,Advertiser,Search Ads,Performance ads,Americas,partner,5278.4362,0.3813,0.0,2012.5442,704.3905
+2025-02-15,T00439,C079,Quill Robotics,Advertiser,Search Ads,Performance ads,EMEA,direct,5019.7831,0.3813,0.0,1913.9258,669.874
+2025-02-15,T00440,C080,Harbor Logistics,Advertiser,Search Ads,Performance ads,APAC,direct,6185.5621,0.3813,0.0,2358.41,825.4435
+2025-02-15,T00441,C081,Vector Mobility,Advertiser,Search Ads,Performance ads,Americas,partner,5633.5003,0.3813,0.0,2147.9218,751.7726
+2025-02-15,T00442,C082,Lumen Bank,Advertiser,Search Ads,Performance ads,EMEA,direct,4337.1295,0.3813,0.0,1653.646,578.7761
+2025-02-15,T00443,S01,Premium tier,Consumer,Subscriptions,Premium tier,APAC,direct,42525.0,0.2413,0.0,10260.0,4309.2
+2025-02-15,T00444,S02,Family tier,Consumer,Subscriptions,Family tier,Americas,partner,28350.0,0.2413,0.0,6840.0,2872.8
+2025-02-15,T00445,S03,Student tier,Consumer,Subscriptions,Student tier,EMEA,direct,9450.0,0.2413,0.0,2280.0,957.6
+2025-02-15,T00446,S04,Enterprise seats,Consumer,Subscriptions,Enterprise seats,APAC,direct,14175.0,0.2413,0.0,3420.0,1436.4
+2025-02-15,T00447,D01,Retail channel,Channel,Devices & Network,Hardware,Americas,partner,31123.8095,0.42,0.0,13072.0,10196.16
+2025-02-15,T00448,D02,Carrier channel,Channel,Devices & Network,Hardware,EMEA,direct,24571.4286,0.42,0.0,10320.0,8049.6
+2025-02-15,T00449,D03,Online store,Channel,Devices & Network,Hardware,APAC,direct,18019.0476,0.42,0.0,7568.0,5903.04
+2025-02-15,T00450,D04,Wholesale,Channel,Devices & Network,Hardware,Americas,partner,8190.4762,0.42,0.0,3440.0,2683.2
+2025-05-15,T00451,C001,Helios Dynamics,Enterprise,Cloud,AI Infrastructure,APAC,direct,1005.5892,2.0705,83.2829,1998.7895,1009.3887
+2025-05-15,T00452,C002,VantaCore AI,Enterprise,Cloud,AI Infrastructure,Americas,direct,806.7655,2.0705,66.8163,1603.5916,809.8137
+2025-05-15,T00453,C003,Corex Systems,Enterprise,Cloud,AI Infrastructure,Americas,partner,627.0594,2.0705,51.9331,1246.3934,629.4287
+2025-05-15,T00454,C004,Northwind Systems,Enterprise,Cloud,AI Infrastructure,EMEA,direct,155.6672,2.0705,12.8924,309.4165,156.2554
+2025-05-15,T00455,C005,Bluepeak Media,Enterprise,Cloud,AI Infrastructure,APAC,direct,146.1815,2.0705,12.1068,290.562,146.7338
+2025-05-15,T00456,C006,Atlas Group,Enterprise,Cloud,AI Infrastructure,Americas,partner,160.1914,2.0705,13.267,318.4091,160.7966
+2025-05-15,T00457,C007,Ridgeline Robotics,Enterprise,Cloud,AI Infrastructure,Americas,direct,156.6976,2.0705,12.9777,311.4647,157.2897
+2025-05-15,T00458,C008,Solent Logistics,Enterprise,Cloud,AI Infrastructure,EMEA,direct,157.1015,2.0705,13.0111,312.2675,157.6951
+2025-05-15,T00459,C009,Kestrel Mobility,Enterprise,Cloud,Data Platform,APAC,partner,146.7004,2.0705,12.1497,291.5935,147.2547
+2025-05-15,T00460,C010,Marrow Bank,Enterprise,Cloud,Data Platform,Americas,direct,151.7209,2.0705,12.5655,301.5726,152.2942
+2025-05-15,T00461,C011,Quill Labs,Enterprise,Cloud,Data Platform,Americas,direct,150.4663,2.0705,12.4616,299.0789,151.0349
+2025-05-15,T00462,C012,Harbor Energy,Enterprise,Cloud,Data Platform,EMEA,partner,159.3921,2.0705,13.2009,316.8205,159.9944
+2025-05-15,T00463,C013,Vector Health,Mid-market,Cloud,AI Infrastructure,APAC,direct,166.886,1.4645,4.8881,239.5164,120.9558
+2025-05-15,T00464,C014,Lumen Foods,Mid-market,Cloud,AI Infrastructure,Americas,direct,188.8039,1.4645,5.5301,270.9733,136.8415
+2025-05-15,T00465,C015,Praxis Retail,Mid-market,Cloud,AI Infrastructure,Americas,partner,132.1693,1.4645,3.8712,189.6907,95.7938
+2025-05-15,T00466,C016,Onyx Systems,Mid-market,Cloud,AI Infrastructure,EMEA,direct,100.9665,1.4645,2.9573,144.9081,73.1786
+2025-05-15,T00467,C017,Cinder Media,Mid-market,Cloud,Data Platform,APAC,direct,151.8273,1.4645,4.447,217.904,110.0415
+2025-05-15,T00468,C018,Fable Group,Mid-market,Cloud,Data Platform,Americas,partner,84.2533,1.4645,2.4678,120.9212,61.0652
+2025-05-15,T00469,C019,Granite Robotics,Mid-market,Cloud,Data Platform,Americas,direct,189.2178,1.4645,5.5422,271.5672,137.1415
+2025-05-15,T00470,C020,Iris Logistics,Mid-market,Cloud,Data Platform,EMEA,direct,164.9417,1.4645,4.8311,236.726,119.5467
+2025-05-15,T00471,C021,Juniper Mobility,Mid-market,Cloud,Data Platform,APAC,partner,182.4166,1.4645,5.343,261.8062,132.2121
+2025-05-15,T00472,C022,Krill Bank,Mid-market,Cloud,Data Platform,Americas,direct,117.7601,1.4645,3.4492,169.0104,85.3503
+2025-05-15,T00473,C023,Lattice Labs,Mid-market,Cloud,Data Platform,Americas,direct,198.7231,1.4645,5.8206,285.2094,144.0308
+2025-05-15,T00474,C024,Mosaic Energy,Mid-market,Cloud,Data Platform,EMEA,partner,194.0467,1.4645,5.6836,278.4978,140.6414
+2025-05-15,T00475,C025,Nimbus Health,Mid-market,Cloud,Data Platform,APAC,direct,184.6074,1.4645,5.4072,264.9504,133.8
+2025-05-15,T00476,C026,Opal Foods,Mid-market,Cloud,Data Platform,Americas,direct,97.3517,1.4645,2.8514,139.7202,70.5587
+2025-05-15,T00477,C027,Pylon Retail,Mid-market,Cloud,Data Platform,Americas,partner,136.2188,1.4645,3.9899,195.5027,98.7288
+2025-05-15,T00478,C028,Quartz Systems,Mid-market,Cloud,Data Platform,EMEA,direct,82.2848,1.4645,2.4101,118.0959,59.6384
+2025-05-15,T00479,C029,Rune Media,SMB,Cloud,Productivity Suite,APAC,direct,134.1145,0.5555,0.0,74.5006,37.6228
+2025-05-15,T00480,C030,Sable Group,SMB,Cloud,Productivity Suite,Americas,partner,248.7859,0.5555,0.0,138.2006,69.7913
+2025-05-15,T00481,C031,Tundra Robotics,SMB,Cloud,Productivity Suite,Americas,direct,260.432,0.5555,0.0,144.67,73.0583
+2025-05-15,T00482,C032,Umber Logistics,SMB,Cloud,Productivity Suite,EMEA,direct,285.8497,0.5555,0.0,158.7895,80.1887
+2025-05-15,T00483,C033,Vertex Mobility,SMB,Cloud,Productivity Suite,APAC,partner,163.5034,0.5555,0.0,90.8261,45.8672
+2025-05-15,T00484,C034,Willow Bank,SMB,Cloud,Productivity Suite,Americas,direct,173.0553,0.5555,0.0,96.1322,48.5468
+2025-05-15,T00485,C035,Xenon Labs,SMB,Cloud,Productivity Suite,Americas,direct,196.8429,0.5555,0.0,109.3463,55.2199
+2025-05-15,T00486,C036,Yield Energy,SMB,Cloud,Productivity Suite,EMEA,partner,139.3695,0.5555,0.0,77.4198,39.097
+2025-05-15,T00487,C037,Zephyr Health,SMB,Cloud,Productivity Suite,APAC,direct,130.6067,0.5555,0.0,72.552,36.6388
+2025-05-15,T00488,C038,Northwind Foods,SMB,Cloud,Productivity Suite,Americas,direct,198.4017,0.5555,0.0,110.2121,55.6571
+2025-05-15,T00489,C039,Bluepeak Retail,SMB,Cloud,Productivity Suite,Americas,partner,145.3162,0.5555,0.0,80.7232,40.7652
+2025-05-15,T00490,C040,Atlas Systems,SMB,Cloud,Productivity Suite,EMEA,direct,246.0015,0.5555,0.0,136.6538,69.0102
+2025-05-15,T00491,C041,Ridgeline Media,SMB,Cloud,Productivity Suite,APAC,direct,188.7507,0.5555,0.0,104.851,52.9498
+2025-05-15,T00492,C042,Solent Group,SMB,Cloud,Productivity Suite,Americas,partner,273.0383,0.5555,0.0,151.6728,76.5947
+2025-05-15,T00493,C043,Kestrel Robotics,SMB,Cloud,Productivity Suite,Americas,direct,252.2622,0.5555,0.0,140.1317,70.7665
+2025-05-15,T00494,C044,Marrow Logistics,SMB,Cloud,Productivity Suite,EMEA,direct,160.7898,0.5555,0.0,89.3187,45.106
+2025-05-15,T00495,C045,Quill Mobility,SMB,Cloud,Productivity Suite,APAC,partner,272.9887,0.5555,0.0,151.6452,76.5808
+2025-05-15,T00496,C046,Harbor Bank,SMB,Cloud,Productivity Suite,Americas,direct,269.5239,0.5555,0.0,149.7205,75.6089
+2025-05-15,T00497,C047,Vector Labs,SMB,Cloud,Productivity Suite,Americas,direct,176.9113,0.5555,0.0,98.2742,49.6285
+2025-05-15,T00498,C048,Lumen Energy,SMB,Cloud,Productivity Suite,EMEA,partner,156.1367,0.5555,0.0,86.734,43.8007
+2025-05-15,T00499,C049,Praxis Health,SMB,Cloud,Productivity Suite,APAC,direct,248.6714,0.5555,0.0,138.137,69.7592
+2025-05-15,T00500,C050,Onyx Foods,SMB,Cloud,Productivity Suite,Americas,direct,132.012,0.5555,0.0,73.3326,37.033
+2025-05-15,T00501,C051,Cinder Retail,SMB,Cloud,Productivity Suite,Americas,partner,140.9856,0.5555,0.0,78.3175,39.5503
+2025-05-15,T00502,C052,Fable Systems,SMB,Cloud,Productivity Suite,EMEA,direct,113.1928,0.5555,0.0,62.8786,31.7537
+2025-05-15,T00503,C053,Granite Media,Advertiser,Search Ads,Brand ads,APAC,direct,6343.3569,0.3833,0.0,2431.3058,850.957
+2025-05-15,T00504,C054,Iris Group,Advertiser,Search Ads,Brand ads,Americas,partner,5939.8195,0.3833,0.0,2276.6365,796.8228
+2025-05-15,T00505,C055,Juniper Robotics,Advertiser,Search Ads,Brand ads,EMEA,direct,6080.4396,0.3833,0.0,2330.5339,815.6869
+2025-05-15,T00506,C056,Krill Logistics,Advertiser,Search Ads,Brand ads,APAC,direct,6207.8309,0.3833,0.0,2379.3609,832.7763
+2025-05-15,T00507,C057,Lattice Mobility,Advertiser,Search Ads,Brand ads,Americas,partner,4614.283,0.3833,0.0,1768.5799,619.003
+2025-05-15,T00508,C058,Mosaic Bank,Advertiser,Search Ads,Brand ads,EMEA,direct,5108.0879,0.3833,0.0,1957.8473,685.2465
+2025-05-15,T00509,C059,Nimbus Labs,Advertiser,Search Ads,Brand ads,APAC,direct,3346.2304,0.3833,0.0,1282.5558,448.8945
+2025-05-15,T00510,C060,Opal Energy,Advertiser,Search Ads,Brand ads,Americas,partner,3340.4439,0.3833,0.0,1280.338,448.1183
+2025-05-15,T00511,C061,Pylon Health,Advertiser,Search Ads,Brand ads,EMEA,direct,5944.4031,0.3833,0.0,2278.3933,797.4377
+2025-05-15,T00512,C062,Quartz Foods,Advertiser,Search Ads,Brand ads,APAC,direct,4870.3904,0.3833,0.0,1866.7417,653.3596
+2025-05-15,T00513,C063,Rune Retail,Advertiser,Search Ads,Performance ads,Americas,partner,5109.5015,0.3833,0.0,1958.3891,685.4362
+2025-05-15,T00514,C064,Sable Systems,Advertiser,Search Ads,Performance ads,EMEA,direct,5936.5676,0.3833,0.0,2275.3901,796.3865
+2025-05-15,T00515,C065,Tundra Media,Advertiser,Search Ads,Performance ads,APAC,direct,5522.3981,0.3833,0.0,2116.6456,740.826
+2025-05-15,T00516,C066,Umber Group,Advertiser,Search Ads,Performance ads,Americas,partner,5354.7092,0.3833,0.0,2052.3732,718.3306
+2025-05-15,T00517,C067,Vertex Robotics,Advertiser,Search Ads,Performance ads,EMEA,direct,5449.6935,0.3833,0.0,2088.7791,731.0727
+2025-05-15,T00518,C068,Willow Logistics,Advertiser,Search Ads,Performance ads,APAC,direct,4154.7293,0.3833,0.0,1592.4403,557.3541
+2025-05-15,T00519,C069,Xenon Mobility,Advertiser,Search Ads,Performance ads,Americas,partner,2790.2913,0.3833,0.0,1069.4734,374.3157
+2025-05-15,T00520,C070,Yield Bank,Advertiser,Search Ads,Performance ads,EMEA,direct,4500.8933,0.3833,0.0,1725.1194,603.7918
+2025-05-15,T00521,C071,Zephyr Labs,Advertiser,Search Ads,Performance ads,APAC,direct,3605.3407,0.3833,0.0,1381.8686,483.654
+2025-05-15,T00522,C072,Northwind Energy,Advertiser,Search Ads,Performance ads,Americas,partner,4638.3291,0.3833,0.0,1777.7963,622.2287
+2025-05-15,T00523,C073,Bluepeak Health,Advertiser,Search Ads,Performance ads,EMEA,direct,6833.4314,0.3833,0.0,2619.1435,916.7002
+2025-05-15,T00524,C074,Atlas Foods,Advertiser,Search Ads,Performance ads,APAC,direct,3868.9769,0.3833,0.0,1482.9161,519.0206
+2025-05-15,T00525,C075,Ridgeline Retail,Advertiser,Search Ads,Performance ads,Americas,partner,2942.3017,0.3833,0.0,1127.7365,394.7078
+2025-05-15,T00526,C076,Solent Systems,Advertiser,Search Ads,Performance ads,EMEA,direct,3832.471,0.3833,0.0,1468.924,514.1234
+2025-05-15,T00527,C077,Kestrel Media,Advertiser,Search Ads,Performance ads,APAC,direct,3920.2435,0.3833,0.0,1502.5658,525.898
+2025-05-15,T00528,C078,Marrow Group,Advertiser,Search Ads,Performance ads,Americas,partner,5742.069,0.3833,0.0,2200.842,770.2947
+2025-05-15,T00529,C079,Quill Robotics,Advertiser,Search Ads,Performance ads,EMEA,direct,5423.9879,0.3833,0.0,2078.9266,727.6243
+2025-05-15,T00530,C080,Harbor Logistics,Advertiser,Search Ads,Performance ads,APAC,direct,6467.3438,0.3833,0.0,2478.828,867.5898
+2025-05-15,T00531,C081,Vector Mobility,Advertiser,Search Ads,Performance ads,Americas,partner,5714.6612,0.3833,0.0,2190.3369,766.6179
+2025-05-15,T00532,C082,Lumen Bank,Advertiser,Search Ads,Performance ads,EMEA,direct,4396.7745,0.3833,0.0,1685.2124,589.8243
+2025-05-15,T00533,S01,Premium tier,Consumer,Subscriptions,Premium tier,APAC,direct,43200.0,0.25,0.0,10800.0,4536.0
+2025-05-15,T00534,S02,Family tier,Consumer,Subscriptions,Family tier,Americas,partner,28800.0,0.25,0.0,7200.0,3024.0
+2025-05-15,T00535,S03,Student tier,Consumer,Subscriptions,Student tier,EMEA,direct,9600.0,0.25,0.0,2400.0,1008.0
+2025-05-15,T00536,S04,Enterprise seats,Consumer,Subscriptions,Enterprise seats,APAC,direct,14400.0,0.25,0.0,3600.0,1512.0
+2025-05-15,T00537,D01,Retail channel,Channel,Devices & Network,Hardware,Americas,partner,31986.9524,0.42,0.0,13434.52,10478.9256
+2025-05-15,T00538,D02,Carrier channel,Channel,Devices & Network,Hardware,EMEA,direct,25252.8571,0.42,0.0,10606.2,8272.836
+2025-05-15,T00539,D03,Online store,Channel,Devices & Network,Hardware,APAC,direct,18518.7619,0.42,0.0,7777.88,6066.7464
+2025-05-15,T00540,D04,Wholesale,Channel,Devices & Network,Hardware,Americas,partner,8417.619,0.42,0.0,3535.4,2757.612
+2025-08-15,T00541,C001,Helios Dynamics,Enterprise,Cloud,AI Infrastructure,Americas,direct,1027.2245,2.0746,85.2432,2045.8368,1043.3768
+2025-08-15,T00542,C002,VantaCore AI,Enterprise,Cloud,AI Infrastructure,EMEA,direct,828.15,2.0746,68.7232,1649.3568,841.172
+2025-08-15,T00543,C003,Corex Systems,Enterprise,Cloud,AI Infrastructure,APAC,partner,637.0385,2.0746,52.864,1268.736,647.0554
+2025-08-15,T00544,C004,Northwind Systems,Enterprise,Cloud,AI Infrastructure,Americas,direct,167.4203,2.0746,13.8932,333.437,170.0529
+2025-08-15,T00545,C005,Bluepeak Media,Enterprise,Cloud,AI Infrastructure,Americas,direct,157.7144,2.0746,13.0878,314.1064,160.1943
+2025-08-15,T00546,C006,Atlas Group,Enterprise,Cloud,AI Infrastructure,EMEA,partner,171.746,2.0746,14.2522,342.052,174.4465
+2025-08-15,T00547,C007,Ridgeline Robotics,Enterprise,Cloud,AI Infrastructure,APAC,direct,168.4223,2.0746,13.9764,335.4326,171.0706
+2025-08-15,T00548,C008,Solent Logistics,Enterprise,Cloud,AI Infrastructure,Americas,direct,168.8123,2.0746,14.0087,336.2093,171.4667
+2025-08-15,T00549,C009,Kestrel Mobility,Enterprise,Cloud,Data Platform,Americas,partner,158.2685,2.0746,13.1338,315.21,160.7571
+2025-08-15,T00550,C010,Marrow Bank,Enterprise,Cloud,Data Platform,EMEA,direct,163.4897,2.0746,13.567,325.6086,166.0604
+2025-08-15,T00551,C011,Quill Labs,Enterprise,Cloud,Data Platform,APAC,direct,162.2085,2.0746,13.4607,323.0569,164.759
+2025-08-15,T00552,C012,Harbor Energy,Enterprise,Cloud,Data Platform,Americas,partner,170.9955,2.0746,14.1899,340.5575,173.6843
+2025-08-15,T00553,C013,Vector Health,Mid-market,Cloud,AI Infrastructure,Americas,direct,173.4092,1.4674,5.0892,249.3714,127.1794
+2025-08-15,T00554,C014,Lumen Foods,Mid-market,Cloud,AI Infrastructure,EMEA,direct,187.9695,1.4674,5.5165,270.3099,137.858
+2025-08-15,T00555,C015,Praxis Retail,Mid-market,Cloud,AI Infrastructure,APAC,partner,144.281,1.4674,4.2344,207.4836,105.8166
+2025-08-15,T00556,C016,Onyx Systems,Mid-market,Cloud,AI Infrastructure,Americas,direct,106.7932,1.4674,3.1342,153.5741,78.3228
+2025-08-15,T00557,C017,Cinder Media,Mid-market,Cloud,Data Platform,Americas,direct,162.1713,1.4674,4.7594,233.2107,118.9375
+2025-08-15,T00558,C018,Fable Group,Mid-market,Cloud,Data Platform,EMEA,partner,84.6325,1.4674,2.4838,121.7059,62.07
+2025-08-15,T00559,C019,Granite Robotics,Mid-market,Cloud,Data Platform,APAC,direct,188.299,1.4674,5.5262,270.7837,138.0997
+2025-08-15,T00560,C020,Iris Logistics,Mid-market,Cloud,Data Platform,Americas,direct,172.0621,1.4674,5.0497,247.4343,126.1915
+2025-08-15,T00561,C021,Juniper Mobility,Mid-market,Cloud,Data Platform,Americas,partner,183.5013,1.4674,5.3854,263.8844,134.5811
+2025-08-15,T00562,C022,Krill Bank,Mid-market,Cloud,Data Platform,EMEA,direct,128.4308,1.4674,3.7692,184.6902,94.192
+2025-08-15,T00563,C023,Lattice Labs,Mid-market,Cloud,Data Platform,APAC,direct,200.0416,1.4674,5.8708,287.6702,146.7118
+2025-08-15,T00564,C024,Mosaic Energy,Mid-market,Cloud,Data Platform,Americas,partner,192.9862,1.4674,5.6638,277.5243,141.5374
+2025-08-15,T00565,C025,Nimbus Health,Mid-market,Cloud,Data Platform,Americas,direct,184.9459,1.4674,5.4278,265.9619,135.6406
+2025-08-15,T00566,C026,Opal Foods,Mid-market,Cloud,Data Platform,EMEA,direct,101.8227,1.4674,2.9883,146.4263,74.6774
+2025-08-15,T00567,C027,Pylon Retail,Mid-market,Cloud,Data Platform,APAC,partner,148.2979,1.4674,4.3522,213.26,108.7626
+2025-08-15,T00568,C028,Quartz Systems,Mid-market,Cloud,Data Platform,Americas,direct,82.3261,1.4674,2.4161,118.3892,60.3785
+2025-08-15,T00569,C029,Rune Media,SMB,Cloud,Productivity Suite,Americas,direct,138.1726,0.5566,0.0,76.9069,39.2225
+2025-08-15,T00570,C030,Sable Group,SMB,Cloud,Productivity Suite,EMEA,partner,255.0808,0.5566,0.0,141.9779,72.4088
+2025-08-15,T00571,C031,Tundra Robotics,SMB,Cloud,Productivity Suite,APAC,direct,262.5116,0.5566,0.0,146.114,74.5181
+2025-08-15,T00572,C032,Umber Logistics,SMB,Cloud,Productivity Suite,Americas,direct,287.2357,0.5566,0.0,159.8754,81.5365
+2025-08-15,T00573,C033,Vertex Mobility,SMB,Cloud,Productivity Suite,Americas,partner,177.3828,0.5566,0.0,98.7313,50.3529
+2025-08-15,T00574,C034,Willow Bank,SMB,Cloud,Productivity Suite,EMEA,direct,188.8325,0.5566,0.0,105.1042,53.6031
+2025-08-15,T00575,C035,Xenon Labs,SMB,Cloud,Productivity Suite,APAC,direct,213.9904,0.5566,0.0,119.1071,60.7446
+2025-08-15,T00576,C036,Yield Energy,SMB,Cloud,Productivity Suite,Americas,partner,145.3569,0.5566,0.0,80.9057,41.2619
+2025-08-15,T00577,C037,Zephyr Health,SMB,Cloud,Productivity Suite,Americas,direct,133.4721,0.5566,0.0,74.2906,37.8882
+2025-08-15,T00578,C038,Northwind Foods,SMB,Cloud,Productivity Suite,EMEA,direct,215.4826,0.5566,0.0,119.9376,61.1682
+2025-08-15,T00579,C039,Bluepeak Retail,SMB,Cloud,Productivity Suite,APAC,partner,153.5275,0.5566,0.0,85.4534,43.5812
+2025-08-15,T00580,C040,Atlas Systems,SMB,Cloud,Productivity Suite,Americas,direct,253.2595,0.5566,0.0,140.9642,71.8917
+2025-08-15,T00581,C041,Ridgeline Media,SMB,Cloud,Productivity Suite,Americas,direct,205.9453,0.5566,0.0,114.6291,58.4609
+2025-08-15,T00582,C042,Solent Group,SMB,Cloud,Productivity Suite,EMEA,partner,271.3251,0.5566,0.0,151.0196,77.02
+2025-08-15,T00583,C043,Kestrel Robotics,SMB,Cloud,Productivity Suite,APAC,direct,257.3191,0.5566,0.0,143.2238,73.0441
+2025-08-15,T00584,C044,Marrow Logistics,SMB,Cloud,Productivity Suite,Americas,direct,173.9848,0.5566,0.0,96.8399,49.3884
+2025-08-15,T00585,C045,Quill Mobility,SMB,Cloud,Productivity Suite,Americas,partner,271.2842,0.5566,0.0,150.9968,77.0084
+2025-08-15,T00586,C046,Harbor Bank,SMB,Cloud,Productivity Suite,EMEA,direct,268.6099,0.5566,0.0,149.5083,76.2492
+2025-08-15,T00587,C047,Vector Labs,SMB,Cloud,Productivity Suite,APAC,direct,193.2291,0.5566,0.0,107.5513,54.8512
+2025-08-15,T00588,C048,Lumen Energy,SMB,Cloud,Productivity Suite,Americas,partner,168.0141,0.5566,0.0,93.5166,47.6935
+2025-08-15,T00589,C049,Praxis Health,SMB,Cloud,Productivity Suite,Americas,direct,255.0064,0.5566,0.0,141.9366,72.3876
+2025-08-15,T00590,C050,Onyx Foods,SMB,Cloud,Productivity Suite,EMEA,direct,135.3421,0.5566,0.0,75.3314,38.419
+2025-08-15,T00591,C051,Cinder Retail,SMB,Cloud,Productivity Suite,APAC,partner,147.5806,0.5566,0.0,82.1433,41.8931
+2025-08-15,T00592,C052,Fable Systems,SMB,Cloud,Productivity Suite,Americas,direct,112.5675,0.5566,0.0,62.6551,31.9541
+2025-08-15,T00593,C053,Granite Media,Advertiser,Search Ads,Brand ads,APAC,direct,6636.5841,0.3837,0.0,2546.5962,891.3087
+2025-08-15,T00594,C054,Iris Group,Advertiser,Search Ads,Brand ads,Americas,partner,6004.3589,0.3837,0.0,2303.9982,806.3994
+2025-08-15,T00595,C055,Juniper Robotics,Advertiser,Search Ads,Brand ads,EMEA,direct,5979.3622,0.3837,0.0,2294.4064,803.0422
+2025-08-15,T00596,C056,Krill Logistics,Advertiser,Search Ads,Brand ads,APAC,direct,6130.6873,0.3837,0.0,2352.473,823.3656
+2025-08-15,T00597,C057,Lattice Mobility,Advertiser,Search Ads,Brand ads,Americas,partner,4715.8428,0.3837,0.0,1809.5676,633.3487
+2025-08-15,T00598,C058,Mosaic Bank,Advertiser,Search Ads,Brand ads,EMEA,direct,5386.6595,0.3837,0.0,2066.974,723.4409
+2025-08-15,T00599,C059,Nimbus Labs,Advertiser,Search Ads,Brand ads,APAC,direct,3524.1479,0.3837,0.0,1352.2893,473.3013
+2025-08-15,T00600,C060,Opal Energy,Advertiser,Search Ads,Brand ads,Americas,partner,3412.1602,0.3837,0.0,1309.3173,458.261
+2025-08-15,T00601,C061,Pylon Health,Advertiser,Search Ads,Brand ads,EMEA,direct,5876.9289,0.3837,0.0,2255.1006,789.2852
+2025-08-15,T00602,C062,Quartz Foods,Advertiser,Search Ads,Brand ads,APAC,direct,4785.7606,0.3837,0.0,1836.3965,642.7388
+2025-08-15,T00603,C063,Rune Retail,Advertiser,Search Ads,Performance ads,Americas,partner,5163.866,0.3837,0.0,1981.4835,693.5192
+2025-08-15,T00604,C064,Sable Systems,Advertiser,Search Ads,Performance ads,EMEA,direct,6220.8539,0.3837,0.0,2387.0719,835.4751
+2025-08-15,T00605,C065,Tundra Media,Advertiser,Search Ads,Performance ads,APAC,direct,5840.018,0.3837,0.0,2240.9372,784.328
+2025-08-15,T00606,C066,Umber Group,Advertiser,Search Ads,Performance ads,Americas,partner,5526.0704,0.3837,0.0,2120.4689,742.1641
+2025-08-15,T00607,C067,Vertex Robotics,Advertiser,Search Ads,Performance ads,EMEA,direct,5428.9673,0.3837,0.0,2083.2084,729.1229
+2025-08-15,T00608,C068,Willow Logistics,Advertiser,Search Ads,Performance ads,APAC,direct,4074.2525,0.3837,0.0,1563.3759,547.1816
+2025-08-15,T00609,C069,Xenon Mobility,Advertiser,Search Ads,Performance ads,Americas,partner,2790.6168,0.3837,0.0,1070.8181,374.7863
+2025-08-15,T00610,C070,Yield Bank,Advertiser,Search Ads,Performance ads,EMEA,direct,4675.5031,0.3837,0.0,1794.0884,627.9309
+2025-08-15,T00611,C071,Zephyr Labs,Advertiser,Search Ads,Performance ads,APAC,direct,3817.3981,0.3837,0.0,1464.8156,512.6854
+2025-08-15,T00612,C072,Northwind Energy,Advertiser,Search Ads,Performance ads,Americas,partner,4831.6882,0.3837,0.0,1854.0199,648.907
+2025-08-15,T00613,C073,Bluepeak Health,Advertiser,Search Ads,Performance ads,EMEA,direct,6870.7724,0.3837,0.0,2636.4592,922.7607
+2025-08-15,T00614,C074,Atlas Foods,Advertiser,Search Ads,Performance ads,APAC,direct,3797.9914,0.3837,0.0,1457.3688,510.0791
+2025-08-15,T00615,C075,Ridgeline Retail,Advertiser,Search Ads,Performance ads,Americas,partner,2916.7374,0.3837,0.0,1119.2132,391.7246
+2025-08-15,T00616,C076,Solent Systems,Advertiser,Search Ads,Performance ads,EMEA,direct,3939.9973,0.3837,0.0,1511.8594,529.1508
+2025-08-15,T00617,C077,Kestrel Media,Advertiser,Search Ads,Performance ads,APAC,direct,4143.1991,0.3837,0.0,1589.8322,556.4413
+2025-08-15,T00618,C078,Marrow Group,Advertiser,Search Ads,Performance ads,Americas,partner,6027.8412,0.3837,0.0,2313.0088,809.5531
+2025-08-15,T00619,C079,Quill Robotics,Advertiser,Search Ads,Performance ads,EMEA,direct,5509.6641,0.3837,0.0,2114.1734,739.9607
+2025-08-15,T00620,C080,Harbor Logistics,Advertiser,Search Ads,Performance ads,APAC,direct,6373.7898,0.3837,0.0,2445.7566,856.0148
+2025-08-15,T00621,C081,Vector Mobility,Advertiser,Search Ads,Performance ads,Americas,partner,5628.3607,0.3837,0.0,2159.7198,755.9019
+2025-08-15,T00622,C082,Lumen Bank,Advertiser,Search Ads,Performance ads,EMEA,direct,4469.9199,0.3837,0.0,1715.2018,600.3206
+2025-08-15,T00623,S01,Premium tier,Consumer,Subscriptions,Premium tier,APAC,direct,43740.0,0.251,0.0,10980.0,4611.6
+2025-08-15,T00624,S02,Family tier,Consumer,Subscriptions,Family tier,Americas,partner,29160.0,0.251,0.0,7320.0,3074.4
+2025-08-15,T00625,S03,Student tier,Consumer,Subscriptions,Student tier,EMEA,direct,9720.0,0.251,0.0,2440.0,1024.8
+2025-08-15,T00626,S04,Enterprise seats,Consumer,Subscriptions,Enterprise seats,APAC,direct,14580.0,0.251,0.0,3660.0,1537.2
+2025-08-15,T00627,D01,Retail channel,Channel,Devices & Network,Hardware,Americas,partner,31485.7143,0.42,0.0,13224.0,10314.72
+2025-08-15,T00628,D02,Carrier channel,Channel,Devices & Network,Hardware,EMEA,direct,24857.1429,0.42,0.0,10440.0,8143.2
+2025-08-15,T00629,D03,Online store,Channel,Devices & Network,Hardware,APAC,direct,18228.5714,0.42,0.0,7656.0,5971.68
+2025-08-15,T00630,D04,Wholesale,Channel,Devices & Network,Hardware,Americas,partner,8285.7143,0.42,0.0,3480.0,2714.4
+2025-11-15,T00631,C001,Helios Dynamics,Enterprise,Cloud,AI Infrastructure,APAC,direct,1285.8396,2.0787,106.915,2565.9599,1359.9587
+2025-11-15,T00632,C002,VantaCore AI,Enterprise,Cloud,AI Infrastructure,Americas,direct,1030.6348,2.0787,85.6952,2056.6854,1090.0433
+2025-11-15,T00633,C003,Corex Systems,Enterprise,Cloud,AI Infrastructure,Americas,partner,785.2456,2.0787,65.2916,1566.9984,830.5092
+2025-11-15,T00634,C004,Northwind Systems,Enterprise,Cloud,AI Infrastructure,EMEA,direct,209.3725,2.0787,17.4089,417.8137,221.4413
+2025-11-15,T00635,C005,Bluepeak Media,Enterprise,Cloud,AI Infrastructure,APAC,direct,200.0733,2.0787,16.6357,399.2567,211.606
+2025-11-15,T00636,C006,Atlas Group,Enterprise,Cloud,AI Infrastructure,Americas,partner,213.2707,2.0787,17.733,425.5928,225.5642
+2025-11-15,T00637,C007,Ridgeline Robotics,Enterprise,Cloud,AI Infrastructure,Americas,direct,210.2882,2.0787,17.485,419.6411,222.4098
+2025-11-15,T00638,C008,Solent Logistics,Enterprise,Cloud,AI Infrastructure,EMEA,direct,210.6425,2.0787,17.5145,420.3481,222.7845
+2025-11-15,T00639,C009,Kestrel Mobility,Enterprise,Cloud,Data Platform,APAC,partner,185.7648,2.0787,15.446,370.7034,196.4728
+2025-11-15,T00640,C010,Marrow Bank,Enterprise,Cloud,Data Platform,Americas,direct,190.465,2.0787,15.8368,380.0828,201.4439
+2025-11-15,T00641,C011,Quill Labs,Enterprise,Cloud,Data Platform,Americas,direct,189.3317,2.0787,15.7426,377.8213,200.2453
+2025-11-15,T00642,C012,Harbor Energy,Enterprise,Cloud,Data Platform,EMEA,partner,196.8561,2.0787,16.3682,392.8365,208.2034
+2025-11-15,T00643,C013,Vector Health,Mid-market,Cloud,AI Infrastructure,APAC,direct,242.5371,1.4703,7.132,349.4703,185.2193
+2025-11-15,T00644,C014,Lumen Foods,Mid-market,Cloud,AI Infrastructure,Americas,direct,264.2383,1.4703,7.7702,380.7394,201.7919
+2025-11-15,T00645,C015,Praxis Retail,Mid-market,Cloud,AI Infrastructure,Americas,partner,213.4737,1.4703,6.2774,307.593,163.0243
+2025-11-15,T00646,C016,Onyx Systems,Mid-market,Cloud,AI Infrastructure,EMEA,direct,163.087,1.4703,4.7957,234.9911,124.5453
+2025-11-15,T00647,C017,Cinder Media,Mid-market,Cloud,Data Platform,APAC,direct,178.2402,1.4703,5.2413,256.8252,136.1173
+2025-11-15,T00648,C018,Fable Group,Mid-market,Cloud,Data Platform,Americas,partner,95.6018,1.4703,2.8113,137.752,73.0086
+2025-11-15,T00649,C019,Granite Robotics,Mid-market,Cloud,Data Platform,Americas,direct,203.8472,1.4703,5.9943,293.7222,155.6728
+2025-11-15,T00650,C020,Iris Logistics,Mid-market,Cloud,Data Platform,EMEA,direct,185.5249,1.4703,5.4555,267.3217,141.6805
+2025-11-15,T00651,C021,Juniper Mobility,Mid-market,Cloud,Data Platform,APAC,partner,196.3937,1.4703,5.7752,282.9825,149.9807
+2025-11-15,T00652,C022,Krill Bank,Mid-market,Cloud,Data Platform,Americas,direct,149.591,1.4703,4.3989,215.5447,114.2387
+2025-11-15,T00653,C023,Lattice Labs,Mid-market,Cloud,Data Platform,Americas,direct,226.6925,1.4703,6.6661,326.6398,173.1191
+2025-11-15,T00654,C024,Mosaic Energy,Mid-market,Cloud,Data Platform,EMEA,partner,212.9129,1.4703,6.2609,306.7849,162.596
+2025-11-15,T00655,C025,Nimbus Health,Mid-market,Cloud,Data Platform,APAC,direct,198.3822,1.4703,5.8336,285.8477,151.4993
+2025-11-15,T00656,C026,Opal Foods,Mid-market,Cloud,Data Platform,Americas,direct,119.159,1.4703,3.504,171.6955,90.9986
+2025-11-15,T00657,C027,Pylon Retail,Mid-market,Cloud,Data Platform,Americas,partner,167.5581,1.4703,4.9272,241.4335,127.9598
+2025-11-15,T00658,C028,Quartz Systems,Mid-market,Cloud,Data Platform,EMEA,direct,92.3485,1.4703,2.7156,133.0644,70.5241
+2025-11-15,T00659,C029,Rune Media,SMB,Cloud,Productivity Suite,APAC,direct,168.1918,0.5577,0.0,93.8005,49.7143
+2025-11-15,T00660,C030,Sable Group,SMB,Cloud,Productivity Suite,Americas,partner,286.2755,0.5577,0.0,159.6559,84.6176
+2025-11-15,T00661,C031,Tundra Robotics,SMB,Cloud,Productivity Suite,Americas,direct,294.2916,0.5577,0.0,164.1264,86.987
+2025-11-15,T00662,C032,Umber Logistics,SMB,Cloud,Productivity Suite,EMEA,direct,340.9023,0.5577,0.0,190.1212,100.7642
+2025-11-15,T00663,C033,Vertex Mobility,SMB,Cloud,Productivity Suite,APAC,partner,217.6924,0.5577,0.0,121.407,64.3457
+2025-11-15,T00664,C034,Willow Bank,SMB,Cloud,Productivity Suite,Americas,direct,229.8251,0.5577,0.0,128.1735,67.9319
+2025-11-15,T00665,C035,Xenon Labs,SMB,Cloud,Productivity Suite,Americas,direct,253.2694,0.5577,0.0,141.2484,74.8616
+2025-11-15,T00666,C036,Yield Energy,SMB,Cloud,Productivity Suite,EMEA,partner,178.2006,0.5577,0.0,99.3825,52.6727
+2025-11-15,T00667,C037,Zephyr Health,SMB,Cloud,Productivity Suite,APAC,direct,161.4479,0.5577,0.0,90.0395,47.7209
+2025-11-15,T00668,C038,Northwind Foods,SMB,Cloud,Productivity Suite,Americas,direct,254.5356,0.5577,0.0,141.9545,75.2359
+2025-11-15,T00669,C039,Bluepeak Retail,SMB,Cloud,Productivity Suite,Americas,partner,189.0847,0.5577,0.0,105.4526,55.8899
+2025-11-15,T00670,C040,Atlas Systems,SMB,Cloud,Productivity Suite,EMEA,direct,284.6183,0.5577,0.0,158.7316,84.1278
+2025-11-15,T00671,C041,Ridgeline Media,SMB,Cloud,Productivity Suite,APAC,direct,246.2177,0.5577,0.0,137.3156,72.7773
+2025-11-15,T00672,C042,Solent Group,SMB,Cloud,Productivity Suite,Americas,partner,308.3372,0.5577,0.0,171.9597,91.1386
+2025-11-15,T00673,C043,Kestrel Robotics,SMB,Cloud,Productivity Suite,Americas,direct,288.4435,0.5577,0.0,160.8649,85.2584
+2025-11-15,T00674,C044,Marrow Logistics,SMB,Cloud,Productivity Suite,EMEA,direct,213.8992,0.5577,0.0,119.2916,63.2245
+2025-11-15,T00675,C045,Quill Mobility,SMB,Cloud,Productivity Suite,APAC,partner,308.259,0.5577,0.0,171.916,91.1155
+2025-11-15,T00676,C046,Harbor Bank,SMB,Cloud,Productivity Suite,Americas,direct,303.3857,0.5577,0.0,169.1982,89.6751
+2025-11-15,T00677,C047,Vector Labs,SMB,Cloud,Productivity Suite,Americas,direct,234.2285,0.5577,0.0,130.6293,69.2335
+2025-11-15,T00678,C048,Lumen Energy,SMB,Cloud,Productivity Suite,EMEA,partner,207.0122,0.5577,0.0,115.4507,61.1889
+2025-11-15,T00679,C049,Praxis Health,SMB,Cloud,Productivity Suite,APAC,direct,286.2062,0.5577,0.0,159.6172,84.5971
+2025-11-15,T00680,C050,Onyx Foods,SMB,Cloud,Productivity Suite,Americas,direct,164.1473,0.5577,0.0,91.545,48.5188
+2025-11-15,T00681,C051,Cinder Retail,SMB,Cloud,Productivity Suite,Americas,partner,181.2172,0.5577,0.0,101.0648,53.5644
+2025-11-15,T00682,C052,Fable Systems,SMB,Cloud,Productivity Suite,EMEA,direct,130.7251,0.5577,0.0,72.9054,38.6399
+2025-11-15,T00683,C053,Granite Media,Advertiser,Search Ads,Brand ads,APAC,direct,7239.8517,0.4042,0.0,2926.6552,1024.3293
+2025-11-15,T00684,C054,Iris Group,Advertiser,Search Ads,Brand ads,Americas,partner,6372.0356,0.4042,0.0,2575.8471,901.5465
+2025-11-15,T00685,C055,Juniper Robotics,Advertiser,Search Ads,Brand ads,EMEA,direct,6372.5876,0.4042,0.0,2576.0703,901.6246
+2025-11-15,T00686,C056,Krill Logistics,Advertiser,Search Ads,Brand ads,APAC,direct,6761.7004,0.4042,0.0,2733.3662,956.6782
+2025-11-15,T00687,C057,Lattice Mobility,Advertiser,Search Ads,Brand ads,Americas,partner,5366.7597,0.4042,0.0,2169.472,759.3152
+2025-11-15,T00688,C058,Mosaic Bank,Advertiser,Search Ads,Brand ads,EMEA,direct,6122.2277,0.4042,0.0,2474.8642,866.2025
+2025-11-15,T00689,C059,Nimbus Labs,Advertiser,Search Ads,Brand ads,APAC,direct,3884.8211,0.4042,0.0,1570.4095,549.6433
+2025-11-15,T00690,C060,Opal Energy,Advertiser,Search Ads,Brand ads,Americas,partner,3640.5187,0.4042,0.0,1471.6521,515.0782
+2025-11-15,T00691,C061,Pylon Health,Advertiser,Search Ads,Brand ads,EMEA,direct,6232.0266,0.4042,0.0,2519.2496,881.7373
+2025-11-15,T00692,C062,Quartz Foods,Advertiser,Search Ads,Brand ads,APAC,direct,5219.6222,0.4042,0.0,2109.9927,738.4975
+2025-11-15,T00693,C063,Rune Retail,Advertiser,Search Ads,Performance ads,Americas,partner,5839.5746,0.4042,0.0,2360.6038,826.2113
+2025-11-15,T00694,C064,Sable Systems,Advertiser,Search Ads,Performance ads,EMEA,direct,7099.5063,0.4042,0.0,2869.9216,1004.4726
+2025-11-15,T00695,C065,Tundra Media,Advertiser,Search Ads,Performance ads,APAC,direct,6504.0875,0.4042,0.0,2629.2281,920.2298
+2025-11-15,T00696,C066,Umber Group,Advertiser,Search Ads,Performance ads,Americas,partner,5940.9134,0.4042,0.0,2401.5692,840.5492
+2025-11-15,T00697,C067,Vertex Robotics,Advertiser,Search Ads,Performance ads,EMEA,direct,5745.3184,0.4042,0.0,2322.5014,812.8755
+2025-11-15,T00698,C068,Willow Logistics,Advertiser,Search Ads,Performance ads,APAC,direct,4397.3421,0.4042,0.0,1777.5922,622.1573
+2025-11-15,T00699,C069,Xenon Mobility,Advertiser,Search Ads,Performance ads,Americas,partner,3128.3944,0.4042,0.0,1264.6297,442.6204
+2025-11-15,T00700,C070,Yield Bank,Advertiser,Search Ads,Performance ads,EMEA,direct,5342.4586,0.4042,0.0,2159.6484,755.877
+2025-11-15,T00701,C071,Zephyr Labs,Advertiser,Search Ads,Performance ads,APAC,direct,4291.3749,0.4042,0.0,1734.7558,607.1645
+2025-11-15,T00702,C072,Northwind Energy,Advertiser,Search Ads,Performance ads,Americas,partner,5242.7276,0.4042,0.0,2119.3329,741.7665
+2025-11-15,T00703,C073,Bluepeak Health,Advertiser,Search Ads,Performance ads,EMEA,direct,7278.721,0.4042,0.0,2942.3678,1029.8287
+2025-11-15,T00704,C074,Atlas Foods,Advertiser,Search Ads,Performance ads,APAC,direct,4063.0837,0.4042,0.0,1642.4708,574.8648
+2025-11-15,T00705,C075,Ridgeline Retail,Advertiser,Search Ads,Performance ads,Americas,partner,3235.9816,0.4042,0.0,1308.121,457.8424
+2025-11-15,T00706,C076,Solent Systems,Advertiser,Search Ads,Performance ads,EMEA,direct,4493.765,0.4042,0.0,1816.5704,635.7997
+2025-11-15,T00707,C077,Kestrel Media,Advertiser,Search Ads,Performance ads,APAC,direct,4693.7599,0.4042,0.0,1897.4169,664.0959
+2025-11-15,T00708,C078,Marrow Group,Advertiser,Search Ads,Performance ads,Americas,partner,6607.8455,0.4042,0.0,2671.1715,934.91
+2025-11-15,T00709,C079,Quill Robotics,Advertiser,Search Ads,Performance ads,EMEA,direct,5859.8781,0.4042,0.0,2368.8113,829.084
+2025-11-15,T00710,C080,Harbor Logistics,Advertiser,Search Ads,Performance ads,APAC,direct,6774.556,0.4042,0.0,2738.563,958.497
+2025-11-15,T00711,C081,Vector Mobility,Advertiser,Search Ads,Performance ads,Americas,partner,6175.0309,0.4042,0.0,2496.2095,873.6733
+2025-11-15,T00712,C082,Lumen Bank,Advertiser,Search Ads,Performance ads,EMEA,direct,5073.529,0.4042,0.0,2050.9357,717.8275
+2025-11-15,T00713,S01,Premium tier,Consumer,Subscriptions,Premium tier,APAC,direct,44460.0,0.2551,0.0,11340.0,4762.8
+2025-11-15,T00714,S02,Family tier,Consumer,Subscriptions,Family tier,Americas,partner,29640.0,0.2551,0.0,7560.0,3175.2
+2025-11-15,T00715,S03,Student tier,Consumer,Subscriptions,Student tier,EMEA,direct,9880.0,0.2551,0.0,2520.0,1058.4
+2025-11-15,T00716,S04,Enterprise seats,Consumer,Subscriptions,Enterprise seats,APAC,direct,14820.0,0.2551,0.0,3780.0,1587.6
+2025-11-15,T00717,D01,Retail channel,Channel,Devices & Network,Hardware,Americas,partner,36280.9524,0.42,0.0,15238.0,11885.64
+2025-11-15,T00718,D02,Carrier channel,Channel,Devices & Network,Hardware,EMEA,direct,28642.8571,0.42,0.0,12030.0,9383.4
+2025-11-15,T00719,D03,Online store,Channel,Devices & Network,Hardware,APAC,direct,21004.7619,0.42,0.0,8822.0,6881.16
+2025-11-15,T00720,D04,Wholesale,Channel,Devices & Network,Hardware,Americas,partner,9547.619,0.42,0.0,4010.0,3127.8
+2026-02-15,T00721,C001,Helios Dynamics,Enterprise,Cloud,AI Infrastructure,Americas,direct,919.6657,2.2878,84.1605,2019.8508,1090.7194
+2026-02-15,T00722,C002,VantaCore AI,Enterprise,Cloud,AI Infrastructure,EMEA,direct,735.0359,2.2878,67.2646,1614.3504,871.7492
+2026-02-15,T00723,C003,Corex Systems,Enterprise,Cloud,AI Infrastructure,APAC,partner,560.8568,2.2878,51.3251,1231.803,665.1736
+2026-02-15,T00724,C004,Northwind Systems,Enterprise,Cloud,AI Infrastructure,Americas,direct,149.9558,2.2878,13.7228,329.3462,177.8469
+2026-02-15,T00725,C005,Bluepeak Media,Enterprise,Cloud,AI Infrastructure,Americas,direct,145.1959,2.2878,13.2872,318.892,172.2017
+2026-02-15,T00726,C006,Atlas Group,Enterprise,Cloud,AI Infrastructure,EMEA,partner,151.9776,2.2878,13.9078,333.7865,180.2447
+2026-02-15,T00727,C007,Ridgeline Robotics,Enterprise,Cloud,AI Infrastructure,APAC,direct,150.4273,2.2878,13.7659,330.3817,178.4061
+2026-02-15,T00728,C008,Solent Logistics,Enterprise,Cloud,AI Infrastructure,Americas,direct,150.6102,2.2878,13.7826,330.7834,178.623
+2026-02-15,T00729,C009,Kestrel Mobility,Enterprise,Cloud,Data Platform,Americas,partner,140.1744,2.0828,11.6782,280.277,151.3496
+2026-02-15,T00730,C010,Marrow Bank,Enterprise,Cloud,Data Platform,EMEA,direct,142.6765,2.0828,11.8867,285.28,154.0512
+2026-02-15,T00731,C011,Quill Labs,Enterprise,Cloud,Data Platform,APAC,direct,142.0742,2.0828,11.8365,284.0757,153.4009
+2026-02-15,T00732,C012,Harbor Energy,Enterprise,Cloud,Data Platform,Americas,partner,146.0991,2.0828,12.1718,292.1234,157.7467
+2026-02-15,T00733,C013,Vector Health,Mid-market,Cloud,AI Infrastructure,Americas,direct,178.8913,1.6182,5.7896,283.6923,153.1938
+2026-02-15,T00734,C014,Lumen Foods,Mid-market,Cloud,AI Infrastructure,EMEA,direct,205.301,1.6182,6.6444,325.5738,175.8098
+2026-02-15,T00735,C015,Praxis Retail,Mid-market,Cloud,AI Infrastructure,APAC,partner,159.7291,1.6182,5.1695,253.3041,136.7842
+2026-02-15,T00736,C016,Onyx Systems,Mid-market,Cloud,AI Infrastructure,Americas,direct,130.0355,1.6182,4.2085,206.215,111.3561
+2026-02-15,T00737,C017,Cinder Media,Mid-market,Cloud,Data Platform,Americas,direct,124.6144,1.4732,3.6716,179.9104,97.1516
+2026-02-15,T00738,C018,Fable Group,Mid-market,Cloud,Data Platform,EMEA,partner,73.2723,1.4732,2.1589,105.7859,57.1244
+2026-02-15,T00739,C019,Granite Robotics,Mid-market,Cloud,Data Platform,APAC,direct,151.0249,1.4732,4.4498,218.0402,117.7417
+2026-02-15,T00740,C020,Iris Logistics,Mid-market,Cloud,Data Platform,Americas,direct,130.0474,1.4732,3.8317,187.7542,101.3873
+2026-02-15,T00741,C021,Juniper Mobility,Mid-market,Cloud,Data Platform,Americas,partner,142.0345,1.4732,4.1849,205.0603,110.7325
+2026-02-15,T00742,C022,Krill Bank,Mid-market,Cloud,Data Platform,EMEA,direct,109.4278,1.4732,3.2242,157.9849,85.3118
+2026-02-15,T00743,C023,Lattice Labs,Mid-market,Cloud,Data Platform,APAC,direct,173.9314,1.4732,5.1247,251.111,135.5999
+2026-02-15,T00744,C024,Mosaic Energy,Mid-market,Cloud,Data Platform,Americas,partner,160.9734,1.4732,4.7429,232.4031,125.4977
+2026-02-15,T00745,C025,Nimbus Health,Mid-market,Cloud,Data Platform,Americas,direct,144.4738,1.4732,4.2568,208.582,112.6343
+2026-02-15,T00746,C026,Opal Foods,Mid-market,Cloud,Data Platform,EMEA,direct,91.0282,1.4732,2.6821,131.4207,70.9672
+2026-02-15,T00747,C027,Pylon Retail,Mid-market,Cloud,Data Platform,APAC,partner,118.6733,1.4732,3.4966,171.3329,92.5198
+2026-02-15,T00748,C028,Quartz Systems,Mid-market,Cloud,Data Platform,Americas,direct,70.5679,1.4732,2.0792,101.8814,55.0159
+2026-02-15,T00749,C029,Rune Media,SMB,Cloud,Productivity Suite,Americas,direct,133.7679,0.5588,0.0,74.7495,40.3647
+2026-02-15,T00750,C030,Sable Group,SMB,Cloud,Productivity Suite,EMEA,partner,209.7955,0.5588,0.0,117.2338,63.3062
+2026-02-15,T00751,C031,Tundra Robotics,SMB,Cloud,Productivity Suite,APAC,direct,219.484,0.5588,0.0,122.6476,66.2297
+2026-02-15,T00752,C032,Umber Logistics,SMB,Cloud,Productivity Suite,Americas,direct,270.828,0.5588,0.0,151.3387,81.7229
+2026-02-15,T00753,C033,Vertex Mobility,SMB,Cloud,Productivity Suite,Americas,partner,166.4696,0.5588,0.0,93.0232,50.2325
+2026-02-15,T00754,C034,Willow Bank,SMB,Cloud,Productivity Suite,EMEA,direct,173.2524,0.5588,0.0,96.8135,52.2793
+2026-02-15,T00755,C035,Xenon Labs,SMB,Cloud,Productivity Suite,APAC,direct,185.6804,0.5588,0.0,103.7582,56.0294
+2026-02-15,T00756,C036,Yield Energy,SMB,Cloud,Productivity Suite,Americas,partner,141.1226,0.5588,0.0,78.8593,42.584
+2026-02-15,T00757,C037,Zephyr Health,SMB,Cloud,Productivity Suite,Americas,direct,128.5826,0.5588,0.0,71.852,38.8001
+2026-02-15,T00758,C038,Northwind Foods,SMB,Cloud,Productivity Suite,EMEA,direct,186.3583,0.5588,0.0,104.137,56.234
+2026-02-15,T00759,C039,Bluepeak Retail,SMB,Cloud,Productivity Suite,APAC,partner,148.6713,0.5588,0.0,83.0775,44.8619
+2026-02-15,T00760,C040,Atlas Systems,SMB,Cloud,Productivity Suite,Americas,direct,207.9717,0.5588,0.0,116.2146,62.7559
+2026-02-15,T00761,C041,Ridgeline Media,SMB,Cloud,Productivity Suite,Americas,direct,181.9588,0.5588,0.0,101.6786,54.9064
+2026-02-15,T00762,C042,Solent Group,SMB,Cloud,Productivity Suite,EMEA,partner,237.0223,0.5588,0.0,132.4481,71.5219
+2026-02-15,T00763,C043,Kestrel Robotics,SMB,Cloud,Productivity Suite,APAC,direct,212.2947,0.5588,0.0,118.6303,64.0604
+2026-02-15,T00764,C044,Marrow Logistics,SMB,Cloud,Productivity Suite,Americas,direct,164.2652,0.5588,0.0,91.7914,49.5673
+2026-02-15,T00765,C045,Quill Mobility,SMB,Cloud,Productivity Suite,Americas,partner,236.9286,0.5588,0.0,132.3957,71.4937
+2026-02-15,T00766,C046,Harbor Bank,SMB,Cloud,Productivity Suite,EMEA,direct,230.9759,0.5588,0.0,129.0693,69.6974
+2026-02-15,T00767,C047,Vector Labs,SMB,Cloud,Productivity Suite,APAC,direct,175.6284,0.5588,0.0,98.1412,52.9962
+2026-02-15,T00768,C048,Lumen Energy,SMB,Cloud,Productivity Suite,Americas,partner,160.1481,0.5588,0.0,89.4907,48.325
+2026-02-15,T00769,C049,Praxis Health,SMB,Cloud,Productivity Suite,Americas,direct,209.7176,0.5588,0.0,117.1902,63.2827
+2026-02-15,T00770,C050,Onyx Foods,SMB,Cloud,Productivity Suite,EMEA,direct,130.6806,0.5588,0.0,73.0243,39.4331
+2026-02-15,T00771,C051,Cinder Retail,SMB,Cloud,Productivity Suite,APAC,partner,143.2608,0.5588,0.0,80.0541,43.2292
+2026-02-15,T00772,C052,Fable Systems,SMB,Cloud,Productivity Suite,Americas,direct,102.6829,0.5588,0.0,57.3792,30.9848
+2026-02-15,T00773,C053,Granite Media,Advertiser,Search Ads,Brand ads,APAC,direct,6444.2761,0.3926,0.0,2529.9719,885.4902
+2026-02-15,T00774,C054,Iris Group,Advertiser,Search Ads,Brand ads,Americas,partner,5696.0274,0.3926,0.0,2236.2154,782.6754
+2026-02-15,T00775,C055,Juniper Robotics,Advertiser,Search Ads,Brand ads,EMEA,direct,5895.1586,0.3926,0.0,2314.3927,810.0375
+2026-02-15,T00776,C056,Krill Logistics,Advertiser,Search Ads,Brand ads,APAC,direct,6454.1889,0.3926,0.0,2533.8636,886.8523
+2026-02-15,T00777,C057,Lattice Mobility,Advertiser,Search Ads,Brand ads,Americas,partner,5116.0529,0.3926,0.0,2008.522,702.9827
+2026-02-15,T00778,C058,Mosaic Bank,Advertiser,Search Ads,Brand ads,EMEA,direct,5660.5587,0.3926,0.0,2222.2906,777.8017
+2026-02-15,T00779,C059,Nimbus Labs,Advertiser,Search Ads,Brand ads,APAC,direct,3476.4645,0.3926,0.0,1364.8325,477.6914
+2026-02-15,T00780,C060,Opal Energy,Advertiser,Search Ads,Brand ads,Americas,partner,3237.9866,0.3926,0.0,1271.208,444.9228
+2026-02-15,T00781,C061,Pylon Health,Advertiser,Search Ads,Brand ads,EMEA,direct,5700.9905,0.3926,0.0,2238.1639,783.3574
+2026-02-15,T00782,C062,Quartz Foods,Advertiser,Search Ads,Brand ads,APAC,direct,4950.8326,0.3926,0.0,1943.6578,680.2802
+2026-02-15,T00783,C063,Rune Retail,Advertiser,Search Ads,Performance ads,Americas,partner,5589.7486,0.3926,0.0,2194.4912,768.0719
+2026-02-15,T00784,C064,Sable Systems,Advertiser,Search Ads,Performance ads,EMEA,direct,6631.8279,0.3926,0.0,2603.6033,911.2612
+2026-02-15,T00785,C065,Tundra Media,Advertiser,Search Ads,Performance ads,APAC,direct,5864.8391,0.3926,0.0,2302.4895,805.8713
+2026-02-15,T00786,C066,Umber Group,Advertiser,Search Ads,Performance ads,Americas,partner,5273.3065,0.3926,0.0,2070.2585,724.5905
+2026-02-15,T00787,C067,Vertex Robotics,Advertiser,Search Ads,Performance ads,EMEA,direct,5201.0297,0.3926,0.0,2041.8832,714.6591
+2026-02-15,T00788,C068,Willow Logistics,Advertiser,Search Ads,Performance ads,APAC,direct,4134.7044,0.3926,0.0,1623.2523,568.1383
+2026-02-15,T00789,C069,Xenon Mobility,Advertiser,Search Ads,Performance ads,Americas,partner,2998.2458,0.3926,0.0,1177.0876,411.9807
+2026-02-15,T00790,C070,Yield Bank,Advertiser,Search Ads,Performance ads,EMEA,direct,5037.3612,0.3926,0.0,1977.6282,692.1699
+2026-02-15,T00791,C071,Zephyr Labs,Advertiser,Search Ads,Performance ads,APAC,direct,3905.6001,0.3926,0.0,1533.3077,536.6577
+2026-02-15,T00792,C072,Northwind Energy,Advertiser,Search Ads,Performance ads,Americas,partner,4658.4316,0.3926,0.0,1828.8635,640.1022
+2026-02-15,T00793,C073,Bluepeak Health,Advertiser,Search Ads,Performance ads,EMEA,direct,6531.1519,0.3926,0.0,2564.0787,897.4275
+2026-02-15,T00794,C074,Atlas Foods,Advertiser,Search Ads,Performance ads,APAC,direct,3780.9192,0.3926,0.0,1484.359,519.5257
+2026-02-15,T00795,C075,Ridgeline Retail,Advertiser,Search Ads,Performance ads,Americas,partner,3095.661,0.3926,0.0,1215.3321,425.3662
+2026-02-15,T00796,C076,Solent Systems,Advertiser,Search Ads,Performance ads,EMEA,direct,4270.0045,0.3926,0.0,1676.3701,586.7295
+2026-02-15,T00797,C077,Kestrel Media,Advertiser,Search Ads,Performance ads,APAC,direct,4315.7061,0.3926,0.0,1694.3122,593.0093
+2026-02-15,T00798,C078,Marrow Group,Advertiser,Search Ads,Performance ads,Americas,partner,5894.6261,0.3926,0.0,2314.1837,809.9643
+2026-02-15,T00799,C079,Quill Robotics,Advertiser,Search Ads,Performance ads,EMEA,direct,5224.0172,0.3926,0.0,2050.9079,717.8178
+2026-02-15,T00800,C080,Harbor Logistics,Advertiser,Search Ads,Performance ads,APAC,direct,6234.06,0.3926,0.0,2447.4427,856.605
+2026-02-15,T00801,C081,Vector Mobility,Advertiser,Search Ads,Performance ads,Americas,partner,5878.7157,0.3926,0.0,2307.9374,807.7781
+2026-02-15,T00802,C082,Lumen Bank,Advertiser,Search Ads,Performance ads,EMEA,direct,4847.5066,0.3926,0.0,1903.0928,666.0825
+2026-02-15,T00803,S01,Premium tier,Consumer,Subscriptions,Premium tier,APAC,direct,45000.0,0.245,0.0,11025.0,4630.5
+2026-02-15,T00804,S02,Family tier,Consumer,Subscriptions,Family tier,Americas,partner,30000.0,0.245,0.0,7350.0,3087.0
+2026-02-15,T00805,S03,Student tier,Consumer,Subscriptions,Student tier,EMEA,direct,10000.0,0.245,0.0,2450.0,1029.0
+2026-02-15,T00806,S04,Enterprise seats,Consumer,Subscriptions,Enterprise seats,APAC,direct,15000.0,0.245,0.0,3675.0,1543.5
+2026-02-15,T00807,D01,Retail channel,Channel,Devices & Network,Hardware,Americas,partner,30761.9048,0.42,0.0,12920.0,10077.6
+2026-02-15,T00808,D02,Carrier channel,Channel,Devices & Network,Hardware,EMEA,direct,24285.7143,0.42,0.0,10200.0,7956.0
+2026-02-15,T00809,D03,Online store,Channel,Devices & Network,Hardware,APAC,direct,17809.5238,0.42,0.0,7480.0,5834.4
+2026-02-15,T00810,D04,Wholesale,Channel,Devices & Network,Hardware,Americas,partner,8095.2381,0.42,0.0,3400.0,2652.0
+2026-05-15,T00811,C001,Helios Dynamics,Enterprise,Cloud,AI Infrastructure,APAC,direct,1773.3557,2.2919,162.5742,3901.7798,2184.9967
+2026-05-15,T00812,C002,VantaCore AI,Enterprise,Cloud,AI Infrastructure,Americas,direct,1382.9528,2.2919,126.7836,3042.8059,1703.9713
+2026-05-15,T00813,C003,Corex Systems,Enterprise,Cloud,AI Infrastructure,Americas,partner,1065.3368,2.2919,97.6658,2343.9797,1312.6286
+2026-05-15,T00814,C004,Northwind Systems,Enterprise,Cloud,AI Infrastructure,EMEA,direct,290.98,2.2919,26.6759,640.2213,358.5239
+2026-05-15,T00815,C005,Bluepeak Media,Enterprise,Cloud,AI Infrastructure,APAC,direct,281.8783,2.2919,25.8415,620.1954,347.3094
+2026-05-15,T00816,C006,Atlas Group,Enterprise,Cloud,AI Infrastructure,Americas,partner,295.3851,2.2919,27.0797,649.9133,363.9515
+2026-05-15,T00817,C007,Ridgeline Robotics,Enterprise,Cloud,AI Infrastructure,Americas,direct,291.9739,2.2919,26.767,642.4081,359.7485
+2026-05-15,T00818,C008,Solent Logistics,Enterprise,Cloud,AI Infrastructure,EMEA,direct,292.3647,2.2919,26.8028,643.2679,360.23
+2026-05-15,T00819,C009,Kestrel Mobility,Enterprise,Cloud,Data Platform,APAC,partner,254.1971,2.0869,21.2194,509.2646,285.1882
+2026-05-15,T00820,C010,Marrow Bank,Enterprise,Cloud,Data Platform,Americas,direct,258.5349,2.0869,21.5815,517.955,290.0548
+2026-05-15,T00821,C011,Quill Labs,Enterprise,Cloud,Data Platform,Americas,direct,257.4555,2.0869,21.4914,515.7926,288.8439
+2026-05-15,T00822,C012,Harbor Energy,Enterprise,Cloud,Data Platform,EMEA,partner,265.1941,2.0869,22.1373,531.2963,297.5259
+2026-05-15,T00823,C013,Vector Health,Mid-market,Cloud,AI Infrastructure,APAC,direct,398.6411,1.6211,12.9247,633.3123,354.6549
+2026-05-15,T00824,C014,Lumen Foods,Mid-market,Cloud,AI Infrastructure,Americas,direct,480.3193,1.6211,15.5729,763.0727,427.3207
+2026-05-15,T00825,C015,Praxis Retail,Mid-market,Cloud,AI Infrastructure,Americas,partner,340.5021,1.6211,11.0398,540.9482,302.931
+2026-05-15,T00826,C016,Onyx Systems,Mid-market,Cloud,AI Infrastructure,EMEA,direct,288.7776,1.6211,9.3627,458.7746,256.9138
+2026-05-15,T00827,C017,Cinder Media,Mid-market,Cloud,Data Platform,APAC,direct,192.7924,1.4761,5.6916,278.8893,156.178
+2026-05-15,T00828,C018,Fable Group,Mid-market,Cloud,Data Platform,Americas,partner,121.7008,1.4761,3.5929,176.0497,98.5878
+2026-05-15,T00829,C019,Granite Robotics,Mid-market,Cloud,Data Platform,Americas,direct,252.4749,1.4761,7.4536,365.2247,204.5258
+2026-05-15,T00830,C020,Iris Logistics,Mid-market,Cloud,Data Platform,EMEA,direct,206.0842,1.4761,6.084,298.1169,166.9455
+2026-05-15,T00831,C021,Juniper Mobility,Mid-market,Cloud,Data Platform,APAC,partner,234.4575,1.4761,6.9217,339.1611,189.9302
+2026-05-15,T00832,C022,Krill Bank,Mid-market,Cloud,Data Platform,Americas,direct,167.8256,1.4761,4.9545,242.7728,135.9528
+2026-05-15,T00833,C023,Lattice Labs,Mid-market,Cloud,Data Platform,Americas,direct,288.3596,1.4761,8.513,417.1347,233.5954
+2026-05-15,T00834,C024,Mosaic Energy,Mid-market,Cloud,Data Platform,EMEA,partner,269.604,1.4761,7.9592,390.0032,218.4018
+2026-05-15,T00835,C025,Nimbus Health,Mid-market,Cloud,Data Platform,APAC,direct,239.616,1.4761,7.0739,346.6233,194.109
+2026-05-15,T00836,C026,Opal Foods,Mid-market,Cloud,Data Platform,Americas,direct,145.8858,1.4761,4.3068,211.0351,118.1797
+2026-05-15,T00837,C027,Pylon Retail,Mid-market,Cloud,Data Platform,Americas,partner,180.86,1.4761,5.3393,261.6281,146.5117
+2026-05-15,T00838,C028,Quartz Systems,Mid-market,Cloud,Data Platform,EMEA,direct,117.611,1.4761,3.4721,170.1335,95.2748
+2026-05-15,T00839,C029,Rune Media,SMB,Cloud,Productivity Suite,APAC,direct,239.1837,0.5599,0.0,133.919,74.9946
+2026-05-15,T00840,C030,Sable Group,SMB,Cloud,Productivity Suite,Americas,partner,372.8736,0.5599,0.0,208.7719,116.9123
+2026-05-15,T00841,C031,Tundra Robotics,SMB,Cloud,Productivity Suite,Americas,direct,397.729,0.5599,0.0,222.6885,124.7056
+2026-05-15,T00842,C032,Umber Logistics,SMB,Cloud,Productivity Suite,EMEA,direct,494.9608,0.5599,0.0,277.1285,155.192
+2026-05-15,T00843,C033,Vertex Mobility,SMB,Cloud,Productivity Suite,APAC,partner,282.8835,0.5599,0.0,158.3865,88.6964
+2026-05-15,T00844,C034,Willow Bank,SMB,Cloud,Productivity Suite,Americas,direct,291.9708,0.5599,0.0,163.4745,91.5457
+2026-05-15,T00845,C035,Xenon Labs,SMB,Cloud,Productivity Suite,Americas,direct,311.8093,0.5599,0.0,174.582,97.7659
+2026-05-15,T00846,C036,Yield Energy,SMB,Cloud,Productivity Suite,EMEA,partner,249.5696,0.5599,0.0,139.734,78.2511
+2026-05-15,T00847,C037,Zephyr Health,SMB,Cloud,Productivity Suite,APAC,direct,231.5648,0.5599,0.0,129.6531,72.6057
+2026-05-15,T00848,C038,Northwind Foods,SMB,Cloud,Productivity Suite,Americas,direct,313.1149,0.5599,0.0,175.313,98.1753
+2026-05-15,T00849,C039,Bluepeak Retail,SMB,Cloud,Productivity Suite,Americas,partner,259.7821,0.5599,0.0,145.452,81.4531
+2026-05-15,T00850,C040,Atlas Systems,SMB,Cloud,Productivity Suite,EMEA,direct,367.9433,0.5599,0.0,206.0114,115.3664
+2026-05-15,T00851,C041,Ridgeline Media,SMB,Cloud,Productivity Suite,APAC,direct,305.1522,0.5599,0.0,170.8547,95.6786
+2026-05-15,T00852,C042,Solent Group,SMB,Cloud,Productivity Suite,Americas,partner,436.7338,0.5599,0.0,244.5272,136.9353
+2026-05-15,T00853,C043,Kestrel Robotics,SMB,Cloud,Productivity Suite,Americas,direct,379.5116,0.5599,0.0,212.4885,118.9936
+2026-05-15,T00854,C044,Marrow Logistics,SMB,Cloud,Productivity Suite,EMEA,direct,280.0208,0.5599,0.0,156.7836,87.7988
+2026-05-15,T00855,C045,Quill Mobility,SMB,Cloud,Productivity Suite,APAC,partner,436.5439,0.5599,0.0,244.4209,136.8757
+2026-05-15,T00856,C046,Harbor Bank,SMB,Cloud,Productivity Suite,Americas,direct,424.0982,0.5599,0.0,237.4526,132.9734
+2026-05-15,T00857,C047,Vector Labs,SMB,Cloud,Productivity Suite,Americas,direct,295.3335,0.5599,0.0,165.3572,92.6
+2026-05-15,T00858,C048,Lumen Energy,SMB,Cloud,Productivity Suite,EMEA,partner,274.7156,0.5599,0.0,153.8132,86.1354
+2026-05-15,T00859,C049,Praxis Health,SMB,Cloud,Productivity Suite,APAC,direct,372.6643,0.5599,0.0,208.6548,116.8467
+2026-05-15,T00860,C050,Onyx Foods,SMB,Cloud,Productivity Suite,Americas,direct,234.6785,0.5599,0.0,131.3965,73.582
+2026-05-15,T00861,C051,Cinder Retail,SMB,Cloud,Productivity Suite,Americas,partner,252.5045,0.5599,0.0,141.3773,79.1713
+2026-05-15,T00862,C052,Fable Systems,SMB,Cloud,Productivity Suite,EMEA,direct,189.3176,0.5599,0.0,105.9989,59.3594
+2026-05-15,T00863,C053,Granite Media,Advertiser,Search Ads,Brand ads,APAC,direct,6860.289,0.3962,0.0,2717.8624,951.2518
+2026-05-15,T00864,C054,Iris Group,Advertiser,Search Ads,Brand ads,Americas,partner,6275.1794,0.3962,0.0,2486.0577,870.1202
+2026-05-15,T00865,C055,Juniper Robotics,Advertiser,Search Ads,Brand ads,EMEA,direct,6701.2472,0.3962,0.0,2654.8543,929.199
+2026-05-15,T00866,C056,Krill Logistics,Advertiser,Search Ads,Brand ads,APAC,direct,7327.2151,0.3962,0.0,2902.846,1015.9961
+2026-05-15,T00867,C057,Lattice Mobility,Advertiser,Search Ads,Brand ads,Americas,partner,5633.2528,0.3962,0.0,2231.7436,781.1103
+2026-05-15,T00868,C058,Mosaic Bank,Advertiser,Search Ads,Brand ads,EMEA,direct,6032.5435,0.3962,0.0,2389.9319,836.4762
+2026-05-15,T00869,C059,Nimbus Labs,Advertiser,Search Ads,Brand ads,APAC,direct,3682.3408,0.3962,0.0,1458.8446,510.5956
+2026-05-15,T00870,C060,Opal Energy,Advertiser,Search Ads,Brand ads,Americas,partner,3527.5279,0.3962,0.0,1397.5119,489.1292
+2026-05-15,T00871,C061,Pylon Health,Advertiser,Search Ads,Brand ads,EMEA,direct,6439.674,0.3962,0.0,2551.226,892.9291
+2026-05-15,T00872,C062,Quartz Foods,Advertiser,Search Ads,Brand ads,APAC,direct,5643.6971,0.3962,0.0,2235.8814,782.5585
+2026-05-15,T00873,C063,Rune Retail,Advertiser,Search Ads,Performance ads,Americas,partner,6218.3015,0.3962,0.0,2463.5242,862.2335
+2026-05-15,T00874,C064,Sable Systems,Advertiser,Search Ads,Performance ads,EMEA,direct,7121.5967,0.3962,0.0,2821.3855,987.4849
+2026-05-15,T00875,C065,Tundra Media,Advertiser,Search Ads,Performance ads,APAC,direct,6199.5518,0.3962,0.0,2456.0961,859.6336
+2026-05-15,T00876,C066,Umber Group,Advertiser,Search Ads,Performance ads,Americas,partner,5685.0285,0.3962,0.0,2252.2557,788.2895
+2026-05-15,T00877,C067,Vertex Robotics,Advertiser,Search Ads,Performance ads,EMEA,direct,5823.9542,0.3962,0.0,2307.2943,807.553
+2026-05-15,T00878,C068,Willow Logistics,Advertiser,Search Ads,Performance ads,APAC,direct,4719.1589,0.3962,0.0,1869.6041,654.3614
+2026-05-15,T00879,C069,Xenon Mobility,Advertiser,Search Ads,Performance ads,Americas,partner,3366.6932,0.3962,0.0,1333.7935,466.8277
+2026-05-15,T00880,C070,Yield Bank,Advertiser,Search Ads,Performance ads,EMEA,direct,5459.7002,0.3962,0.0,2162.9867,757.0453
+2026-05-15,T00881,C071,Zephyr Labs,Advertiser,Search Ads,Performance ads,APAC,direct,4132.8019,0.3962,0.0,1637.3052,573.0568
+2026-05-15,T00882,C072,Northwind Energy,Advertiser,Search Ads,Performance ads,Americas,partner,4977.9305,0.3962,0.0,1972.1225,690.2429
+2026-05-15,T00883,C073,Bluepeak Health,Advertiser,Search Ads,Performance ads,EMEA,direct,7237.7872,0.3962,0.0,2867.4171,1003.596
+2026-05-15,T00884,C074,Atlas Foods,Advertiser,Search Ads,Performance ads,APAC,direct,4307.4391,0.3962,0.0,1706.4918,597.2721
+2026-05-15,T00885,C075,Ridgeline Retail,Advertiser,Search Ads,Performance ads,Americas,partner,3503.0454,0.3962,0.0,1387.8126,485.7344
+2026-05-15,T00886,C076,Solent Systems,Advertiser,Search Ads,Performance ads,EMEA,direct,4675.561,0.3962,0.0,1852.3318,648.3161
+2026-05-15,T00887,C077,Kestrel Media,Advertiser,Search Ads,Performance ads,APAC,direct,4584.8237,0.3962,0.0,1816.3841,635.7344
+2026-05-15,T00888,C078,Marrow Group,Advertiser,Search Ads,Performance ads,Americas,partner,6258.1602,0.3962,0.0,2479.3151,867.7603
+2026-05-15,T00889,C079,Quill Robotics,Advertiser,Search Ads,Performance ads,EMEA,direct,5724.9162,0.3962,0.0,2268.0582,793.8204
+2026-05-15,T00890,C080,Harbor Logistics,Advertiser,Search Ads,Performance ads,APAC,direct,7067.8723,0.3962,0.0,2800.1014,980.0355
+2026-05-15,T00891,C081,Vector Mobility,Advertiser,Search Ads,Performance ads,Americas,partner,6689.0605,0.3962,0.0,2650.0263,927.5092
+2026-05-15,T00892,C082,Lumen Bank,Advertiser,Search Ads,Performance ads,EMEA,direct,5363.65,0.3962,0.0,2124.9342,743.727
+2026-05-15,T00893,S01,Premium tier,Consumer,Subscriptions,Premium tier,APAC,direct,45810.0,0.2554,0.0,11700.0,4914.0
+2026-05-15,T00894,S02,Family tier,Consumer,Subscriptions,Family tier,Americas,partner,30540.0,0.2554,0.0,7800.0,3276.0
+2026-05-15,T00895,S03,Student tier,Consumer,Subscriptions,Student tier,EMEA,direct,10180.0,0.2554,0.0,2600.0,1092.0
+2026-05-15,T00896,S04,Enterprise seats,Consumer,Subscriptions,Enterprise seats,APAC,direct,15270.0,0.2554,0.0,3900.0,1638.0
+2026-05-15,T00897,D01,Retail channel,Channel,Devices & Network,Hardware,Americas,partner,32842.8571,0.42,0.0,13794.0,10759.32
+2026-05-15,T00898,D02,Carrier channel,Channel,Devices & Network,Hardware,EMEA,direct,25928.5714,0.42,0.0,10890.0,8494.2
+2026-05-15,T00899,D03,Online store,Channel,Devices & Network,Hardware,APAC,direct,19014.2857,0.42,0.0,7986.0,6229.08
+2026-05-15,T00900,D04,Wholesale,Channel,Devices & Network,Hardware,Americas,partner,8642.8571,0.42,0.0,3630.0,2831.4
