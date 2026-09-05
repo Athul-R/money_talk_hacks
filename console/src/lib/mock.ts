@@ -4,10 +4,10 @@
  * backend is wired, the same fold/frame path consumes live rows instead.
  */
 
-import type { MockIndex, RunBundle } from "./types";
+import type { ConsoleIndex, RunBundle } from "./types";
 import indexJson from "../mock/index.json";
 
-export const mockIndex = indexJson as unknown as MockIndex;
+export const mockIndex = indexJson as unknown as ConsoleIndex;
 
 const loaders: Record<string, () => Promise<{ default: unknown }>> = {
   "run-1.json": () => import("../mock/run-1.json"),

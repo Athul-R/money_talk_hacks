@@ -1,136 +1,271 @@
 # Delta Ledger — Explain the Change
 
-An FP&A agent that answers *"why did this number move?"* and shows its work as a
-**growing lineage graph**. Given multi-period summaries + transaction-level CSVs,
-a deterministic engine decomposes the metric, z-scores each branch against its
-trailing band, attributes the delta (price / volume / mix / customer), clusters
-the transactions behind it, and recurses until ~80% of the variance is explained
-or branches fall below materiality. An LLM only narrates the finished evidence —
-**it never does arithmetic**. Every run teaches a persistent company memory, so
-the next run opens with context like *"Cloud growth has exceeded 20% for 3
-consecutive periods."*
+Delta Ledger is a live FP&A analysis agent that answers the question behind
+every close: **“Why did this number move?”** Upload a company’s quarterly
+books and watch an auditable explanation grow from reported total to business
+driver, operating mechanism, account concentration, and leadership memo.
 
-Built for the **Maximor — Money Operations — "Explain the Change"** track. UI
-patterns forked from the Rock Scheduler ops console (beats, clay pucks/pips,
-event stream), re-themed for finance.
+Built for the **Maximor — Money Operations — Explain the Change** track.
 
-![Delta Ledger console](docs/assets/console.png)
+## Problem statement
 
-## Architecture
+Finance teams spend days reconciling SEC metrics, product tables, geography
+splits, and user-level books before they can explain one quarterly movement.
+Traditional dashboards show *what* changed but not *why*. Asking a general LLM
+to perform the analysis is unsafe: plausible arithmetic can fail to tie back to
+reported totals, and leadership cannot audit the answer.
+
+## Our solution
+
+Delta Ledger separates calculation from language:
+
+- A **deterministic evidence engine** owns every number. It validates the
+  uploaded schema, reconciles control totals, ranks movers by absolute dollars,
+  calculates trailing-band z-scores, builds exact price/volume/mix bridges,
+  identifies concentration, and drills until the material movement is covered.
+- An **LLM narrator** receives only completed evidence JSON. It can explain the
+  findings, but it cannot invent or alter arithmetic.
+- A **live lineage console** exposes the decision path. Leaders can start with
+  a six-node overview; finance and audit teams can switch to every z-score,
+  bridge, cluster, drill, and evidence claim.
+- A **structured leadership brief** turns the run into a board-ready readout
+  with key metrics, ranked drivers, watch-outs, company memory, and an evidence
+  book.
+
+## Key features
+
+- **Upload to analysis:** upload a quarterly company ledger and automatically
+  run reconciliation, web context gathering, routing, attribution, drilling,
+  narration, memory compilation, and persistence.
+- **Two live lineage levels:**
+  - **High level:** Reconcile → Context → Router → Top movers → Evidence →
+    Explained.
+  - **Detailed audit:** every branch and stage, including z-bridge, dollar
+    bridge, clustering, materiality decisions, and tagged narration.
+- **Explainable materiality:** branches rank by `|Δ$|`, never percentage
+  growth. The engine stops at 80% explained, below a 5% share, or at depth 4.
+- **Operational identities:** Search revenue is checked against
+  `paid clicks × CPC`; formula residuals are shown rather than hidden.
+- **Web context:** Tavily retrieves period-relevant earnings commentary.
+  External context is labeled and never changes calculated values.
+- **Company memory:** prior ranges, streaks, seasonality, explanations, and
+  concentration patterns are compiled at write time and recalled on later runs.
+- **PRISM observability:** narration calls become traces and each completed
+  analysis becomes an agent trajectory for Observe → Improve → Prove.
+- **Evidence-scoped follow-ups:** questions on any lineage node can use only
+  that node’s computed evidence.
+- **Leadership brief:** an in-product board brief plus a secondary Markdown
+  export for sharing.
+
+## Tech stack
+
+- **Frontend:** React 19, TypeScript, Vite, Tailwind CSS v4, React Flow,
+  Recharts, Lucide.
+- **Backend:** Python 3.12, FastAPI, pandas, NumPy, httpx, uv.
+- **Agent layer:** provider-agnostic OpenAI, Anthropic, or Gemini narration
+  with a deterministic text fallback.
+- **External context:** Tavily Search.
+- **Agent observability:** PRISM through `prismtrace-sdk`.
+- **Persistence:** local run and dataset store, compiled memory, optional
+  Supabase writer, and a Supabase realtime schema.
+- **Development:** GLIDE generative IDE.
+
+## How it works
 
 ![Delta Ledger architecture](docs/assets/architecture.png)
 
-One analyst-facing console, one deterministic engine, one narrator that is
-never allowed to touch a number. The analyst drops the four CSVs; the engine
-reconciles control totals, ranks the movers by absolute dollars, bridges
-price/volume/mix, and drills until ~80% of the move is explained; the LLM only
-rephrases the finished evidence with tagged claims; memory and PRISM traces
-persist every run. Full walkthrough: [docs/architecture.md](docs/architecture.md)
-(also the **architecture** pill in the console header, or `#architecture`).
+### 1. Reconcile — do the books add up?
 
-## Quickstart
+The uploaded files are normalized into one company dataset. Required columns
+are validated and transaction-level revenue is compared with reported totals
+at a 0.5% tolerance. The analysis records every control-total check.
 
-Two paths, same graph. Architecture board is the **architecture** pill in the
-header (also `#architecture`) and [docs/architecture.md](docs/architecture.md).
+### 2. Context — what was happening outside the books?
+
+Tavily gathers period-relevant earnings sources. These sources support
+management context in the narrative, but remain isolated from the arithmetic.
+
+### 3. Router — who owns the move?
+
+The engine scores each available decomposition axis. The winning axis is the
+one whose largest children capture the movement with useful granularity:
+
+```text
+power(axis) = top-3 absolute-share capture × (1 - 1 / max(child_count, 2))
+```
+
+Children are permanently ranked by absolute dollar movement.
+
+### 4. Z-bridge — is the move unusual?
+
+Each material branch is compared with its own trailing growth distribution.
+A z-score outside ±2 highlights movement outside the historical band.
+
+### 5. Dollar bridge — what mechanically caused it?
+
+The engine decomposes the movement into exact components:
+
+```text
+price    = units_A × (price_B - price_A)
+volume   = price_A × (units_B - units_A)
+mix      = (units_B - units_A) × (price_B - price_A)
+customer = new-customer revenue - churned-customer revenue
+```
+
+It also computes KPI residuals, transaction clusters, and top-account
+concentration.
+
+### 6. Drill — how deep is material?
+
+The lineage proceeds from product to user segment to account or geography.
+Branches below materiality are capped and remain visible in the audit trail.
+
+### 7. Narrate, remember, and prove
+
+The engine emits evidence JSON. The narrator rephrases it with one of four
+provenance tags: `reported_fact`, `calculated_attribution`,
+`management_commentary`, or `agent_inference`. Company memory is compiled,
+the run is persisted, and PRISM receives traces plus the completed trajectory.
+
+The end-to-end path is:
+
+```text
+Quarterly books
+  → FastAPI
+  → normalize + reconcile
+  → Tavily context
+  → route by |Δ$|
+  → z-score + exact bridge
+  → cluster + materiality drill
+  → evidence JSON
+  → tagged narration
+  → company memory + PRISM
+  → executive brief + live lineage
+```
+
+For the component-level architecture, see
+[docs/architecture.md](docs/architecture.md) or open **Architecture** in the
+console.
+
+## How to run
+
+Requirements: Python 3.12, Node.js, npm, and
+[uv](https://docs.astral.sh/uv/).
+
+Install:
 
 ```bash
-make install     # uv sync + npm install + prismtrace-sdk
-make run-demo    # mock: baked Auric beats → console :5173
+make install
 ```
 
-Live path (Alphabet `data/given` — drop updated CSVs on the rail anytime):
+Start the backend:
 
 ```bash
-make api         # FastAPI :8000, seeds dataset alphabet-given
-make live        # console :5173, proxy /api → :8000
+make api
 ```
 
-## Demo flow (stage script)
+Start the console in a second terminal:
 
-1. **Mock** (default tab): press play. The baked Auric hero run grows
-   left → right — metric → variance router → ranked lanes → Cloud drills to the
-   whale accounts → leadership memo. No keys, no network.
-2. Flip the header to **live**. The canvas idles and asks for the books.
-3. Drag the four CSVs from `data/given/` (`sec_metrics` · `product_segments` ·
-   `geography` · `user_segments`) onto the upload card. Upload → control totals
-   reconcile ✓ → **the engine runs by itself** and the Alphabet analysis plays:
-   Cloud + Search carry the move, Cloud drills enterprise → US / APAC / EU,
-   ~84% explained in 40 beats.
-4. Updated numbers later? Edit any CSV, drop the four files again — new dataset,
-   fresh run, same methodology. `New run` re-runs any metric/period pair
-   (Revenue, Operating income, Gross profit, FCF).
-5. Click any puck for the evidence drawer (z-band, bridge waterfall, clusters,
-   tagged claims); the outcome puck exports the memo. Every narration is traced
-   to PRISM as agent `delta-ledger`.
-
-PRISM (Observe → Improve → Prove) needs two values in `.env`:
-
+```bash
+make live
 ```
+
+Open [http://localhost:5173](http://localhost:5173).
+
+Optional `.env` integrations:
+
+```dotenv
 PRISMTRACE_API_KEY=pt-sk-...
-PRISMTRACE_PROJECT_ID=<uuid>
+PRISMTRACE_PROJECT_ID=<project-uuid>
+PRISMTRACE_HOST=https://prism.blockconvey.com
+
+TAVILY_API_KEY=...
+
+LLM_PROVIDER=openai
+LLM_API_KEY=...
+LLM_MODEL=
 ```
 
-Then `make prism-warmup` so the project has a trace before tomorrow. No keys =
-engine still runs; traces are skipped. LLM key is optional (templated narration).
+The calculation engine remains operational without these optional keys.
 
-Press play. The hero run (`Revenue · 2025-Q2 → 2026-Q2`) grows left to right:
-metric → variance router → 4 ranked lanes → Cloud drills to Enterprise →
-Enterprise drills to the three whale accounts → leadership summary. Click any
-node for its evidence drawer; click the outcome puck to export the memo.
+## How to use it
 
-## What's real vs mock
+1. Open the console and upload the company’s quarterly books.
+2. Delta Ledger validates and reconciles the dataset.
+3. The executive summary appears while the analysis steps are revealed.
+4. Open the leadership brief for the board-ready readout.
+5. Open the closer and choose:
+   - **High level** for the six-step business explanation.
+   - **Detailed audit** for every calculation and recursive drill.
+6. Click a driver or stage for its charts, evidence, and follow-up question.
+7. Open **PRISM** to inspect the agent decision trail and project traces.
+8. Select a prior run or start a new metric/period analysis from the run rail.
 
-- **Real:** everything numeric. The bundles under `console/src/mock/` are actual
-  engine output (`backend/scripts/make_mock.py`) over `backend/fixtures/` — a
-  fictional company, *Auric Technologies*, whose transactions are calibrated to
-  reconcile exactly to its reported summaries. 33 pytest cases cover the bridge
-  identity, materiality stops, z-scores, and cross-run memory.
-- **Mock transport vs live:** mock replays baked beats. Live posts to FastAPI,
-  which reads `data/given` (or an upload) and returns the same bundle shape.
-  `data/schema.sql` + the Supabase writer are still there if you want realtime
-  later; local JSON under `backend/.fpa_state` is enough for the demo.
+## Input data
 
-## The demo story (all computed, none hard-coded)
+The current company ledger uses four related CSVs:
 
-- Revenue **+18.2% ($23.6B)**; Cloud carries **47%**, Search Ads **40%**;
-  Subscriptions & Devices capped by the materiality floor.
-- Cloud **+81.8%**, z ≈ **+4.8σ** vs its trailing band; clustering finds
-  **enterprise · AI Infrastructure**; top 3 accounts = **64%** of the
-  enterprise move (concentration flag).
-- Search Ads: **paid_clicks +13.0% × cpc +3.0% ≈ +16.4%** vs **+16.8%**
-  reported — residual shown, not hidden.
-- Run 2 recalls run 1's memory (growth streak, normal ranges) and **promotes** a
-  repeated concentration anomaly to a recurring driver.
-- Run 3 (Operating income) bridges line items, **cites run 2 instead of
-  re-drilling Revenue**, drills COGS by product, and the watch-outs catch
-  **CapEx +87.8% → FCF −2.8%**.
+- `sec_metrics.csv` — reported P&L and cash-flow totals.
+- `product_segments.csv` — product revenue and direct cost.
+- `geography.csv` — geographic revenue.
+- `user_segments.csv` — segment-level revenue and operating KPIs.
 
-## Hard rules
+The included dataset covers eight quarters and supports Revenue, Operating
+income, Gross profit, and Free cash flow analyses.
 
-1. LLM never computes — the engine emits evidence JSON; the narrator tags every
-   claim (`reported_fact` / `calculated_attribution` / `management_commentary` /
-   `agent_inference`).
-2. Absolute dollars rank branches, never % growth.
-3. The graph only grows — lanes are assigned once, in rank order, append-only.
-4. Memory: compiled at write time, read as plain rows at run time — no model
-   call inside the attribution loop.
+## Verification and safeguards
 
-## Layout
+- 37 automated tests cover reconciliation, attribution identities,
+  materiality gates, z-scores, customer clustering, memory promotion, and
+  end-to-end runs.
+- The LLM is never invoked inside routing, attribution, materiality, or memory
+  compilation.
+- Every run stores its thresholds, evidence, branches, pips, and append-only
+  events.
+- Every visible number comes from the deterministic engine.
 
-```
-backend/   fpa/engine (normalize · metric_graph · router · timeseries ·
-           attribution · clustering · materiality · run) · fpa/agent (narrator,
-           provider-agnostic LLM) · fpa/memory · fixtures/ · tests/
-console/   Vite + React + TS + Tailwind v4 + React Flow + recharts
-           lib/fold.ts (events → model) · lib/frame.ts (model → graph) ·
-           src/mock (baked engine bundles)
-data/      schema.sql (companies · datasets · runs · branches · pips · events ·
-           memory, realtime-enabled) — for the live backend wire-up
+Run the checks:
+
+```bash
+make test
+make build
 ```
 
-`make test` runs the engine suite; `make mock` re-bakes the console bundles;
-set `LLM_PROVIDER`/`LLM_API_KEY` in `.env` before `make mock` to get LLM-polished
-narration instead of the templated fallback (numbers are identical either way).
+Seed the configured PRISM project with one complete analysis:
 
-The original CLI agent still lives under `src/fpa_agent/` (`fpa-agent --period 2026-Q2`).
-The console + `backend/` engine above is the hackathon demo path.
+```bash
+make prism-warmup
+```
+
+## Repository structure
+
+```text
+backend/
+  fpa/api/       dataset upload, runs, prior-run retrieval, follow-ups
+  fpa/engine/    reconciliation, router, z-score, bridge, cluster, drill
+  fpa/agent/     evidence narrator, LLM providers, Tavily context
+  fpa/memory/    recall, compile, and recurring-pattern promotion
+  fpa/observe.py PRISM traces and trajectories
+  tests/         deterministic engine verification
+
+console/
+  src/components/ landing, executive summary, memo, lineage, drawers, PRISM
+  src/lib/fold.ts append-only events → visible analysis state
+  src/lib/frame.ts high-level and detailed lineage geometry
+
+data/
+  given/         company ledger
+  schema.sql     optional Supabase persistence and realtime schema
+
+docs/
+  architecture.md
+  assets/
+```
+
+## Core design rules
+
+1. The LLM never performs arithmetic.
+2. Absolute dollars rank branches.
+3. The graph only grows; a lane never changes position.
+4. Memory is compiled at write time and read as plain rows.
+5. External context can explain a result but cannot modify it.

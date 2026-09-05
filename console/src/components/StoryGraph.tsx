@@ -27,14 +27,15 @@ function Canvas({ nodes, edges, beatKey, onSelect }: CanvasProps) {
 
   const refit = useCallback((force = false) => {
     if (!force && manualRef.current) return;
-    // rAF so newly-mounted nodes have dimensions before framing them.
-    requestAnimationFrame(() =>
-      fitView({ padding: 0.15, duration: 650, maxZoom: 1.1 }));
+    // small delay so newly-mounted nodes have measured dimensions;
+    // the camera then follows every beat of growth (auto zoom).
+    window.setTimeout(() =>
+      fitView({ padding: 0.14, duration: 600, maxZoom: 1.05 }), 60);
   }, [fitView]);
 
   // a new run hands the camera back to the story
   useEffect(() => { setManual(false); }, [runKey]);
-  useEffect(() => { refit(); }, [beatKey, refit]);
+  useEffect(() => { refit(); }, [beatKey, nodes.length, refit]);
 
   return (
     <ReactFlow

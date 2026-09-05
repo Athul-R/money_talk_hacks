@@ -49,4 +49,5 @@ export const TAG_TONE: Record<string, string> = {
   explain: "var(--ring-up)",
   capped: "var(--ring-down)",
   ok: "var(--ring-up)",
+  web: "var(--ring-memory)",
 };

@@ -15,11 +15,11 @@ export const GEO = {
   rootX: 40,
   routerX: 260,
   branchX: 520,
-  indent: 170,
+  indent: 320,     // drills stride hard right so each depth reads as a column
   pipStart: 124,
-  pipDX: 92,
-  laneGap: 138,
-  outcomeGap: 240,
+  pipDX: 96,
+  laneGap: 116,    // flatter lane stack — the story reads left → right
+  outcomeGap: 260,
 };
 
 const laneY = (lane: number) => lane * GEO.laneGap;
@@ -29,7 +29,7 @@ export type PuckData = {
   label: string;
   sub: string;
   ring: string;
-  glyph?: "sigma" | "router" | "check" | "alert";
+  glyph?: "sigma" | "router" | "globe" | "check" | "alert";
   initials?: string;
   pulse?: boolean;
   badge?: string;
@@ -55,9 +55,9 @@ function pipLabel(p: FoldedPip): string {
   switch (p.stage) {
     case "delta_z":
       if (p.state === "capped") return "capped";
-      return pay.zscore != null ? `z ${(pay.zscore as number) >= 0 ? "+" : ""}${pay.zscore}` : "Δ";
+      return pay.zscore != null ? `z-bridge ${(pay.zscore as number) >= 0 ? "+" : ""}${pay.zscore}` : "z-bridge";
     case "drivers":
-      return pay.bridge?.top_driver ? `${pay.bridge.top_driver}-led` : "drivers";
+      return pay.bridge?.top_driver ? `$ bridge · ${pay.bridge.top_driver}` : "$ bridge";
     case "cluster": {
       const top = pay.clusters?.[0];
       return top ? `${share(top.share)} cluster` : "cluster";
@@ -79,6 +79,7 @@ function pipTooltip(b: FoldedBranch, p: FoldedPip): string[] {
     case "delta_z":
       if (p.state === "capped") return [pay.reason ?? "capped"];
       return [
+        "z-bridge — is this move unusual vs history?",
         `Δ ${fm(pay.delta_abs)} (${pct(pay.delta_pct)})`,
         `z ${pay.zscore ?? "—"} vs trailing ${pct(pay.trailing_mean_pct)}`,
         pay.seasonality ?? "",
@@ -156,9 +157,12 @@ export function frame(model: Model, selected: string | null) {
     pulse: running && !model.axis,
     tooltip: model.root
       ? [
+          "RECONCILE — do the books add up?",
           `${model.run.period_a} → ${model.run.period_b}`,
           `${fm(model.root.value_a)} → ${fm(model.root.value_b)}`,
-          `control totals ${model.reconciliationOk ? "reconcile ✓" : "MISMATCH ✗"}`,
+          model.reconciliationOk
+            ? "Σ transactions = reported totals ✓"
+            : "control totals MISMATCH ✗",
         ]
       : [],
     selected: false,
@@ -167,13 +171,17 @@ export function frame(model: Model, selected: string | null) {
   if (model.axis || model.candidates.length) {
     puck("router", GEO.routerX, rootY, {
       variant: "router",
-      label: "variance router",
-      sub: model.axis ? `axis · ${model.axis}` : "scoring axes…",
+      label: "router",
+      sub: model.axis ? `splits Δ by ${model.axis}` : "ranking movers…",
       ring: "var(--ring-engine)",
       glyph: "router",
       pulse: running && model.branches.size === 0,
-      tooltip: model.candidates.map(
-        (c: any) => `${c.axis} · power ${c.power}${c.note ? ` · ${c.note}` : ""}`),
+      tooltip: [
+        "ROUTER — who owns the move?",
+        "Ranks every lane by |Δ$|, never % growth.",
+        ...model.candidates.map(
+          (c: any) => `${c.axis} · power ${c.power}${c.note ? ` · ${c.note}` : ""}`),
+      ],
       selected: false,
     });
     edges.push({
@@ -269,11 +277,15 @@ export function frame(model: Model, selected: string | null) {
     const x = maxX + GEO.outcomeGap;
     puck("outcome", x, rootY, {
       variant: "outcome",
-      label: "Explained",
+      label: "reconciled",
       sub: `${Math.round(model.complete.explained * 100)}% of the move`,
       ring: "var(--ring-up)",
       glyph: "check",
-      tooltip: ["leadership summary ready", "click for memo + evidence tree"],
+      tooltip: [
+        "RECONCILED — the story closes",
+        `${Math.round(model.complete.explained * 100)}% of |Δ$| explained`,
+        "click for the leadership memo",
+      ],
       selected: false,
     });
     // the biggest explained lane hands off to the outcome — the "winner" edge.
@@ -289,6 +301,189 @@ export function frame(model: Model, selected: string | null) {
       pathOptions: { borderRadius: 22 },
       style: { stroke: "var(--ring-up)", strokeWidth: 2.5 },
     } as Edge);
+  }
+
+  return { nodes, edges, rootY };
+}
+
+/**
+ * Leadership lineage: the same live fold, compressed into six readable
+ * decisions. Driver pucks keep their real branch ids, so clicking one opens
+ * the exact evidence used by the detailed audit.
+ */
+export function frameOverview(model: Model, selected: string | null) {
+  const nodes: Node[] = [];
+  const edges: Edge[] = [];
+  if (!model.run) return { nodes, edges, rootY: 140 };
+
+  const drivers = model.order
+    .map((id) => model.branches.get(id)!)
+    .filter((b) => b.depth === 0)
+    .sort((a, b) => Math.abs(b.deltaAbs) - Math.abs(a.deltaAbs))
+    .slice(0, 3);
+  const gapY = 136;
+  const rootY = drivers.length > 1 ? ((drivers.length - 1) * gapY) / 2 : 136;
+  const running = !model.complete;
+
+  const addPuck = (id: string, x: number, y: number, data: PuckData) => {
+    nodes.push({
+      id,
+      type: "puck",
+      position: { x: x - 36, y: y - 36 },
+      data: { ...data, selected: selected === id },
+      draggable: false,
+      selectable: false,
+    });
+  };
+  const addEdge = (
+    id: string,
+    source: string,
+    target: string,
+    tone: string,
+    animated = false,
+  ) => {
+    edges.push({
+      id,
+      source,
+      target,
+      type: "smoothstep",
+      animated,
+      pathOptions: { borderRadius: 22, offset: 18 },
+      style: { stroke: tone, strokeWidth: 2.2 },
+    } as Edge);
+  };
+
+  addPuck("root", 60, rootY, {
+    variant: "root",
+    label: "reconcile",
+    sub: model.reconciliationOk ? "books tie ✓" : "mismatch",
+    ring: model.reconciliationOk ? "var(--ring-metric)" : "var(--ring-down)",
+    glyph: "sigma",
+    pulse: running && !model.webContext && !model.axis,
+    tooltip: [
+      "Do the books add up?",
+      `${model.run.period_a} → ${model.run.period_b}`,
+      model.root
+        ? `${fm(model.root.value_a)} → ${fm(model.root.value_b)} · ${pct(model.root.delta_pct)}`
+        : "measuring the quarter…",
+      model.reconciliationOk
+        ? "Σ transactions = reported totals ✓"
+        : "control totals do not reconcile",
+    ],
+    selected: false,
+  });
+
+  let previous = "root";
+  if (model.webContext) {
+    addPuck("overview-context", 270, rootY, {
+      variant: "router",
+      label: "context",
+      sub: `${model.webContext.sources.length} sources`,
+      ring: "var(--ring-memory)",
+      glyph: "globe",
+      pulse: running && !model.axis,
+      tooltip: [
+        "What was happening outside the books?",
+        model.webContext.query || "earnings context",
+        ...model.webContext.sources.slice(0, 3).map((s: any) => s.source),
+        "Context informs narration; it never changes the math.",
+      ],
+      selected: false,
+    });
+    addEdge("overview-root-context", "root", "overview-context", "var(--ring-memory)", running);
+    previous = "overview-context";
+  }
+
+  if (model.axis || model.candidates.length) {
+    addPuck("router", 480, rootY, {
+      variant: "router",
+      label: "router",
+      sub: model.axis ? `split by ${model.axis}` : "ranking…",
+      ring: "var(--ring-engine)",
+      glyph: "router",
+      pulse: running && drivers.length === 0,
+      tooltip: [
+        "Who owns the move?",
+        "Every lane ranked by |Δ$|, never percentage growth.",
+        ...(model.candidates ?? []).map((c: any) => `${c.axis} · power ${c.power}`),
+      ],
+      selected: false,
+    });
+    addEdge("overview-to-router", previous, "router", "var(--ring-engine)", running);
+    previous = "router";
+  }
+
+  const driverX = 710;
+  for (const b of drivers) {
+    const ring = branchRing(b.state, b.deltaAbs);
+    const children = model.order
+      .map((id) => model.branches.get(id)!)
+      .filter((candidate) => candidate.parentId === b.id)
+      .slice(0, 3)
+      .map((child) => child.name);
+    addPuck(b.id, driverX, drivers.length > 1 ? b.lane * gapY : rootY, {
+      variant: "branch",
+      label: b.name,
+      sub: `${fm(b.deltaAbs)} · ${share(b.share)}`,
+      ring,
+      initials: initialsOf(b.name),
+      pulse: b.state === "active",
+      muted: b.state === "capped",
+      badge: b.zscore != null && Math.abs(b.zscore) >= 2 ? "z" : undefined,
+      tooltip: [
+        `Top mover · ${fm(b.valueA)} → ${fm(b.valueB)}`,
+        `${share(b.share)} of the absolute move`,
+        ...(children.length ? [`Drills to ${children.join(" · ")}`] : []),
+      ],
+      selected: false,
+    });
+    addEdge(`overview-router-${b.id}`, previous, b.id, ring, b.state === "active");
+  }
+
+  const hasEvidence = drivers.some((b) => b.pips.length > 0);
+  if (hasEvidence) {
+    addPuck("overview-evidence", 940, rootY, {
+      variant: "router",
+      label: "evidence",
+      sub: "z · $ bridge · drill",
+      ring: "var(--ring-active)",
+      initials: "EV",
+      pulse: running,
+      tooltip: [
+        "Is it unusual, and what mechanically caused it?",
+        "z-bridge compares each lane with its history.",
+        "$ bridge splits price · volume · mix · customer.",
+        "Click to open every audit step.",
+      ],
+      selected: false,
+    });
+    for (const b of drivers) {
+      addEdge(`overview-${b.id}-evidence`, b.id, "overview-evidence",
+        "var(--ring-active)", running);
+    }
+  }
+
+  if (model.complete) {
+    addPuck("outcome", 1170, rootY, {
+      variant: "outcome",
+      label: "explained",
+      sub: `${Math.round(model.complete.explained * 100)}% of the move`,
+      ring: "var(--ring-up)",
+      glyph: "check",
+      tooltip: [
+        "Executive story is ready.",
+        `${Math.round(model.complete.explained * 100)}% of |Δ$| explained`,
+        "Click to open the leadership memo.",
+      ],
+      selected: false,
+    });
+    addEdge(
+      "overview-outcome",
+      hasEvidence ? "overview-evidence" : previous,
+      "outcome",
+      "var(--ring-up)",
+      true,
+    );
   }
 
   return { nodes, edges, rootY };

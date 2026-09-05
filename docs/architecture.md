@@ -3,19 +3,18 @@
 Delta Ledger answers *"why did this number move?"* and shows the walk as a
 growing lineage graph. The rule that organizes the system: **the engine does
 every number; the LLM only narrates finished evidence.** The console is a
-window over an append-only event log — mock replay and a live FastAPI run are
-the same `fold()` → `frame()` path.
+window over an append-only event log. The high-level and detailed views are
+two projections of the same live `fold()` → `frame()` state.
 
 Companions: the [README](../README.md) is the one-page demo script.
 
-## Two demo paths, one picture
+## One live evidence path
 
 ```mermaid
 flowchart LR
     subgraph sources [Books]
       Given["data/given CSVs\nSEC · product · geo · user"]
       Upload["Upload a later pack"]
-      Fixtures["Auric fixtures\nbaked into console/src/mock"]
     end
 
     subgraph engine [Deterministic engine]
@@ -40,21 +39,14 @@ flowchart LR
 
     Given --> Load
     Upload --> Load
-    Fixtures --> Router
     Load --> Router --> Measure --> KPI --> Drill --> Memory
     Drill --> Evidence --> LLM --> Tags
     LLM --> Trace
     Drill --> Traj
 ```
 
-- **Mock** (`make run-demo`): engine already ran on Auric fixtures;
-  the console replays beats. No keys.
-- **Live** (`make live`): FastAPI loads `data/given` as project
-  `alphabet-given`. Flip the header to **live**, hit **Explain the change**.
-  Drop updated CSVs on the rail when you swap the dataset.
-
-GitHub pull of `Athul-R/money_talk_hacks` is blocked on this machine
-(private repo). The local `data/given` pack is the seed either way.
+FastAPI loads `data/given` as project `alphabet-given`, or accepts an uploaded
+company ledger. Each run follows the same deterministic evidence path.
 
 ## The walk, as beats
 
@@ -107,8 +99,9 @@ Seeded dataset id is `alphabet-given` → `data/given/`. Uploads land under
 
 Same clay language as Rock Scheduler (beats, pucks, pips, event log), finance
 tint. `lib/fold.ts` turns events into a model; `lib/frame.ts` lays it out
-deterministically so streaming never reflows. Header toggles **mock / live**
-and opens the architecture board (`#architecture`).
+deterministically so live growth never reflows. Users switch between a compact
+leadership lineage and the complete audit lineage. The header also opens the
+architecture board (`#architecture`).
 
 ## Hard rules
 
@@ -122,7 +115,7 @@ and opens the architecture board (`#architecture`).
 ```
 PRISMTRACE_API_KEY=pt-sk-...
 PRISMTRACE_PROJECT_ID=<uuid>
-PRISMTRACE_HOST=https://api.prism.blockconvey.com
+PRISMTRACE_HOST=https://prism.blockconvey.com
 ```
 
 ```bash

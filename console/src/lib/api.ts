@@ -1,12 +1,10 @@
-/**
- * Live backend. Vite proxies /api → :8000. Same bundle shape as the mock.
- */
+/** Live backend. Vite proxies /api → :8000. */
 
-import type { Ask, MockIndex, RunBundle, RunIndexEntry } from "./types";
+import type { Ask, ConsoleIndex, RunBundle, RunIndexEntry } from "./types";
 
 const BASE = (import.meta.env.VITE_API_URL as string | undefined) || "/api";
 
-export type LiveCatalog = MockIndex & {
+export type LiveCatalog = ConsoleIndex & {
   datasets: {
     id: string;
     name: string;

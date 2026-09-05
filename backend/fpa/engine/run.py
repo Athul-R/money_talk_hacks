@@ -43,7 +43,9 @@ class Runner:
     def __init__(self, ds: Dataset, *, company_id: str, company_name: str,
                  cfg: Materiality, memory_store: memory.MemoryStore,
                  run_id: str | None = None, writer=None,
-                 started_at: datetime | None = None):
+                 started_at: datetime | None = None,
+                 webctx: list[dict] | None = None):
+        self.webctx = webctx or []  # live runs: sources from the web-search beat
         self.ds = ds
         self.company_id = company_id
         self.company_name = company_name
@@ -210,6 +212,20 @@ class Runner:
             root=root_stats.as_dict(),
             reconciliation={"ok": recon.ok, "checks": len(recon.checks)},
         )
+
+        if self.webctx:
+            q = self.webctx[0].get("query", f"{self.company_name} {metric} {period_b}")
+            live = any(s.get("live") for s in self.webctx)
+            self._emit(
+                "web_context", node_id="root", tag="web",
+                title="Web context gathered",
+                detail=f"{len(self.webctx)} sources · "
+                       + " · ".join(s["source"][:42] for s in self.webctx[:2]),
+                caption=f"Searching the web: “{q}” — "
+                        f"{len(self.webctx)} sources"
+                        + ("" if live else " (cached index)"),
+                sources=self.webctx,
+            )
 
         routing = route(ds, metric, period_a, period_b)
         self._emit(

@@ -16,7 +16,6 @@ import { Brain, Download, Send, X } from "lucide-react";
 import type { FoldedBranch, FoldedPip, Model } from "../lib/fold";
 import { fm, pct, share } from "../lib/format";
 import { EVIDENCE_TAGS, type Ask, type EvidenceTag, type RunBundle } from "../lib/types";
-import { downloadMemo } from "../lib/memo";
 
 /* ── atoms ─────────────────────────────────────────────────────────────── */
 
@@ -420,7 +419,7 @@ function AskBox({ branch, asks, onAsk }: {
 
 /* ── the drawer ────────────────────────────────────────────────────────── */
 
-export function Drawer({ selected, model, bundle, asks, onClose, onSelect, onAsk }: {
+export function Drawer({ selected, model, bundle, asks, onClose, onSelect, onAsk, onOpenMemo }: {
   selected: string;
   model: Model;
   bundle: RunBundle;
@@ -428,6 +427,7 @@ export function Drawer({ selected, model, bundle, asks, onClose, onSelect, onAsk
   onClose: () => void;
   onSelect: (id: string) => void;
   onAsk: (branchId: string, q: string) => void;
+  onOpenMemo?: () => void;
 }) {
   const branch =
     model.branches.get(selected) ??
@@ -528,10 +528,10 @@ export function Drawer({ selected, model, bundle, asks, onClose, onSelect, onAsk
         {/* outcome */}
         {selected === "outcome" && model.complete && (
           <>
-            <button type="button" onClick={() => downloadMemo(bundle)}
+            <button type="button" onClick={() => onOpenMemo?.()}
                     className="clay-pill mb-2 flex items-center gap-2 rounded-full px-4 py-2 text-[12px] font-bold"
                     style={{ color: "var(--ring-engine)" }}>
-              <Download className="h-4 w-4" strokeWidth={2.4} /> Export leadership memo (.md)
+              <Download className="h-4 w-4" strokeWidth={2.4} /> Open leadership memo
             </button>
             <Memo md={model.complete.summaryMd} />
             {model.outcome && (

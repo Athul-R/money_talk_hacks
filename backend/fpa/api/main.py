@@ -18,7 +18,7 @@ from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
-from ..agent import narrator
+from ..agent import narrator, webctx
 from ..agent.providers import SESSION_ID
 from ..config import GIVEN_DIR, Materiality, STATE_DIR
 from ..data.stores import LocalStore
@@ -167,9 +167,11 @@ def start_run(req: RunReq):
         raise HTTPException(400, f"periods must be in {ds.periods}")
     run_id = str(uuid.uuid4())
     SESSION_ID.set(run_id)
+    sources = webctx.gather(req.company, req.metric, req.period_b, seed=run_id)
     runner = Runner(
         ds, company_id=COMPANY_ID, company_name=req.company,
         cfg=Materiality(), memory_store=memory, run_id=run_id,
+        webctx=sources,
     )
     bundle = runner.run(req.metric, req.period_a, req.period_b)
     bundle["run"]["dataset_id"] = req.dataset_id

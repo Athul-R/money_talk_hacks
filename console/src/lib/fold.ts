@@ -37,6 +37,7 @@ export type Model = {
   run: Record<string, any> | null;
   root: Record<string, any> | null; // delta stats of the metric total
   reconciliationOk: boolean;
+  webContext: { query: string; sources: any[] } | null;
   axis: string | null;
   candidates: any[];
   recalled: { kind: string; key?: string; text: string }[];
@@ -86,7 +87,8 @@ function addBranch(model: Model, row: Record<string, any>) {
 
 export function fold(events: EventRow[], upto: number, asks: Ask[] = []): Model {
   const model: Model = {
-    run: null, root: null, reconciliationOk: true, axis: null, candidates: [],
+    run: null, root: null, reconciliationOk: true, webContext: null,
+    axis: null, candidates: [],
     recalled: [], learned: [], promoted: [],
     branches: new Map(), order: [], outcome: null, complete: null,
     maxBeat: events.length ? events[events.length - 1]!.payload.beat : 0,
@@ -102,6 +104,12 @@ export function fold(events: EventRow[], upto: number, asks: Ask[] = []): Model 
         model.run = p.run;
         model.root = p.root;
         model.reconciliationOk = p.reconciliation?.ok ?? true;
+        break;
+      case "web_context":
+        model.webContext = {
+          query: p.sources?.[0]?.query ?? "",
+          sources: p.sources ?? [],
+        };
         break;
       case "axis_selected":
         model.axis = p.axis;
@@ -152,8 +160,7 @@ export function fold(events: EventRow[], upto: number, asks: Ask[] = []): Model 
     }
   }
 
-  // Follow-up asks append as extra pips on their branch (mock keeps them local;
-  // live mode will deliver the same shape through events).
+  // Follow-up asks append as extra pips on their branch.
   for (const ask of asks) {
     const b = model.branches.get(ask.branchId);
     if (b && model.complete) {

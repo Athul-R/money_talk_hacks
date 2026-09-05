@@ -6,7 +6,7 @@
 
 import { Handle, Position, type NodeProps } from "@xyflow/react";
 import {
-  Activity, Boxes, Check, FileText, MessageCircleQuestion, Share2, Sigma,
+  Activity, Boxes, Check, FileText, Globe2, MessageCircleQuestion, Share2, Sigma,
   SlidersHorizontal, X, ZoomIn,
 } from "lucide-react";
 import type { PipData, PuckData } from "../lib/frame";
@@ -59,6 +59,7 @@ export function PuckNode({ data }: NodeProps) {
         >
           {d.glyph === "sigma" && <Sigma className="h-6 w-6" style={{ color: d.ring }} strokeWidth={2.2} />}
           {d.glyph === "router" && <Share2 className="h-6 w-6" style={{ color: d.ring }} strokeWidth={2.2} />}
+          {d.glyph === "globe" && <Globe2 className="h-6 w-6" style={{ color: d.ring }} strokeWidth={2.2} />}
           {d.glyph === "check" && <Check className="h-7 w-7" style={{ color: d.ring }} strokeWidth={3} />}
           {!d.glyph && d.initials && (
             <span className="text-[15px] font-semibold tracking-tight text-foreground/80">{d.initials}</span>
@@ -133,7 +134,10 @@ export function PipNode({ data }: NodeProps) {
           {d.label}
         </span>
       </span>
-      <HoverCard title={d.stage.replace("_", " ")} accent={d.ring} lines={d.tooltip ?? []} compact />
+      <HoverCard
+        title={({ delta_z: "z-bridge", drivers: "$ bridge", cluster: "cluster", drill: "drill", explain: "narrate", ask: "ask" } as Record<string, string>)[d.stage] ?? d.stage}
+        accent={d.ring} lines={d.tooltip ?? []} compact
+      />
     </div>
   );
 }

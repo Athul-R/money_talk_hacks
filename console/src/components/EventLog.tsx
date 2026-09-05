@@ -1,10 +1,7 @@
-/**
- * Right column: the audited event stream, replayed beat by beat. Clicking a row
- * jumps the story to that beat and highlights the node that produced it.
- */
+/** Right column: append-only audit events produced by the analysis. */
 
 import {
-  Activity, Boxes, Brain, Check, FileText, Share2, SlidersHorizontal, XCircle, ZoomIn,
+  Activity, Boxes, Brain, Check, FileText, Globe, Share2, SlidersHorizontal, XCircle, ZoomIn,
 } from "lucide-react";
 import type { EventRow } from "../lib/types";
 import { hhmmss, TAG_TONE } from "../lib/format";
@@ -12,6 +9,7 @@ import { hhmmss, TAG_TONE } from "../lib/format";
 const ICON: Record<string, typeof Check> = {
   router: Share2, z: Activity, drivers: SlidersHorizontal, cluster: Boxes,
   drill: ZoomIn, memory: Brain, explain: FileText, capped: XCircle, ok: Check,
+  web: Globe,
 };
 
 export function EventLog({ events, upto, onPick }: {
@@ -65,7 +63,7 @@ export function EventLog({ events, upto, onPick }: {
         })}
         {visible.length === 0 && (
           <li className="py-8 text-center text-[12.5px] text-muted-foreground">
-            Press play — the engine's audit trail streams here.
+            Analysis events will appear here.
           </li>
         )}
       </ol>

@@ -94,10 +94,10 @@ export type RunIndexEntry = {
   promoted: number;
   created_at: string;
   beats: number;
-  source?: "mock" | "live";
+  source?: "live";
 };
 
-export type MockIndex = {
+export type ConsoleIndex = {
   company: { id: string; name: string };
   dataset: {
     id?: string;
@@ -110,7 +110,7 @@ export type MockIndex = {
   memory: MemoryRow[];
 };
 
-/** A follow-up asked on a node (mock mode keeps these client-side). */
+/** A follow-up asked on one evidence node. */
 export type Ask = { branchId: string; question: string; text: string; at: string };
 
 export const EVIDENCE_TAGS = {

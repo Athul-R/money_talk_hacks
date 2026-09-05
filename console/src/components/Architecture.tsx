@@ -8,39 +8,39 @@ import { X } from "lucide-react";
 const STEPS = [
   {
     n: "01",
-    title: "Load the books",
+    title: "Reconcile",
     tone: "var(--ring-metric)",
-    body: "data/given CSVs (SEC · product · geo · user) or an upload. User-segment rows become the transaction grain. Control totals must reconcile before a run starts.",
+    body: "Do the books add up? Σ user-segment / txn rows must equal reported SEC totals (0.5% tolerance) before any analysis starts. The Σ puck on the left.",
   },
   {
     n: "02",
-    title: "Rank the move",
+    title: "Router",
     tone: "var(--ring-engine)",
-    body: "Variance router scores every axis. Lanes are ranked by |Δ$|, never % growth. Graph only grows — a lane is assigned once.",
+    body: "Who owns the move? Scores every axis and ranks lanes by |Δ$| — never % growth. Cloud at +$11B beats a tiny line at +200%. The teal split puck.",
   },
   {
     n: "03",
-    title: "Measure + attribute",
+    title: "Z-bridge",
     tone: "var(--ring-active)",
-    body: "z-score vs the trailing band. Price / volume / mix / customer bridge. Search uses the clicks × CPC identity; residual is shown, not hidden.",
+    body: "Is this unusual vs this lane's own history? z-score against the trailing growth band. |z| ≥ 2 gets the gold flag. The first pip on every lane.",
   },
   {
     n: "04",
-    title: "Drill to the floor",
+    title: "$ bridge + drill",
     tone: "var(--ring-drill)",
-    body: "Product → user segment → account. Stop at 5% share, 80% explained, or depth 4. Small lanes cap. LLM never does this math.",
+    body: "Split the Δ into price / volume / mix / customer, then drill Cloud → enterprise → US until 80% is explained or a lane falls below 5%.",
   },
   {
     n: "05",
     title: "Narrate + remember",
     tone: "var(--ring-memory)",
-    body: "Engine emits evidence JSON. Narrator only rephrases, tagged reported_fact / calculated / commentary / inference. Memory compiles at write, read as plain rows next run.",
+    body: "Engine emits evidence JSON. Narrator only rephrases, tagged reported_fact / calculated / commentary / inference. Memory compiles at write.",
   },
   {
     n: "06",
-    title: "Observe → Improve → Prove",
+    title: "PRISM prove",
     tone: "var(--ring-up)",
-    body: "prismtrace-sdk sends one LLM trace per narration and one trajectory per finished run. Missing PRISM keys = no-op; the demo still plays.",
+    body: "Every narration is a PRISM trace; the finished run is a trajectory. Open PRISM debug in the closer to walk the agent's decisions.",
   },
 ];
 
@@ -58,8 +58,8 @@ export function Architecture({ onClose }: { onClose: () => void }) {
             </h2>
             <p className="mt-1 max-w-2xl text-[12.5px] leading-relaxed text-muted-foreground">
               Deterministic engine first. The graph on the main screen is this
-              walk, folded into beats. Mock mode replays a baked walk; live mode
-              runs the same walk on <code>data/given</code> (or whatever you upload).
+              walk, folded into live steps. Every uploaded ledger follows the
+              same evidence path from control totals to executive explanation.
             </p>
           </div>
           <button type="button" onClick={onClose}
@@ -112,8 +112,8 @@ export function Architecture({ onClose }: { onClose: () => void }) {
           <p className="mt-4 text-[11.5px] leading-relaxed text-muted-foreground">
             Hard rules: the LLM never computes; absolute dollars rank branches;
             the graph only grows; memory is compiled at write and read as rows.
-            Two demo paths share this picture — <b>mock</b> (Auric fixtures,
-            baked beats) and <b>live</b> (Alphabet given CSVs through FastAPI).
+            Leaders use the high-level lineage; analysts can open every audit
+            step from the same append-only event ledger.
           </p>
         </div>
       </div>

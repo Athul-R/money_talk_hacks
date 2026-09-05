@@ -1,15 +1,13 @@
 /**
  * Left rail (fork of the scheduler's WorkflowRail): dataset upload card with
  * control-total check, "new run" card, past runs, and the company memory chip.
- * Mock mode: uploads validate locally against the baked dataset; new runs map
- * onto the baked engine outputs (the backend wire-up swaps these two handlers).
  */
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   Brain, Check, ChevronDown, FileSpreadsheet, Play, Sparkles, UploadCloud,
 } from "lucide-react";
-import type { MockIndex, RunIndexEntry } from "../lib/types";
+import type { ConsoleIndex, RunIndexEntry } from "../lib/types";
 
 function StatusPill({ entry, active }: { entry: RunIndexEntry; active: boolean }) {
   return (
@@ -22,17 +20,14 @@ function StatusPill({ entry, active }: { entry: RunIndexEntry; active: boolean }
   );
 }
 
-export type RailMode = "mock" | "live";
-
 export function RunsRail({
-  index, activeFile, onPick, mode = "mock",
+  index, activeFile, onPick,
   datasets, datasetId, onDataset,
   onUpload, onStartRun, starting = false, liveOk = true, liveHint = "",
 }: {
-  index: MockIndex;
+  index: ConsoleIndex;
   activeFile: string;
   onPick: (file: string) => void;
-  mode?: RailMode;
   datasets?: { id: string; name: string }[];
   datasetId?: string;
   onDataset?: (id: string) => void;
@@ -46,7 +41,7 @@ export function RunsRail({
   const [uploaded, setUploaded] = useState<string[]>([]);
   const [validating, setValidating] = useState(false);
   const [memoryOpen, setMemoryOpen] = useState(false);
-  const [newRunOpen, setNewRunOpen] = useState(mode === "live");
+  const [newRunOpen, setNewRunOpen] = useState(true);
   const [metric, setMetric] = useState("Revenue");
   const [periodA, setPeriodA] = useState("2025-Q2");
   const [periodB, setPeriodB] = useState("2026-Q2");
@@ -99,7 +94,7 @@ export function RunsRail({
       setNewRunOpen(false);
       onPick(match.file);
     } else {
-      setRunHint("Engine offline in mock mode — pick one of the baked runs below.");
+      setRunHint("This period pair is not available for the selected dataset.");
     }
   };
 
@@ -124,9 +119,7 @@ export function RunsRail({
             <span className="block truncate text-[11px] text-muted-foreground">
               {uploaded.length
                 ? uploaded.join(" · ")
-                : mode === "live"
-                  ? "sec · product · geography · user CSVs"
-                  : "summaries · transactions · dimensions · kpis"}
+                : "sec · product · geography · user CSVs"}
             </span>
           </span>
         </button>
@@ -169,7 +162,7 @@ export function RunsRail({
                 ))}
               </select>
             )}
-            {!liveOk && mode === "live" && (
+            {!liveOk && (
               <p className="text-[10.5px] leading-snug" style={{ color: "var(--ring-drill)" }}>
                 {liveHint || "API offline — run `make api` then flip to live."}
               </p>
@@ -193,7 +186,7 @@ export function RunsRail({
                 materiality · 5% share / 80% stop
               </span>
             </div>
-            <button type="button" onClick={startRun} disabled={starting || (mode === "live" && !liveOk)}
+            <button type="button" onClick={startRun} disabled={starting || !liveOk}
                     className="clay-pill rounded-xl px-3 py-2 text-[12px] font-bold disabled:opacity-50"
                     style={{ color: "var(--ring-engine)" }}>
               {starting ? "Running engine…" : "Explain the change"}
