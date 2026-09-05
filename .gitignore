@@ -1,0 +1,27 @@
+# Local secrets — do not commit
+.env
+.env.local
+.env.*.local
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+*.egg-info/
+dist/
+build/
+src/*.egg-info/
+
+# OS / IDE
+.DS_Store
+.idea/
+.vscode/
+
+# Outputs / bulky local caches
+data/output/
+data/raw/
+.gide/
+*.log
+*.zip
