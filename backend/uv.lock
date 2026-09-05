@@ -162,6 +162,7 @@ dependencies = [
     { name = "httpx" },
     { name = "numpy" },
     { name = "pandas" },
+    { name = "prismtrace-sdk" },
     { name = "python-dotenv" },
     { name = "python-multipart" },
     { name = "uvicorn" },
@@ -183,6 +184,7 @@ requires-dist = [
     { name = "httpx", specifier = ">=0.27" },
     { name = "numpy", specifier = ">=1.26" },
     { name = "pandas", specifier = ">=2.2" },
+    { name = "prismtrace-sdk", specifier = ">=0.4" },
     { name = "python-dotenv", specifier = ">=1.0" },
     { name = "python-multipart", specifier = ">=0.0.9" },
     { name = "supabase", marker = "extra == 'supabase'", specifier = ">=2.6" },
@@ -383,6 +385,18 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/e2/22/88c470d8838d2678a44e0172d061630b8837cba3fb7fb492e28f6578c309/postgrest-2.31.0.tar.gz", hash = "sha256:2f395d84b2ee34fc57622ff2f711df603e2ede625f98e5015240741888f7bd0c", size = 14419, upload-time = "2026-06-04T13:37:20.474Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/ea/3e/41909586cb148db0259e0208310067afda4cc097f4c7a779e829c1e68c46/postgrest-2.31.0-py3-none-any.whl", hash = "sha256:c2fd47c94e13ee8335111c4f03c9a24ea9766ce9d35fc3cd7330057c9e7ea0c3", size = 23098, upload-time = "2026-06-04T13:37:19.452Z" },
+]
+
+[[package]]
+name = "prismtrace-sdk"
+version = "0.4.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "httpx" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/20/a8/8fa86b731460b1948c651968e3858101042e1bc8ddf315858ab39ca93a80/prismtrace_sdk-0.4.2.tar.gz", hash = "sha256:1b1ecc54735df59a7fa8dbb92b7594b445bd90c5a54b1f0443e8cd0630c92ebc", size = 50531, upload-time = "2026-09-04T16:52:13.598Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/ae/3d/b6ce9a18179242d7ad755faa32ba37e31f1f85088c90655fa04426a60aeb/prismtrace_sdk-0.4.2-py3-none-any.whl", hash = "sha256:f1a5cf35d83f899c9054f220b8d583c89e458fd7a1279410845d89fb4ac36084", size = 44149, upload-time = "2026-09-04T16:52:12.272Z" },
 ]
 
 [[package]]

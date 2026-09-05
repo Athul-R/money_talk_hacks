@@ -1,27 +1,43 @@
 /**
  * Delta Ledger — "Explain the Change" console.
- * Three columns like the reference scheduler: runs rail · story graph · event
- * log. One state machine: pick a run → fold its events up to the current beat
- * → frame() → React Flow. The drawer overlays the center; the log stays put.
+ * Three columns: runs rail · story graph · event log.
+ * Two paths share fold/frame: mock (baked beats) and live (FastAPI + data/given).
  */
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { ChevronRight, Download, Landmark } from "lucide-react";
+import { ChevronRight, Download, Landmark, Network } from "lucide-react";
+import { Architecture } from "./components/Architecture";
 import { BeatBar } from "./components/BeatBar";
 import { Drawer } from "./components/Drawer";
 import { EventLog } from "./components/EventLog";
 import { RunsRail } from "./components/RunsRail";
 import { StoryGraph } from "./components/StoryGraph";
+import * as api from "./lib/api";
 import { captions, fold } from "./lib/fold";
 import { breadcrumb, frame } from "./lib/frame";
 import { fm, pct } from "./lib/format";
 import { DEFAULT_RUN_FILE, loadBundle, mockIndex } from "./lib/mock";
 import { downloadMemo } from "./lib/memo";
-import type { Ask, RunBundle } from "./lib/types";
+import type { Ask, MockIndex, RunBundle } from "./lib/types";
 
 const PLAY_MS = 1150;
 
+/** Hero YoY pair if the books carry it, else last quarter vs a year before. */
+function pickPeriods(periods: string[]): [string, string] {
+  if (periods.includes("2025-Q2") && periods.includes("2026-Q2")) return ["2025-Q2", "2026-Q2"];
+  if (periods.length >= 5) return [periods[periods.length - 5], periods[periods.length - 1]];
+  return [periods[0] ?? "2025-Q2", periods[periods.length - 1] ?? "2026-Q2"];
+}
+const EMPTY_LIVE: MockIndex = {
+  company: { id: "alphabet", name: "Alphabet" },
+  dataset: { name: "alphabet-given", periods: ["2025-Q2", "2026-Q2"], reconciliation: { ok: false, checks: [] } },
+  runs: [],
+  memory: [],
+};
+
 export default function App() {
+  const [mode, setMode] = useState<"mock" | "live">("mock");
+  const [archOpen, setArchOpen] = useState(() => window.location.hash === "#architecture");
   const [activeFile, setActiveFile] = useState(DEFAULT_RUN_FILE);
   const [bundle, setBundle] = useState<RunBundle | null>(null);
   const [beat, setBeat] = useState(1);
@@ -29,18 +45,79 @@ export default function App() {
   const [selected, setSelected] = useState<string | null>(null);
   const [asks, setAsks] = useState<Ask[]>([]);
 
+  const [liveIndex, setLiveIndex] = useState<MockIndex>(EMPTY_LIVE);
+  const [datasetId, setDatasetId] = useState("alphabet-given");
+  const [datasets, setDatasets] = useState<{ id: string; name: string }[]>([
+    { id: "alphabet-given", name: "Alphabet · given (data/given)" },
+  ]);
+  const [liveOk, setLiveOk] = useState(false);
+  const [liveHint, setLiveHint] = useState("");
+  const [prismOn, setPrismOn] = useState(false);
+  const [starting, setStarting] = useState(false);
+
+  const index = mode === "mock" ? mockIndex : liveIndex;
+
+  const playBundle = useCallback((next: RunBundle, file: string) => {
+    setBundle(next);
+    setActiveFile(file);
+    setBeat(1);
+    setPlaying(true);
+    setSelected(null);
+    setAsks([]);
+  }, []);
+
   useEffect(() => {
+    const onHash = () => setArchOpen(window.location.hash === "#architecture");
+    window.addEventListener("hashchange", onHash);
+    return () => window.removeEventListener("hashchange", onHash);
+  }, []);
+
+  const openArch = (open: boolean) => {
+    setArchOpen(open);
+    window.history.replaceState(null, "", open ? "#architecture" : "#");
+  };
+
+  useEffect(() => {
+    if (mode !== "mock") return;
     let cancelled = false;
     loadBundle(activeFile).then((b) => {
-      if (cancelled) return;
-      setBundle(b);
-      setBeat(1);
-      setPlaying(true);
-      setSelected(null);
-      setAsks([]);
-    });
+      if (!cancelled) playBundle(b, activeFile);
+    }).catch(() => undefined);
     return () => { cancelled = true; };
-  }, [activeFile]);
+  }, [mode, activeFile, playBundle]);
+
+  useEffect(() => {
+    if (mode !== "live") return;
+    let cancelled = false;
+    setBundle(null); // live idles until an upload or an explicit run
+    setSelected(null);
+    (async () => {
+      try {
+        const [h, cat] = await Promise.all([api.health(), api.catalog()]);
+        if (cancelled) return;
+        setLiveOk(h.ok);
+        setPrismOn(h.prism);
+        setLiveHint(h.given ? "" : "data/given is missing on the API host");
+        setLiveIndex({
+          company: cat.company,
+          dataset: cat.dataset,
+          runs: cat.runs,
+          memory: cat.memory,
+        });
+        if (cat.datasets?.length) {
+          setDatasets(cat.datasets.map((d) => ({ id: d.id, name: d.name })));
+        }
+        setDatasetId((id) => cat.datasets?.some((d) => d.id === id) ? id : (cat.dataset.id ?? "alphabet-given"));
+        // Nothing auto-plays: the demo is upload → analyze. Past live runs
+        // stay clickable in the rail.
+      } catch {
+        if (cancelled) return;
+        setLiveOk(false);
+        setLiveHint("API offline — run `make api` in another terminal, then stay on live.");
+      }
+    })();
+    return () => { cancelled = true; };
+  }, [mode, playBundle]);
 
   const maxBeat = bundle?.run.beats ?? 1;
 
@@ -65,28 +142,83 @@ export default function App() {
     [model, selected],
   );
 
-  const onAsk = useCallback((branchId: string, question: string) => {
+  const onAsk = useCallback(async (branchId: string, question: string) => {
     if (!bundle) return;
+    if (mode === "live") {
+      try {
+        const row = await api.ask(bundle.run.id, branchId, question);
+        setAsks((prev) => [...prev, row]);
+        return;
+      } catch { /* fall through to templated */ }
+    }
     const evidence = bundle.branches.find((b) => b.id === branchId)?.evidence;
-    const facts = (evidence?.claims ?? [])
-      .map((c: any) => c.text).slice(0, 3).join(" ");
+    const facts = (evidence?.claims ?? []).map((c: any) => c.text).slice(0, 3).join(" ");
     setAsks((prev) => [...prev, {
       branchId, question,
       text: facts
-        ? `Scoped to this node's computed evidence: ${facts} (Templated answer — wire the backend with an LLM key for free-form follow-ups.)`
+        ? `Scoped to this node's computed evidence: ${facts} (Templated answer — set LLM_API_KEY on the API for free-form follow-ups.)`
         : "No computed evidence on this node yet — step the story forward first.",
       at: new Date().toISOString(),
     }]);
-  }, [bundle]);
+  }, [bundle, mode]);
 
   const onPlay = useCallback((p: boolean) => {
     if (p && beat >= maxBeat) setBeat(1);
     setPlaying(p);
   }, [beat, maxBeat]);
 
+  const onPick = useCallback(async (file: string) => {
+    if (mode === "mock") {
+      setActiveFile(file);
+      return;
+    }
+    const b = await api.getRun(file);
+    playBundle(b, file);
+  }, [mode, playBundle]);
+
+  const runLive = useCallback(async (dsId: string, metric: string, periodA: string, periodB: string) => {
+    setStarting(true);
+    try {
+      const next = await api.startRun({
+        dataset_id: dsId, metric, period_a: periodA, period_b: periodB,
+        company: index.company.name,
+      });
+      playBundle(next, next.run.id);
+      setLiveIndex((prev) => ({
+        ...prev,
+        runs: [api.indexRun(next), ...prev.runs.filter((r) => r.id !== next.run.id)],
+        memory: next.memory_after ?? prev.memory,
+      }));
+    } finally {
+      setStarting(false);
+    }
+  }, [index.company.name, playBundle]);
+
+  // The live demo: drop the 4 CSVs → reconcile → the analysis plays itself.
+  const onUpload = useCallback(async (files: FileList) => {
+    const meta = await api.uploadDataset(files);
+    setDatasetId(meta.id);
+    setDatasets((prev) => [{ id: meta.id, name: meta.name }, ...prev.filter((d) => d.id !== meta.id)]);
+    setLiveIndex((prev) => ({
+      ...prev,
+      dataset: {
+        id: meta.id,
+        name: meta.name,
+        periods: meta.periods,
+        reconciliation: meta.reconciliation,
+      },
+    }));
+    const [pa, pb] = pickPeriods(meta.periods);
+    await runLive(meta.id, "Revenue", pa, pb);
+  }, [runLive]);
+
+  const onStartRun = useCallback(
+    (metric: string, periodA: string, periodB: string) => runLive(datasetId, metric, periodA, periodB),
+    [datasetId, runLive],
+  );
+
   return (
     <main className="flex h-screen flex-col overflow-hidden px-5 py-5 lg:px-7">
-      {/* ── top bar ── */}
       <header className="mx-auto mb-5 grid w-full max-w-[1720px] shrink-0 grid-cols-[minmax(0,1fr)_auto] items-center gap-4">
         <div className="flex min-w-0 items-center gap-3">
           <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl"
@@ -102,7 +234,7 @@ export default function App() {
               Delta Ledger
             </h1>
             <p className="truncate text-[11.5px] text-muted-foreground">
-              explain the change · {mockIndex.company.name} · {mockIndex.dataset.name}
+              explain the change · {index.company.name} · {index.dataset.name}
             </p>
           </div>
         </div>
@@ -120,16 +252,47 @@ export default function App() {
               leadership memo
             </button>
           )}
+          <button type="button" onClick={() => openArch(true)}
+                  className="clay-pill flex items-center gap-2 rounded-full px-4 py-2.5 text-[12px] font-semibold text-foreground">
+            <Network className="h-4 w-4" style={{ color: "var(--ring-engine)" }} strokeWidth={2.2} />
+            architecture
+          </button>
+          <div className="clay-pill flex items-center gap-0.5 rounded-full p-1">
+            {(["mock", "live"] as const).map((m) => (
+              <button key={m} type="button" onClick={() => {
+                        setMode(m);
+                        if (m === "mock") setActiveFile(DEFAULT_RUN_FILE);
+                      }}
+                      className={`rounded-full px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.06em] ${
+                        mode === m ? "clay-pill-active" : ""
+                      }`}
+                      style={{ color: mode === m ? "var(--ring-engine)" : "var(--muted-foreground)" }}>
+                {m}
+              </button>
+            ))}
+          </div>
           <span className="clay-pill flex items-center gap-2 rounded-full px-4 py-2.5 text-[12px] font-semibold text-foreground">
-            <i className="block h-2 w-2 animate-pulse rounded-full" style={{ background: "var(--ring-up)" }} />
-            replay · mock
+            <i className="block h-2 w-2 animate-pulse rounded-full"
+               style={{ background: mode === "live" && liveOk ? "var(--ring-up)" : "var(--ring-active)" }} />
+            {mode === "mock" ? "replay · mock" : liveOk ? "engine · live" : "engine · offline"}
+            {prismOn && mode === "live" && (
+              <span className="text-[10px] font-bold uppercase tracking-wide" style={{ color: "var(--ring-memory)" }}>
+                prism
+              </span>
+            )}
           </span>
         </div>
       </header>
 
-      {/* ── three columns ── */}
       <div className="mx-auto grid w-full max-w-[1720px] min-h-0 flex-1 gap-5 lg:grid-cols-[280px_minmax(0,1fr)_340px]">
-        <RunsRail index={mockIndex} activeFile={activeFile} onPick={setActiveFile} />
+        <RunsRail
+          index={index} activeFile={activeFile} onPick={onPick}
+          mode={mode} datasets={mode === "live" ? datasets : undefined}
+          datasetId={datasetId} onDataset={setDatasetId}
+          onUpload={mode === "live" ? onUpload : undefined}
+          onStartRun={mode === "live" ? onStartRun : undefined}
+          starting={starting} liveOk={liveOk} liveHint={liveHint}
+        />
 
         <section className="clay-panel relative flex min-h-0 flex-col gap-4 rounded-[32px] p-5">
           {bundle && (
@@ -154,11 +317,23 @@ export default function App() {
             </nav>
           )}
 
-          <StoryGraph
-            nodes={graph.nodes} edges={graph.edges}
-            beatKey={`${activeFile}:${beat}`}
-            selected={selected} onSelect={setSelected}
-          />
+          {bundle ? (
+            <StoryGraph
+              nodes={graph.nodes} edges={graph.edges}
+              beatKey={`${activeFile}:${beat}`}
+              selected={selected} onSelect={setSelected}
+            />
+          ) : (
+            <div className="clay-empty grid flex-1 place-items-center rounded-[24px] px-8 text-center">
+              <p className="max-w-sm text-[13px] leading-relaxed text-muted-foreground">
+                {mode === "live"
+                  ? starting
+                    ? "Reconciling the books and running the engine…"
+                    : "Drop the four CSVs (sec_metrics · product_segments · geography · user_segments) on the left rail — the engine reconciles the totals and the analysis plays left → right. Or open New run to analyze the seeded Alphabet books."
+                  : "Pick a baked run on the left."}
+              </p>
+            </div>
+          )}
 
           {selected && model && bundle && (
             <Drawer
@@ -179,6 +354,8 @@ export default function App() {
           />
         )}
       </div>
+
+      {archOpen && <Architecture onClose={() => openArch(false)} />}
     </main>
   );
 }

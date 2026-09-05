@@ -146,11 +146,11 @@ class Runner:
         if dim == "product":  # product split under a line_item (e.g. COGS by product)
             return self.ds.series(parent["name"] if parent else metric, "product", name)
         if dim == "user_type" and parent is not None:
-            return self.ds.txn_series(product=parent["name"], customer_type=name)
+            return self.ds.txn_series(**self._user_slice(parent["name"], name))
         if dim == "customer" and parent is not None:
             grand = self._parent_of(parent)
             product = grand["name"] if grand else parent["name"]
-            return self.ds.txn_series(product=product, customer_type=parent["name"],
+            return self.ds.txn_series(**self._user_slice(product, parent["name"]),
                                       customer_name=name)
         return {}
 
@@ -164,13 +164,26 @@ class Runner:
         if dim == "product" and parent is None:
             return {"product": name}
         if dim == "user_type" and parent is not None:
-            return {"product": parent["name"], "customer_type": name}
+            return self._user_slice(parent["name"], name)
         if dim == "customer" and parent is not None:
             grand = self._parent_of(parent)
             product = grand["name"] if grand else parent["name"]
-            return {"product": product, "customer_type": parent["name"],
+            return {**self._user_slice(product, parent["name"]),
                     "customer_name": name}
         return None
+
+    def _user_slice(self, product: str, name: str) -> dict[str, str]:
+        """Resolve a user_type lane to the txn column that actually split it.
+        Fixtures use customer_type (Enterprise/SMB); given CSVs use sub_product
+        (enterprise/midmarket) because each product has one user_class."""
+        df = self.ds.transactions
+        if df is None or df.empty:
+            return {"product": product, "customer_type": name}
+        subset = df[df["product"] == product] if "product" in df.columns else df
+        for key in ("customer_type", "sub_product", "geography"):
+            if key in subset.columns and (subset[key].astype(str) == name).any():
+                return {"product": product, key: name}
+        return {"product": product, "customer_type": name}
 
     # ── the run ──────────────────────────────────────────────────────────
 

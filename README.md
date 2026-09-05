@@ -16,12 +16,62 @@ event stream), re-themed for finance.
 
 ![Delta Ledger console](docs/assets/console.png)
 
-## Quickstart (no keys needed)
+## Architecture
+
+![Delta Ledger architecture](docs/assets/architecture.png)
+
+One analyst-facing console, one deterministic engine, one narrator that is
+never allowed to touch a number. The analyst drops the four CSVs; the engine
+reconciles control totals, ranks the movers by absolute dollars, bridges
+price/volume/mix, and drills until ~80% of the move is explained; the LLM only
+rephrases the finished evidence with tagged claims; memory and PRISM traces
+persist every run. Full walkthrough: [docs/architecture.md](docs/architecture.md)
+(also the **architecture** pill in the console header, or `#architecture`).
+
+## Quickstart
+
+Two paths, same graph. Architecture board is the **architecture** pill in the
+header (also `#architecture`) and [docs/architecture.md](docs/architecture.md).
 
 ```bash
-make install     # uv sync + npm install
-make run-demo    # engine bakes beats from fixtures → console replays them on :5173
+make install     # uv sync + npm install + prismtrace-sdk
+make run-demo    # mock: baked Auric beats → console :5173
 ```
+
+Live path (Alphabet `data/given` — drop updated CSVs on the rail anytime):
+
+```bash
+make api         # FastAPI :8000, seeds dataset alphabet-given
+make live        # console :5173, proxy /api → :8000
+```
+
+## Demo flow (stage script)
+
+1. **Mock** (default tab): press play. The baked Auric hero run grows
+   left → right — metric → variance router → ranked lanes → Cloud drills to the
+   whale accounts → leadership memo. No keys, no network.
+2. Flip the header to **live**. The canvas idles and asks for the books.
+3. Drag the four CSVs from `data/given/` (`sec_metrics` · `product_segments` ·
+   `geography` · `user_segments`) onto the upload card. Upload → control totals
+   reconcile ✓ → **the engine runs by itself** and the Alphabet analysis plays:
+   Cloud + Search carry the move, Cloud drills enterprise → US / APAC / EU,
+   ~84% explained in 40 beats.
+4. Updated numbers later? Edit any CSV, drop the four files again — new dataset,
+   fresh run, same methodology. `New run` re-runs any metric/period pair
+   (Revenue, Operating income, Gross profit, FCF).
+5. Click any puck for the evidence drawer (z-band, bridge waterfall, clusters,
+   tagged claims); the outcome puck exports the memo. Every narration is traced
+   to PRISM as agent `delta-ledger`.
+
+PRISM (Observe → Improve → Prove) needs two values in `.env`:
+
+```
+PRISMTRACE_API_KEY=pt-sk-...
+PRISMTRACE_PROJECT_ID=<uuid>
+```
+
+Then `make prism-warmup` so the project has a trace before tomorrow. No keys =
+engine still runs; traces are skipped. LLM key is optional (templated narration).
 
 Press play. The hero run (`Revenue · 2025-Q2 → 2026-Q2`) grows left to right:
 metric → variance router → 4 ranked lanes → Cloud drills to Enterprise →
@@ -35,9 +85,10 @@ node for its evidence drawer; click the outcome puck to export the memo.
   fictional company, *Auric Technologies*, whose transactions are calibrated to
   reconcile exactly to its reported summaries. 33 pytest cases cover the bridge
   identity, materiality stops, z-scores, and cross-run memory.
-- **Mock:** transport. The console replays baked beats instead of subscribing to
-  Supabase realtime; upload/new-run cards validate locally. `data/schema.sql`
-  and the engine's Supabase writer are already in place for the live wire-up.
+- **Mock transport vs live:** mock replays baked beats. Live posts to FastAPI,
+  which reads `data/given` (or an upload) and returns the same bundle shape.
+  `data/schema.sql` + the Supabase writer are still there if you want realtime
+  later; local JSON under `backend/.fpa_state` is enough for the demo.
 
 ## The demo story (all computed, none hard-coded)
 

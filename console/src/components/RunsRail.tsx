@@ -5,7 +5,7 @@
  * onto the baked engine outputs (the backend wire-up swaps these two handlers).
  */
 
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   Brain, Check, ChevronDown, FileSpreadsheet, Play, Sparkles, UploadCloud,
 } from "lucide-react";
@@ -22,20 +22,43 @@ function StatusPill({ entry, active }: { entry: RunIndexEntry; active: boolean }
   );
 }
 
-export function RunsRail({ index, activeFile, onPick }: {
+export type RailMode = "mock" | "live";
+
+export function RunsRail({
+  index, activeFile, onPick, mode = "mock",
+  datasets, datasetId, onDataset,
+  onUpload, onStartRun, starting = false, liveOk = true, liveHint = "",
+}: {
   index: MockIndex;
   activeFile: string;
   onPick: (file: string) => void;
+  mode?: RailMode;
+  datasets?: { id: string; name: string }[];
+  datasetId?: string;
+  onDataset?: (id: string) => void;
+  onUpload?: (files: FileList) => Promise<void> | void;
+  onStartRun?: (metric: string, periodA: string, periodB: string) => Promise<void> | void;
+  starting?: boolean;
+  liveOk?: boolean;
+  liveHint?: string;
 }) {
   const fileInput = useRef<HTMLInputElement>(null);
   const [uploaded, setUploaded] = useState<string[]>([]);
   const [validating, setValidating] = useState(false);
   const [memoryOpen, setMemoryOpen] = useState(false);
-  const [newRunOpen, setNewRunOpen] = useState(false);
+  const [newRunOpen, setNewRunOpen] = useState(mode === "live");
   const [metric, setMetric] = useState("Revenue");
   const [periodA, setPeriodA] = useState("2025-Q2");
   const [periodB, setPeriodB] = useState("2026-Q2");
   const [runHint, setRunHint] = useState("");
+
+  // Uploads swap the dataset — keep the period pickers inside its calendar.
+  useEffect(() => {
+    const ps = index.dataset.periods;
+    if (!ps.length || (ps.includes(periodA) && ps.includes(periodB))) return;
+    setPeriodA(ps.includes("2025-Q2") ? "2025-Q2" : ps[Math.max(0, ps.length - 5)]);
+    setPeriodB(ps.includes("2026-Q2") ? "2026-Q2" : ps[ps.length - 1]);
+  }, [index.dataset.periods, periodA, periodB]);
 
   const recon = index.dataset.reconciliation;
   const memory = index.memory;
@@ -44,14 +67,30 @@ export function RunsRail({ index, activeFile, onPick }: {
     [index.runs],
   );
 
-  const onFiles = (files: FileList | null) => {
+  const onFiles = async (files: FileList | null) => {
     if (!files?.length) return;
     setUploaded([...files].map((f) => f.name));
     setValidating(true);
-    setTimeout(() => setValidating(false), 700); // local validation beat (mock)
+    setRunHint("");
+    try {
+      if (onUpload) await onUpload(files);
+    } catch (err) {
+      setRunHint(err instanceof Error ? err.message : "upload failed");
+    } finally {
+      setValidating(false);
+    }
   };
 
-  const startRun = () => {
+  const startRun = async () => {
+    if (onStartRun) {
+      setRunHint("");
+      try {
+        await onStartRun(metric, periodA, periodB);
+      } catch (err) {
+        setRunHint(err instanceof Error ? err.message : "run failed");
+      }
+      return;
+    }
     const match = index.runs.find(
       (r) => r.metric === metric && r.period_a === periodA && r.period_b === periodB,
     );
@@ -85,7 +124,9 @@ export function RunsRail({ index, activeFile, onPick }: {
             <span className="block truncate text-[11px] text-muted-foreground">
               {uploaded.length
                 ? uploaded.join(" · ")
-                : "summaries · transactions · dimensions · kpis"}
+                : mode === "live"
+                  ? "sec · product · geography · user CSVs"
+                  : "summaries · transactions · dimensions · kpis"}
             </span>
           </span>
         </button>
@@ -101,7 +142,7 @@ export function RunsRail({ index, activeFile, onPick }: {
             {validating ? "validating…" : (
               <>
                 <Check className="h-3 w-3" strokeWidth={3} />
-                txns reconcile to summaries
+                {recon.ok ? "txns reconcile to summaries" : "reconciling… drop the given CSVs"}
               </>
             )}
           </span>
@@ -120,6 +161,19 @@ export function RunsRail({ index, activeFile, onPick }: {
         </button>
         {newRunOpen && (
           <div className="mt-3 grid gap-2">
+            {datasets && datasets.length > 0 && onDataset && (
+              <select value={datasetId} onChange={(e) => onDataset(e.target.value)}
+                      className="clay-input rounded-xl px-3 py-2 text-[12px] font-medium">
+                {datasets.map((d) => (
+                  <option key={d.id} value={d.id}>{d.name}</option>
+                ))}
+              </select>
+            )}
+            {!liveOk && mode === "live" && (
+              <p className="text-[10.5px] leading-snug" style={{ color: "var(--ring-drill)" }}>
+                {liveHint || "API offline — run `make api` then flip to live."}
+              </p>
+            )}
             <select value={metric} onChange={(e) => setMetric(e.target.value)}
                     className="clay-input rounded-xl px-3 py-2 text-[12px] font-medium">
               {["Revenue", "Operating income", "Gross profit", "Free cash flow"].map((m) => (
@@ -139,10 +193,10 @@ export function RunsRail({ index, activeFile, onPick }: {
                 materiality · 5% share / 80% stop
               </span>
             </div>
-            <button type="button" onClick={startRun}
-                    className="clay-pill rounded-xl px-3 py-2 text-[12px] font-bold"
+            <button type="button" onClick={startRun} disabled={starting || (mode === "live" && !liveOk)}
+                    className="clay-pill rounded-xl px-3 py-2 text-[12px] font-bold disabled:opacity-50"
                     style={{ color: "var(--ring-engine)" }}>
-              Explain the change
+              {starting ? "Running engine…" : "Explain the change"}
             </button>
             {runHint && (
               <p className="text-[10.5px] leading-snug" style={{ color: "var(--ring-drill)" }}>{runHint}</p>

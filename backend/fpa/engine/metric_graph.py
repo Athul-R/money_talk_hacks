@@ -27,6 +27,7 @@ IDENTITIES: dict[str, list[tuple[str, float]]] = {
 # segment -> [(kpi_volume, kpi_price)] — revenue ≈ volume × price identities.
 KPI_IDENTITIES: dict[str, tuple[str, str]] = {
     "Search Ads": ("paid_clicks", "cpc"),
+    "Search": ("paid_clicks", "cpc"),
     "Subscriptions": ("subscribers", "arpu"),
 }
 

@@ -12,8 +12,10 @@ from dotenv import load_dotenv
 load_dotenv(Path(__file__).resolve().parents[2] / ".env")
 
 BACKEND_DIR = Path(__file__).resolve().parents[1]
+REPO_ROOT = Path(__file__).resolve().parents[2]
 STATE_DIR = BACKEND_DIR / ".fpa_state"
 FIXTURES_DIR = BACKEND_DIR / "fixtures"
+GIVEN_DIR = REPO_ROOT / "data" / "given"
 
 
 def _env_float(name: str, default: float) -> float:
@@ -55,3 +57,8 @@ SUPABASE_SERVICE_KEY = os.getenv("SUPABASE_SERVICE_KEY", "")
 LLM_PROVIDER = os.getenv("LLM_PROVIDER", "openai")
 LLM_API_KEY = os.getenv("LLM_API_KEY", "")
 LLM_MODEL = os.getenv("LLM_MODEL", "")
+
+# PRISM (optional — observe.py no-ops without both)
+PRISMTRACE_API_KEY = os.getenv("PRISMTRACE_API_KEY", "")
+PRISMTRACE_PROJECT_ID = os.getenv("PRISMTRACE_PROJECT_ID", "")
+PRISMTRACE_HOST = os.getenv("PRISMTRACE_HOST", "https://api.prism.blockconvey.com")

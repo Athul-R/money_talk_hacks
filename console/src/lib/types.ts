@@ -94,11 +94,18 @@ export type RunIndexEntry = {
   promoted: number;
   created_at: string;
   beats: number;
+  source?: "mock" | "live";
 };
 
 export type MockIndex = {
   company: { id: string; name: string };
-  dataset: { name: string; periods: string[]; reconciliation: { ok: boolean; checks: any[] } };
+  dataset: {
+    id?: string;
+    name: string;
+    periods: string[];
+    reconciliation: { ok: boolean; checks: any[] };
+    files?: string[];
+  };
   runs: RunIndexEntry[];
   memory: MemoryRow[];
 };

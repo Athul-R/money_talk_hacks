@@ -113,19 +113,22 @@ def route_branch(ds: Dataset, parent_dimension: str, parent_name: str,
                 pairs = [(n, seg_a.get(n, 0.0), seg_b.get(n, 0.0), 1.0) for n in names]
                 return Routing(axis="product", children=_children_shares(pairs, "product"))
             return None
-        # product branch → customer_type split from transactions
+        # product → customer_type, then sub_product, then geography.
+        # Alphabet given-data has one user_class per product (advertiser /
+        # customer), so the next grain that actually splits the book wins.
         txn_a = ds.txns(period_a, product=parent_name)
         txn_b = ds.txns(period_b, product=parent_name)
         if txn_a.empty or txn_b.empty:
             return None
-        by_type_a = txn_a.groupby("customer_type").net_revenue.sum()
-        by_type_b = txn_b.groupby("customer_type").net_revenue.sum()
-        names = sorted(set(by_type_a.index) | set(by_type_b.index))
-        if len(names) < 2:
-            return None
-        pairs = [(n, float(by_type_a.get(n, 0.0)), float(by_type_b.get(n, 0.0)), 1.0)
-                 for n in names]
-        return Routing(axis="user_type", children=_children_shares(pairs, "user_type"))
+        for column in ("customer_type", "sub_product", "geography"):
+            by_a = {str(k): float(v) for k, v in txn_a.groupby(column).net_revenue.sum().items()}
+            by_b = {str(k): float(v) for k, v in txn_b.groupby(column).net_revenue.sum().items()}
+            names = sorted(set(by_a) | set(by_b))
+            if len(names) < 2:
+                continue
+            pairs = [(n, by_a.get(n, 0.0), by_b.get(n, 0.0), 1.0) for n in names]
+            return Routing(axis="user_type", children=_children_shares(pairs, "user_type"))
+        return None
 
     if parent_dimension == "user_type":
         return None  # handled by route_customers (needs the product context)
@@ -138,8 +141,14 @@ def route_customers(ds: Dataset, product: str, customer_type: str,
     """user_type branch → individual customers. Only customers above the
     materiality floor get their own lane; the tail collapses into one capped
     "N smaller accounts" branch so the graph stays readable."""
-    txn_a = ds.txns(period_a, product=product, customer_type=customer_type)
-    txn_b = ds.txns(period_b, product=product, customer_type=customer_type)
+    txn_a, txn_b = _txn_pair(ds, period_a, period_b, product=product,
+                             customer_type=customer_type)
+    if txn_a.empty and txn_b.empty:
+        txn_a, txn_b = _txn_pair(ds, period_a, period_b, product=product,
+                                 sub_product=customer_type)
+    if txn_a.empty and txn_b.empty:
+        txn_a, txn_b = _txn_pair(ds, period_a, period_b, product=product,
+                                 geography=customer_type)
     if txn_a.empty and txn_b.empty:
         return None
 
@@ -168,3 +177,7 @@ def route_customers(ds: Dataset, product: str, customer_type: str,
             capped=True,  # one collapsed lane; individually below the floor
         ))
     return Routing(axis="customer", children=majors)
+
+
+def _txn_pair(ds: Dataset, period_a: str, period_b: str, **filters: str):
+    return ds.txns(period_a, **filters), ds.txns(period_b, **filters)

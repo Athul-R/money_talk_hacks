@@ -3,10 +3,11 @@
 
 BACKEND := cd backend && uv run --
 
-.PHONY: install fixtures test mock run-demo console build
+.PHONY: install fixtures test mock run-demo console build api live prism-warmup
 
 install:            ## backend venv + console node_modules
 	cd backend && uv sync
+	cd backend && uv pip install prismtrace-sdk || true
 	cd console && npm install
 
 fixtures:           ## regenerate the calibrated fixture CSVs
@@ -18,8 +19,17 @@ test:               ## engine test suite (attribution math, materiality stops, z
 mock:               ## run the engine on fixtures and bake beats into console/src/mock
 	$(BACKEND) python scripts/make_mock.py
 
-run-demo: mock      ## end-to-end demo without any keys: engine -> beats -> console
+run-demo: mock      ## mock path: baked beats, no keys
 	cd console && npm run dev
+
+api:                ## live FastAPI on :8000 (data/given seeded)
+	cd backend && uv run uvicorn fpa.api.main:app --reload --port 8000
+
+live:               ## console only — pair with `make api` in another terminal
+	cd console && npm run dev
+
+prism-warmup:       ## one given-data run so PRISM has traces tomorrow
+	$(BACKEND) env PYTHONPATH=. python scripts/prism_warmup.py
 
 console:            ## console dev server on :5173
 	cd console && npm run dev
