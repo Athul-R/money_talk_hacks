@@ -7,7 +7,7 @@ from dataclasses import asdict, dataclass, field
 import pandas as pd
 
 from fpa_agent.analytics.timeseries import SeriesStat, build_metric_history, kpi_histories, zscore_series
-from fpa_agent.metrics.hierarchy import AD_KPI_COLUMNS, HIERARCHY, HierarchyNode
+from fpa_agent.metrics.hierarchy import AD_KPI_COLUMNS, HierarchyNode, get_hierarchy
 
 
 @dataclass
@@ -80,14 +80,16 @@ def expand_node_drivers(
     company: str | None,
     parent_delta: float | None = None,
     material_z: float = 1.5,
+    hierarchy: dict[str, HierarchyNode] | None = None,
 ) -> list[Driver]:
     """Expand a node into drivers via additive children OR group_col / KPI slice."""
-    node = HIERARCHY[node_id]
+    hierarchy = hierarchy or get_hierarchy(company or "Alphabet")
+    node = hierarchy[node_id]
     drivers: list[Driver] = []
 
     if node.children:
         for cid in node.children:
-            child = HIERARCHY[cid]
+            child = hierarchy[cid]
             table = tables.get(child.table or node.table or "product_segments")
             if table is None:
                 continue
@@ -210,8 +212,10 @@ def child_contributions(
     prior_period: str,
     company: str | None = None,
     material_z: float = 1.5,
+    hierarchy: dict[str, HierarchyNode] | None = None,
 ) -> AttributionResult:
-    parent = HIERARCHY[parent_id]
+    hierarchy = hierarchy or get_hierarchy(company or "Alphabet")
+    parent = hierarchy[parent_id]
     parent_table = tables.get(parent.table or "sec_metrics")
     if parent_table is None:
         raise KeyError(f"missing table for {parent_id}")
@@ -219,12 +223,6 @@ def child_contributions(
     pt = _slice(_apply_company(parent_table, company), parent)
     cur = _period_value(pt, period, parent.value_col)
     prv = _period_value(pt, prior_period, parent.value_col)
-    # Revenue on sec_metrics has no product filter; product parents need their table
-    if parent_id != "revenue" and parent.table == "sec_metrics":
-        pass
-    if parent.table == "product_segments" or parent.dimension == "product":
-        # already sliced
-        pass
     parent_delta = cur - prv
 
     drivers = expand_node_drivers(
@@ -235,6 +233,7 @@ def child_contributions(
         company=company,
         parent_delta=parent_delta,
         material_z=material_z,
+        hierarchy=hierarchy,
     )
     drivers.sort(
         key=lambda d: (abs(d.share_of_parent_delta or 0.0), abs(d.delta), abs(d.z_score or 0.0)),
@@ -264,8 +263,10 @@ def recursive_attribute(
     material_z: float = 1.5,
     max_depth: int = 4,
     explain_coverage: float = 0.80,
+    metric: str = "revenue",
 ) -> list[Driver]:
     """Top-down additive walk, then dimensional drills on material product nodes."""
+    hierarchy = get_hierarchy(company, metric=metric)
     collected: list[Driver] = []
 
     def is_material(d: Driver, parent_delta: float) -> bool:
@@ -278,10 +279,12 @@ def recursive_attribute(
         return bool(d.is_material and abs(d.delta) > 0)
 
     def drill_dimensions(node_id: str, path: list[str], parent_delta: float) -> None:
-        node = HIERARCHY.get(node_id)
+        node = hierarchy.get(node_id)
         if not node or not node.drills:
             return
         for drill_id in node.drills:
+            if drill_id not in hierarchy:
+                continue
             drill_drivers = expand_node_drivers(
                 tables,
                 drill_id,
@@ -290,6 +293,7 @@ def recursive_attribute(
                 company=company,
                 parent_delta=parent_delta,
                 material_z=material_z,
+                hierarchy=hierarchy,
             )
             for d in drill_drivers:
                 if not is_material(d, parent_delta):
@@ -299,7 +303,7 @@ def recursive_attribute(
                 collected.append(d)
 
     def walk(node_id: str, depth: int, path: list[str]) -> None:
-        if depth > max_depth or node_id not in HIERARCHY:
+        if depth > max_depth or node_id not in hierarchy:
             return
         result = child_contributions(
             tables,
@@ -308,9 +312,9 @@ def recursive_attribute(
             prior_period=prior_period,
             company=company,
             material_z=material_z,
+            hierarchy=hierarchy,
         )
         if not result.drivers:
-            # still allow drills on this node if it is a product leaf
             drill_dimensions(node_id, path, result.parent_delta)
             return
 
@@ -327,17 +331,28 @@ def recursive_attribute(
             if covered >= explain_coverage:
                 break
 
+        # Always keep opposite-sign material drivers (e.g. underwriting earnings decline
+        # while total operating income rises) so profit/loss drags are not dropped.
+        selected_ids = {d.metric for d in selected}
+        for d in result.drivers:
+            if d.metric in selected_ids:
+                continue
+            if not is_material(d, result.parent_delta):
+                continue
+            if result.parent_delta and d.delta * result.parent_delta < 0:
+                d.path = path + [d.metric] if not d.path else path + d.path[1:]
+                selected.append(d)
+                collected.append(d)
+
         for d in selected:
             base = d.metric.split(":")[0]
-            child = HIERARCHY.get(base)
+            child = hierarchy.get(base)
             if child and child.children:
                 walk(base, depth + 1, d.path)
             elif child:
-                # product leaf → dimensional drills
                 drill_dimensions(base, d.path, d.delta)
 
-        # Also drill the current node if it itself has drills (e.g. subscriptions_devices)
-        if HIERARCHY[node_id].drills and depth > 0:
+        if hierarchy[node_id].drills and depth > 0:
             drill_dimensions(node_id, path, result.parent_delta)
 
     walk(root_id, 0, [root_id])

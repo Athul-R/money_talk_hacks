@@ -105,6 +105,7 @@ def analyze(
     period: str,
     prior_period: str,
     root: str = "revenue",
+    metric: str = "revenue",
     materiality_share: float = 0.08,
     material_z: float = 1.5,
     max_depth: int = 4,
@@ -113,30 +114,33 @@ def analyze(
     agent_loop: bool = False,
     max_loop_rounds: int = 3,
 ) -> AnalysisResult:
+    if metric not in {"revenue", "operating_income"}:
+        raise ValueError("metric must be 'revenue' or 'operating_income'")
+
     sec = tables.get("sec_metrics")
     if sec is not None and "company" in sec.columns:
         sec_c = sec[sec["company"] == company]
     else:
         sec_c = sec
 
-    # North-star revenue time series + z-score
-    if sec_c is not None and "revenue" in sec_c.columns:
-        rev_hist = build_metric_history(sec_c, value_col="revenue")
+    # North-star time series + z-score (revenue or operating income)
+    if sec_c is not None and metric in sec_c.columns:
+        north_hist = build_metric_history(sec_c, value_col=metric)
     else:
         prod = tables["product_segments"]
         if "company" in prod.columns:
             prod = prod[prod["company"] == company]
-        rev_hist = build_metric_history(prod, value_col="revenue")
+        value_col = metric if metric in prod.columns else "revenue"
+        north_hist = build_metric_history(prod, value_col=value_col)
 
-    # Focus history through the analysis period
-    rev_hist = _through_period(rev_hist, period)
-    rev_hist.name = "revenue"
-    rev_stat = zscore_series(rev_hist, material_z=material_z, compare_period=prior_period)
+    north_hist = _through_period(north_hist, period)
+    north_hist.name = metric
+    north_stat = zscore_series(north_hist, material_z=material_z, compare_period=prior_period)
 
     companion_stats: list[dict[str, Any]] = []
     if sec_c is not None:
         for col in SEC_COMPANION_METRICS:
-            if col not in sec_c.columns:
+            if col not in sec_c.columns or col == metric:
                 continue
             hist = build_metric_history(sec_c, value_col=col)
             if period not in hist.index or len(hist.dropna()) < 2:
@@ -155,6 +159,7 @@ def analyze(
         materiality_share=materiality_share,
         material_z=material_z,
         max_depth=max_depth,
+        metric=metric,
     )
     clusters = cluster_drivers(drivers)
 
@@ -182,10 +187,13 @@ def analyze(
             ],
         }
 
+    metric_label = "Revenue" if metric == "revenue" else "Operating income"
     prompt_payload = {
         "company": company,
         "period": period,
         "prior_period": prior_period,
+        "north_star_metric": metric,
+        "north_star_label": metric_label,
         "baseline": {
             "comparison": f"{prior_period} → {period}",
             "delta_definition": f"value({period}) − value({prior_period})",
@@ -196,14 +204,13 @@ def analyze(
             ),
             "units": "USD millions unless the metric is a rate/KPI",
         },
-        "revenue_delta": rev_stat.delta,
-        "revenue_pct": rev_stat.pct_change,
-        "revenue_z": rev_stat.z_score,
-        "revenue_value": rev_stat.value,
-        "revenue_prior_value": rev_stat.prior_value,
+        "revenue_delta": north_stat.delta,
+        "revenue_pct": north_stat.pct_change,
+        "revenue_z": north_stat.z_score,
+        "revenue_value": north_stat.value,
+        "revenue_prior_value": north_stat.prior_value,
         "dollar_attribution_clusters": [_pack_cluster(c) for c in dollar_clusters],
         "operational_kpi_clusters": [_pack_cluster(c) for c in kpi_clusters],
-        # backward-compatible key used by template fallback
         "clusters": [_pack_cluster(c) for c in dollar_clusters + kpi_clusters],
         "companion_metrics": [
             {
@@ -218,6 +225,15 @@ def analyze(
             for s in companion_stats
             if s.get("is_material")
         ],
+        "story_hints": {
+            "conglomerate": "Berkshire" in company or "Berkshire" in company.replace("_", " "),
+            "explain_profit_and_loss": True,
+            "note": (
+                "If operating income declined in a segment while revenue rose (or vice versa), "
+                "state both facts with numbers. Name subsidiaries that drove gains AND those "
+                "that drove earnings declines."
+            ),
+        },
     }
 
     system = EXEC_WRITER_SYSTEM.format(
@@ -225,6 +241,17 @@ def analyze(
         period=period,
         prior_period=prior_period,
     )
+    if metric == "operating_income":
+        system += (
+            "\n\nNORTH STAR FOR THIS RUN: operating income (profit), not revenue. "
+            "Explain what increased earnings and what reduced earnings / created a loss drag, "
+            "with $ and % vs the prior period. Name subsidiaries explicitly."
+        )
+    else:
+        system += (
+            "\n\nIf this is a conglomerate, name subsidiaries/segments (not just abstract clusters). "
+            "Also note material profit/loss divergences from companion operating_income evidence."
+        )
 
     loop_meta: dict[str, Any] = {}
     validation: ValidationResult | None = None
@@ -236,7 +263,7 @@ def analyze(
         loop_result = run_agent_loop(prompt_payload, max_rounds=max_loop_rounds)
         summary = loop_result.summary
         validation = loop_result.validation
-        passed = loop_result.passed  # True ONLY if validation agent succeeded
+        passed = loop_result.passed
         loop_meta = {
             "enabled": True,
             "rounds": loop_result.rounds,
@@ -260,12 +287,13 @@ def analyze(
         "driver_table": clusters_to_frame(clusters).to_dict(orient="records"),
         "llm_available": llm_available(),
         "prompt_payload": prompt_payload,
+        "metric": metric,
     }
     return AnalysisResult(
         company=company,
         period=period,
         prior_period=prior_period,
-        revenue_stat=asdict(rev_stat),
+        revenue_stat=asdict(north_stat),
         companion_stats=companion_stats,
         drivers=drivers,
         clusters=clusters,
