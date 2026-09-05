@@ -26,9 +26,13 @@ def _resolve_path(path: Path) -> Path:
 @app.command("explain")
 def explain_cmd(
     data_dir: Path = typer.Option(Path("data/given"), help="Directory with given CSVs"),
-    company: str = typer.Option("Alphabet", help="Company key in the CSVs"),
+    company: str = typer.Option("Alphabet", help="Company key in the CSVs (e.g. Alphabet, Berkshire_Hathaway)"),
     period: str = typer.Option("2026-Q2", help="Analysis period YYYY-Qn"),
     prior_period: str = typer.Option("2026-Q1", help="Comparison period YYYY-Qn"),
+    metric: str = typer.Option(
+        "revenue",
+        help="North-star metric: revenue | operating_income (profit/loss drivers)",
+    ),
     materiality: float = typer.Option(0.08, help="Min |share of parent delta| to keep"),
     z: float = typer.Option(1.5, help="|Z-score| materiality threshold"),
     json_out: Path | None = typer.Option(None, help="Optional path to write full JSON evidence"),
@@ -57,6 +61,7 @@ def explain_cmd(
         company=company,
         period=period,
         prior_period=prior_period,
+        metric=metric,
         materiality_share=materiality,
         material_z=z,
         validate=validate and not agent_loop,
@@ -66,10 +71,11 @@ def explain_cmd(
     )
 
     rs = result.revenue_stat
+    metric_label = "Operating income" if metric == "operating_income" else "Revenue"
     console.print(
         Panel.fit(
             f"[bold]{result.company}[/bold]  {result.prior_period} → {result.period}\n"
-            f"Revenue Δ = {rs.get('delta'):,.2f} ({_pct(rs.get('pct_change'))})  "
+            f"{metric_label} Δ = {rs.get('delta'):,.2f} ({_pct(rs.get('pct_change'))})  "
             f"z = {_num(rs.get('z_score'))}",
             title="North star",
         )
