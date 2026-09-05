@@ -34,7 +34,7 @@ const LIVE_MS: Record<string, number> = {
 };
 
 // Documentation recorder uses the real upload/run path with a shorter reveal.
-const STORY_RATE = new URLSearchParams(window.location.search).has("film") ? 0.18 : 1;
+const STORY_RATE = new URLSearchParams(window.location.search).has("film") ? 0.12 : 1;
 
 /** Hero YoY pair if the books carry it, else last quarter vs a year before. */
 function pickPeriods(periods: string[]): [string, string] {
