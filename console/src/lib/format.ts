@@ -23,6 +23,23 @@ export function hhmmss(iso: string): string {
   return new Date(iso).toLocaleTimeString([], { hour12: false });
 }
 
+/** Keep legacy seed identifiers out of product-facing copy. */
+export function companyLabel(name?: string): string {
+  if (!name || /^alphabet$/i.test(name.trim())) return "Company";
+  return name;
+}
+
+export function datasetLabel(name?: string): string {
+  if (!name || /^alphabet(?:-given| · given.*)$/i.test(name.trim())) {
+    return "Quarterly books";
+  }
+  return name;
+}
+
+export function neutralCopy(text?: string): string {
+  return (text ?? "").replace(/Alphabet/gi, "Company");
+}
+
 /** ring token for a branch given its state + delta direction */
 export function branchRing(state: string, delta: number): string {
   if (state === "capped") return "var(--ring-down)";

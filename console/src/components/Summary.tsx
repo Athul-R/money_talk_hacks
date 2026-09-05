@@ -4,7 +4,7 @@
  */
 
 import { Brain, FileText, Network, ScanSearch } from "lucide-react";
-import { fm, pct, share } from "../lib/format";
+import { companyLabel, datasetLabel, fm, pct, share } from "../lib/format";
 import type { RunBundle } from "../lib/types";
 
 export function Summary({
@@ -32,7 +32,7 @@ export function Summary({
         {bundle.run.metric} · {bundle.run.period_a} → {bundle.run.period_b}
       </h2>
       <p className="mt-1 text-[13px] text-muted-foreground">
-        {bundle.run.company} · {bundle.run.dataset} ·{" "}
+        {companyLabel(bundle.run.company)} · {datasetLabel(bundle.run.dataset)} ·{" "}
         {done ? `${Math.round(bundle.run.explained_share * 100)}% of the move explained`
               : `step ${beat}/${maxBeat}`}
       </p>

@@ -4,7 +4,7 @@ import {
   Activity, Boxes, Brain, Check, FileText, Globe, Share2, SlidersHorizontal, XCircle, ZoomIn,
 } from "lucide-react";
 import type { EventRow } from "../lib/types";
-import { hhmmss, TAG_TONE } from "../lib/format";
+import { hhmmss, neutralCopy, TAG_TONE } from "../lib/format";
 
 const ICON: Record<string, typeof Check> = {
   router: Share2, z: Activity, drivers: SlidersHorizontal, cluster: Boxes,
@@ -48,10 +48,10 @@ export function EventLog({ events, upto, onPick }: {
                 </span>
                 <span className="min-w-0 flex-1">
                   <span className="block truncate text-[12.5px] font-semibold text-foreground">
-                    {e.payload.title}
+                    {neutralCopy(e.payload.title)}
                   </span>
                   <span className="block truncate text-[11px] text-muted-foreground">
-                    {e.payload.detail}
+                    {neutralCopy(e.payload.detail)}
                   </span>
                 </span>
                 <span className="tabular shrink-0 font-mono text-[10.5px] text-muted-foreground">

@@ -17,6 +17,12 @@ def test_given_reconciles():
     assert "2025-Q2" in ds.periods and "2026-Q2" in ds.periods
 
 
+def test_generic_company_label_resolves_source_rows():
+    ds = load_given(GIVEN_DIR, company="Company", name="t")
+    assert not ds.transactions.empty
+    assert ds.reconciliation.ok
+
+
 def test_cloud_drills_past_single_user_class():
     ds = load_given(GIVEN_DIR, company="Alphabet", name="t")
     routing = route_branch(ds, "product", "Cloud", "2025-Q2", "2026-Q2")

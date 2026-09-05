@@ -60,9 +60,20 @@ def load_given(dir_path: str | Path, company: str = "Alphabet", name: str = "") 
     geo = pd.read_csv(root / "geography.csv")
     users = pd.read_csv(root / "user_segments.csv")
 
+    # "Company" is the product-facing neutral label. Resolve it to the actual
+    # source value in the uploaded rows before filtering; otherwise every row
+    # would be removed from branded ledgers such as the included dataset.
+    source_company = company
+    if "company" in sec.columns:
+        available = [str(value) for value in sec["company"].dropna().unique()]
+        if source_company not in available and len(available) == 1:
+            source_company = available[0]
+
     for df in (sec, prod, geo, users):
         if "company" in df.columns:
-            df.drop(df[df.company != company].index, inplace=True)
+            df.drop(df[df.company.astype(str) != source_company].index, inplace=True)
+        if df.empty:
+            raise ValueError("the uploaded CSVs do not contain one shared company")
 
     summaries: list[dict] = []
     for r in sec.itertuples():

@@ -9,7 +9,7 @@
 
 import type { Edge, Node } from "@xyflow/react";
 import type { FoldedBranch, FoldedPip, Model } from "./fold";
-import { branchRing, fm, pct, share, STAGE_RING } from "./format";
+import { branchRing, fm, neutralCopy, pct, share, STAGE_RING } from "./format";
 
 export const GEO = {
   rootX: 40,
@@ -384,8 +384,8 @@ export function frameOverview(model: Model, selected: string | null) {
       pulse: running && !model.axis,
       tooltip: [
         "What was happening outside the books?",
-        model.webContext.query || "earnings context",
-        ...model.webContext.sources.slice(0, 3).map((s: any) => s.source),
+        neutralCopy(model.webContext.query) || "earnings context",
+        ...model.webContext.sources.slice(0, 3).map((s: any) => neutralCopy(s.source)),
         "Context informs narration; it never changes the math.",
       ],
       selected: false,

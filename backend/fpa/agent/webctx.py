@@ -13,11 +13,11 @@ import os
 import httpx
 
 FALLBACK = [
-    {"source": "Alphabet IR — quarterly earnings release",
-     "url": "https://abc.xyz/investor/",
+    {"source": "Investor relations — quarterly earnings release",
+     "url": "https://www.sec.gov/edgar/search/",
      "note": "Management attributed the quarter to cloud demand for AI "
              "infrastructure and steady search monetization."},
-    {"source": "Reuters — Alphabet earnings coverage",
+    {"source": "Reuters — quarterly earnings coverage",
      "url": "https://www.reuters.com/technology/",
      "note": "Analysts flagged enterprise cloud wins; ad pricing held up "
              "better than feared."},

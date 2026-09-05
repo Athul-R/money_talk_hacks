@@ -58,7 +58,7 @@ export function startRun(body: {
   });
 }
 
-export async function uploadDataset(files: FileList | File[], company = "Alphabet"): Promise<{
+export async function uploadDataset(files: FileList | File[], company = "Company"): Promise<{
   id: string; name: string; periods: string[];
   reconciliation: { ok: boolean; checks: any[] }; files: string[];
 }> {

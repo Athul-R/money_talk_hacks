@@ -6,9 +6,8 @@ import { useRef, useState } from "react";
 import { UploadCloud } from "lucide-react";
 
 export function Landing({
-  company, liveOk, liveHint, starting, onUpload,
+  liveOk, liveHint, starting, onUpload,
 }: {
-  company: string;
   liveOk: boolean;
   liveHint: string;
   starting: boolean;
@@ -38,7 +37,7 @@ export function Landing({
         Why did this quarter move?
       </h2>
       <p className="mt-3 max-w-xl text-[14px] leading-relaxed text-muted-foreground">
-        Upload {company}'s books. The engine reconciles the totals, the router
+        Upload your company's books. The engine reconciles the totals, the router
         ranks the movers, the z-bridge flags what is unusual, and you get a
         leadership memo — then you can open the closer and watch the agent work.
       </p>

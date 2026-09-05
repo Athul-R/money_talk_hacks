@@ -5,6 +5,7 @@
 
 import { ExternalLink, X } from "lucide-react";
 import type { EventRow } from "../lib/types";
+import { neutralCopy } from "../lib/format";
 
 const PRISM_URL = "https://prism.blockconvey.com/traces";
 
@@ -37,8 +38,8 @@ export function PrismDebug({
             <div className="text-[10px] font-bold uppercase tracking-wide" style={{ color: "var(--ring-memory)" }}>
               {e.kind.replace("_", " ")}
             </div>
-            <div className="mt-0.5 text-[12px] font-semibold">{e.payload.title}</div>
-            <div className="truncate text-[11px] text-muted-foreground">{e.payload.detail}</div>
+            <div className="mt-0.5 text-[12px] font-semibold">{neutralCopy(e.payload.title)}</div>
+            <div className="truncate text-[11px] text-muted-foreground">{neutralCopy(e.payload.detail)}</div>
           </li>
         ))}
       </ol>

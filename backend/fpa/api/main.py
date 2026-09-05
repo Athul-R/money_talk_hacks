@@ -1,7 +1,7 @@
 """FastAPI for the live console path.
 
     GET  /health
-    GET  /catalog          seeded Alphabet project + past live runs
+    GET  /catalog          seeded company project + past live runs
     POST /datasets         upload sec/product/geo/user CSVs (or summaries pack)
     POST /runs             run the engine, return the same bundle the mock uses
     GET  /runs/{id}        replay a stored live run
@@ -10,6 +10,7 @@
 
 from __future__ import annotations
 
+import json
 import shutil
 import uuid
 from pathlib import Path
@@ -47,12 +48,20 @@ def _load_dataset(dataset_id: str):
     if dataset_id == SEED_ID:
         if not (GIVEN_DIR / "sec_metrics.csv").exists():
             raise HTTPException(404, "data/given/ is missing — pull the repo")
-        return load_given(GIVEN_DIR, company="Alphabet", name="alphabet-given")
+        return load_given(GIVEN_DIR, company="Alphabet", name="Quarterly books")
     d = store.dataset_dir(dataset_id)
+    meta = {}
+    if (d / "meta.json").exists():
+        try:
+            meta = json.loads((d / "meta.json").read_text())
+        except (OSError, ValueError):
+            pass
+    display_name = str(meta.get("name") or "Uploaded company books")
+    source_company = str(meta.get("company") or "Company")
     if (d / "sec_metrics.csv").exists():
-        return load_given(d, company="Alphabet", name=dataset_id)
+        return load_given(d, company=source_company, name=display_name)
     if (d / "summaries.csv").exists():
-        return load_pack(d, name=dataset_id)
+        return load_pack(d, name=display_name)
     raise HTTPException(404, f"unknown dataset {dataset_id}")
 
 
@@ -98,15 +107,15 @@ def catalog():
             runs.append(_index_run(bundle))
     uploaded = store.list_datasets()
     return {
-        "company": {"id": COMPANY_ID, "name": "Alphabet"},
+        "company": {"id": COMPANY_ID, "name": "Company"},
         "dataset": {
-            "id": SEED_ID, "name": "alphabet-given",
+            "id": SEED_ID, "name": "Quarterly books",
             "periods": periods, "reconciliation": recon,
             "files": list(GIVEN_FILES),
         },
         "datasets": [
             {
-                "id": SEED_ID, "name": "Alphabet · given (data/given)",
+                "id": SEED_ID, "name": "Company · quarterly books",
                 "periods": periods, "reconciliation": recon,
                 "files": list(GIVEN_FILES), "seed": True,
             },
@@ -123,10 +132,11 @@ def catalog():
 @app.post("/datasets")
 async def upload_dataset(
     files: list[UploadFile] = File(...),
-    company: str = Form("Alphabet"),
+    company: str = Form("Company"),
     name: str = Form(""),
 ):
     dataset_id = str(uuid.uuid4())[:8]
+    display_name = name.strip() or "Uploaded company books"
     dest = store.dataset_dir(dataset_id)
     saved = []
     for f in files:
@@ -136,19 +146,22 @@ async def upload_dataset(
         path.write_bytes(await f.read())
         saved.append(path.name)
     names = set(saved)
-    if set(GIVEN_FILES) <= names:
-        ds = load_given(dest, company=company, name=name or dataset_id)
-    elif set(PACK_FILES) <= names:
-        ds = load_pack(dest, name=name or dataset_id)
-    else:
+    try:
+        if set(GIVEN_FILES) <= names:
+            ds = load_given(dest, company=company, name=display_name)
+        elif set(PACK_FILES) <= names:
+            ds = load_pack(dest, name=display_name)
+        else:
+            raise ValueError(f"need {GIVEN_FILES} or {PACK_FILES}; got {saved}")
+    except Exception as exc:
         shutil.rmtree(dest, ignore_errors=True)
-        raise HTTPException(400, f"need {GIVEN_FILES} or {PACK_FILES}; got {saved}")
+        raise HTTPException(400, f"invalid CSV pack: {exc}") from exc
     meta = {
         "id": dataset_id, "name": ds.name, "company": company,
         "periods": ds.periods, "reconciliation": ds.reconciliation.as_dict(),
         "files": saved,
     }
-    (dest / "meta.json").write_text(__import__("json").dumps(meta, indent=2))
+    (dest / "meta.json").write_text(json.dumps(meta, indent=2))
     return meta
 
 
@@ -157,7 +170,7 @@ class RunReq(BaseModel):
     metric: str = "Revenue"
     period_a: str = "2025-Q2"
     period_b: str = "2026-Q2"
-    company: str = "Alphabet"
+    company: str = "Company"
 
 
 @app.post("/runs")

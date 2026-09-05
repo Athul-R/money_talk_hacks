@@ -18,7 +18,7 @@ import { Summary } from "./components/Summary";
 import * as api from "./lib/api";
 import { captions, fold } from "./lib/fold";
 import { breadcrumb, frame, frameOverview } from "./lib/frame";
-import { fm, pct } from "./lib/format";
+import { companyLabel, datasetLabel, fm, pct } from "./lib/format";
 import { MemoSheet } from "./components/MemoSheet";
 import type { Ask, ConsoleIndex, RunBundle } from "./lib/types";
 
@@ -33,6 +33,9 @@ const LIVE_MS: Record<string, number> = {
   run_complete: 1700,
 };
 
+// Documentation recorder uses the real upload/run path with a shorter reveal.
+const STORY_RATE = new URLSearchParams(window.location.search).has("film") ? 0.18 : 1;
+
 /** Hero YoY pair if the books carry it, else last quarter vs a year before. */
 function pickPeriods(periods: string[]): [string, string] {
   if (periods.includes("2025-Q2") && periods.includes("2026-Q2")) return ["2025-Q2", "2026-Q2"];
@@ -40,8 +43,8 @@ function pickPeriods(periods: string[]): [string, string] {
   return [periods[0] ?? "2025-Q2", periods[periods.length - 1] ?? "2026-Q2"];
 }
 const EMPTY_LIVE: ConsoleIndex = {
-  company: { id: "alphabet", name: "Alphabet" },
-  dataset: { name: "alphabet-given", periods: ["2025-Q2", "2026-Q2"], reconciliation: { ok: false, checks: [] } },
+  company: { id: "company", name: "Company" },
+  dataset: { name: "Quarterly books", periods: ["2025-Q2", "2026-Q2"], reconciliation: { ok: false, checks: [] } },
   runs: [],
   memory: [],
 };
@@ -62,7 +65,7 @@ export default function App() {
   const [liveIndex, setLiveIndex] = useState<ConsoleIndex>(EMPTY_LIVE);
   const [datasetId, setDatasetId] = useState("alphabet-given");
   const [datasets, setDatasets] = useState<{ id: string; name: string }[]>([
-    { id: "alphabet-given", name: "Alphabet · given (data/given)" },
+    { id: "alphabet-given", name: "Company · quarterly books" },
   ]);
   const [liveOk, setLiveOk] = useState(false);
   const [liveHint, setLiveHint] = useState("");
@@ -140,7 +143,7 @@ export default function App() {
   useEffect(() => {
     if (!playing || !bundle) return;
     if (beat >= maxBeat) { setPlaying(false); return; }
-    const ms = (LIVE_MS[beatKinds.get(beat + 1) ?? ""] ?? 1000)
+    const ms = STORY_RATE * (LIVE_MS[beatKinds.get(beat + 1) ?? ""] ?? 1000)
       * (0.85 + Math.random() * 0.4);
     const t = setTimeout(() => setBeat((b) => b + 1), ms);
     return () => clearTimeout(t);
@@ -192,7 +195,7 @@ export default function App() {
     try {
       const next = await api.startRun({
         dataset_id: dsId, metric, period_a: periodA, period_b: periodB,
-        company: index.company.name,
+        company: companyLabel(index.company.name),
       });
       playBundle(next, next.run.id, "summary");
       setLiveIndex((prev) => ({
@@ -205,7 +208,7 @@ export default function App() {
     }
   }, [index.company.name, playBundle]);
 
-  // The live demo: drop the 4 CSVs → reconcile → the analysis plays itself.
+  // Upload a CSV pack → reconcile → the analysis starts automatically.
   const onUpload = useCallback(async (files: FileList) => {
     const meta = await api.uploadDataset(files);
     setDatasetId(meta.id);
@@ -245,7 +248,7 @@ export default function App() {
               Delta Ledger
             </h1>
             <p className="truncate text-[11.5px] text-muted-foreground">
-              explain the change · {index.company.name} · {index.dataset.name}
+              explain the change · {companyLabel(index.company.name)} · {datasetLabel(index.dataset.name)}
             </p>
           </div>
         </div>
@@ -304,7 +307,7 @@ export default function App() {
 
       {view === "home" && (
         <Landing
-          company={index.company.name} liveOk={liveOk} liveHint={liveHint}
+          liveOk={liveOk} liveHint={liveHint}
           starting={starting} onUpload={onUpload}
         />
       )}

@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import { EVIDENCE_TAGS, type EvidenceTag, type RunBundle } from "../lib/types";
 import { downloadMemo } from "../lib/memo";
-import { fm, pct, share } from "../lib/format";
+import { companyLabel, fm, pct, share } from "../lib/format";
 
 type Sections = Record<string, string[]>;
 
@@ -68,7 +68,7 @@ export function MemoSheet({ bundle, onClose }: { bundle: RunBundle; onClose: () 
         <header className="flex shrink-0 items-start justify-between gap-4 border-b border-border px-7 py-5">
           <div>
             <p className="text-[10.5px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
-              Leadership brief · {bundle.run.company}
+              Leadership brief · {companyLabel(bundle.run.company)}
             </p>
             <h2 className="wordmark mt-1 text-[23px] font-bold tracking-tight">
               {bundle.run.metric} · {bundle.run.period_a} → {bundle.run.period_b}
