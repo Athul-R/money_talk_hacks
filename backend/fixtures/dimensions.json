@@ -1,0 +1,54 @@
+{
+  "hierarchy": {
+    "Revenue": [
+      "product",
+      "geography",
+      "user_type"
+    ],
+    "COGS": [
+      "product"
+    ]
+  },
+  "product_tree": {
+    "Cloud": [
+      "AI Infrastructure",
+      "Data Platform",
+      "Productivity Suite"
+    ],
+    "Search Ads": [
+      "Brand ads",
+      "Performance ads"
+    ],
+    "Subscriptions": [
+      "Premium tier",
+      "Family tier",
+      "Student tier",
+      "Enterprise seats"
+    ],
+    "Devices & Network": [
+      "Hardware"
+    ]
+  },
+  "geo_tree": {
+    "Americas": [],
+    "EMEA": [],
+    "APAC": []
+  },
+  "user_tree": {
+    "Cloud": [
+      "Enterprise",
+      "Mid-market",
+      "SMB"
+    ],
+    "Search Ads": [
+      "Advertiser"
+    ],
+    "Subscriptions": [
+      "Consumer"
+    ],
+    "Devices & Network": [
+      "Channel"
+    ]
+  },
+  "note": "Synthetic dataset for Auric Technologies (fictional). Transaction rows are calibrated to the reported summary totals; they are not real company transactions."
+}
